@@ -2,13 +2,15 @@ project:
   id: staw-expert-repetytorium
   name: "Repetytorium Staw Expert"
   repository: "dejvid673-prog/repetytorium"
-  context_version: "0.2"
+  context_version: "0.3"
   status: planning
   language_primary: pl
   platform: "PrestaShop 9"
   source_of_truth: github
   owner_role: human_owner
   project_manager_agent: A00
+  project_manager_activation: audit_pending
+  bootstrap_owner: human_owner
 
 scope:
   home_ponds: true
@@ -37,6 +39,7 @@ quality:
 
 governance:
   all_commands_through_project_manager: true
+  before_a00_activation_use_bootstrap: true
   agent_context_gate_required: true
   architectural_changes_require_adr: true
   project_artifacts_only_in_this_repository: true
