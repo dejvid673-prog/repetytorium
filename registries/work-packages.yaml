@@ -51,14 +51,14 @@ work_packages:
     name: "Wykonanie audytu A00"
     owner_agent: "OWNER"
     executor_agents: ["A01", "A02"]
-    status: "REVIEW"
+    status: "COMPLETED"
     depends_on: ["WP-0001", "WP-0002", "WP-0003", "WP-0004", "WP-0005"]
     output: "reports/agent-audits/A00/"
   - id: "WP-0007"
     phase: "0A"
     name: "Dopuszczenie warunkowe A00"
     owner_agent: "OWNER"
-    status: "BLOCKED"
+    status: "COMPLETED"
     depends_on: ["WP-0006"]
     output: "registries/agents.yaml"
   - id: "WP-0008"
