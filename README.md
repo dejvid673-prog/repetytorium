@@ -4,14 +4,15 @@ Kompletne źródło prawdy dla publicznej biblioteki wiedzy o przydomowych oczka
 
 ## Aktualny stan
 
-**Faza 0 — Ład projektu. Wersja kontekstu 0.2.**
+**Faza 0 — Ład projektu. Wersja kontekstu 0.3.**
 
 Plan zależności, gałęzi i bram jest przygotowany. Pierwszy agent — A00 Koordynator Projektu — ma już kontrakt, skill, workflow, schemat zadania i testy, lecz nadal oczekuje na niezależny audyt. Pozostałe role oraz wszystkie fazy wykonawcze są zablokowane.
 
 ## Obowiązkowy start
 
-1. [Nadrzędna instrukcja](PROJECT_INSTRUCTIONS.md)
-2. [Konstytucja](docs/PROJECT_CONSTITUTION.md)
+1. [Manifest kontekstu](PROJECT_CONTEXT.yaml)
+2. [Nadrzędna instrukcja](PROJECT_INSTRUCTIONS.md)
+3. [Konstytucja](docs/PROJECT_CONSTITUTION.md)
 3. [Plan główny](docs/MASTER_PLAN.md)
 4. [Konkretny plan realizacji](docs/IMPLEMENTATION_PLAN.md)
 5. [Wykonawczy plan faz i zależności](docs/PHASE_EXECUTION_PLAN.md)
