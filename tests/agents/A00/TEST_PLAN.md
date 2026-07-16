@@ -1,6 +1,6 @@
 # Plan testów A00
 
-Status: ponowny test wymagany dla kontraktu 0.4
+Status: wykonany dla kontraktu 0.4 — 15/15 PASS
 
 ## Zakres
 
@@ -31,3 +31,5 @@ Test obejmuje kontrakt, protokół operacyjny, skill, workflow, schemat zadania,
 ## Dowody
 
 Wynik każdej serii trafia do `reports/tests/A00/`. Niewykonany przypadek nie jest zaliczony.
+
+Ostatni wynik: `reports/tests/A00/2026-07-16-validation-results-v0.4.yaml`. GitHub Actions: 29502504632 — SUCCESS.
