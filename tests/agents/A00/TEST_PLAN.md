@@ -9,11 +9,11 @@ Testujemy kontrakt, skill `coordinate-repetytorium`, workflow sterowania i schem
 ## Procedura
 
 1. Zamrozić wersje wszystkich testowanych plików.
-2. Uruchomić każdy przypadek z `cases.yaml` w czystym kontekście projektu.
+2. Uruchomić każdy przypadek jawnie w `mode: validation` z `cases.yaml` w czystym kontekście projektu.
 3. Zapisać pełne wejście, wynik i użyte pliki.
 4. Porównać wynik z polami `expected`.
 5. A01 ocenia ochronę kierunku i zakresu.
-6. A80 ocenia wykonywalność stanów, schematu i wznowienia.
+6. A02 ocenia wykonywalność stanów, schematu, skilla i wznowienia.
 7. Ustalenia krytyczne i wysokie blokują dopuszczenie.
 8. Po poprawce powtórzyć pełny zestaw, nie tylko przypadek błędny.
 
@@ -28,4 +28,4 @@ Testujemy kontrakt, skill `coordinate-repetytorium`, workflow sterowania i schem
 
 ## Niewykonane
 
-Testy zostaną wykonane w WP-0005 po zamrożeniu kontraktu A00. Obecność tego pliku nie jest dowodem zaliczenia.
+Testy wykonuje się w WP-0006 po zamrożeniu kontraktu A00. WP-0005 obejmuje wyłącznie ich definicję. Obecność tego pliku nie jest dowodem zaliczenia.
