@@ -1,64 +1,56 @@
 # Repetytorium Staw Expert
 
-Repozytorium jest źródłem prawdy dla projektu **Repetytorium Staw Expert** — internetowego kompendium wiedzy o stawach, oczkach wodnych, wodzie i rybach, które docelowo będzie bezpośrednio połączone ze sklepem Staw Expert działającym na PrestaShop 9.
-
-## Cel projektu
-
-Repetytorium ma pomóc klientowi:
-
-- odnaleźć problem na podstawie objawów;
-- poznać prawdopodobne przyczyny;
-- ustalić, jakie obserwacje i pomiary wykonać;
-- znaleźć bezpieczne sposoby postępowania;
-- przejść do powiązanych artykułów;
-- zobaczyć właściwe produkty sklepu, jeżeli ich zastosowanie jest merytorycznie uzasadnione;
-- rozpoznać sytuacje wymagające pomocy specjalisty.
-
-To nie ma być zwykły blog. Docelowo powstaje uporządkowany system wiedzy, redakcji, weryfikacji i publikacji.
+Kompletne źródło prawdy dla publicznej biblioteki wiedzy o przydomowych oczkach wodnych, hobbystycznych stawach, jakości wody i rybach słodkowodnych. Biblioteka będzie dodatkiem do sklepu Staw Expert na PrestaShop 9, ale nie reklamuje ani nie rekomenduje produktów.
 
 ## Aktualny stan
 
-**Etap: fundament organizacyjny — wersja 0.1.**
+**Faza 0 — Ład projektu. Wersja kontekstu 0.2.**
 
-Repozytorium nie zawiera jeszcze gotowego modułu PrestaShop, działających agentów ani automatycznej publikacji. Obecna dokumentacja definiuje kierunek projektu, odpowiedzialności, strukturę danych i zasady dalszej pracy.
+Nie ma jeszcze działającego modułu, agentów wykonawczych, gotowych artykułów ani wdrożenia. Repozytorium zawiera plan i kontrakty, które muszą zostać zatwierdzone przed Fazą 1.
 
-## Od czego zacząć
+## Obowiązkowy start
 
-1. [AGENTS.md](AGENTS.md) — obowiązkowe zasady dla wszystkich agentów i narzędzi.
-2. [Karta projektu](docs/PROJECT_CHARTER.md) — cel, zakres i granice.
-3. [Architektura](docs/ARCHITECTURE.md) — warstwy systemu i odpowiedzialności.
-4. [Workflow treści](docs/CONTENT_WORKFLOW.md) — droga od badania do publikacji.
-5. [Model wiedzy](docs/CONTENT_MODEL.md) — obiekty, relacje i typy artykułów.
-6. [Role agentów](agents/README.md) — planowany podział pracy.
-7. [Mapa repozytorium](docs/REPOSITORY_MAP.md) — gdzie szukać poszczególnych materiałów.
-8. [Decyzje architektoniczne](docs/decisions/README.md) — trwałe decyzje i ich uzasadnienia.
+1. [Nadrzędna instrukcja](PROJECT_INSTRUCTIONS.md)
+2. [Konstytucja](docs/PROJECT_CONSTITUTION.md)
+3. [Plan główny](docs/MASTER_PLAN.md)
+4. [Aktualny stan](docs/CURRENT_STATE.md)
+5. [Instrukcje agentów](AGENTS.md)
+6. [System agentów](docs/AGENT_SYSTEM.md)
+7. [Rejestr agentów](registries/agents.yaml)
+8. [Decyzje](docs/decisions/README.md)
 
-## Główna zasada
+## Model zarządzania
 
-GitHub przechowuje źródłową wersję badań, artykułów, metadanych, grafik, instrukcji, agentów, testów i decyzji. PrestaShop jest warstwą publikacji i prezentacji, a nie jedynym magazynem wiedzy.
+Właściciel kieruje polecenia do A00 — Kierownika Projektu. A00 kontroluje zakres, plan i zależności, a następnie przekazuje zadania wyspecjalizowanym agentom. Każdy agent ma osobny kontrakt w `agents/<id>/AGENT.md`.
 
-## Proces w skrócie
+## Zakres
 
-```text
-badanie -> analiza -> podział na artykuły -> redakcja
--> weryfikacja merytoryczna -> grafiki -> podgląd PrestaShop
--> kontrola techniczna -> zatwierdzenie właściciela -> publikacja
--> monitoring aktualności
-```
+W projekcie:
 
-Publikacja nie może być automatyczna bez wcześniejszego zatwierdzenia, dopóki proces nie zostanie zweryfikowany na odpowiednio dużej próbie materiałów.
+- publiczne artykuły po polsku;
+- oczka przydomowe i stawy hobbystyczne;
+- woda, ekologia, technika, rośliny i sezonowość;
+- ryby polskich wód, ryby ozdobne i gatunki interesujące pasjonatów;
+- jawne źródła, statusy weryfikacji i historia korekt;
+- kontakt oraz materiały czytelników przez e-mail;
+- przyszła moderowana biblioteka przypadków;
+- WCAG 2.2 AA;
+- wyszukiwarka i analityka zgodna z prywatnością.
 
-## Najbliższy etap
+Poza projektem:
 
-Następny etap powinien ustalić:
+- reklamy i rekomendacje produktów;
+- hodowla przemysłowa;
+- automatyczna diagnoza i tryb ratunkowy;
+- kalkulatory;
+- profil zbiornika i dziennik pomiarów;
+- forum w pierwszych etapach;
+- wysyłanie zdjęć bezpośrednio przez stronę.
 
-- pierwszą taksonomię tematów;
-- typy i szablony artykułów;
-- format pakietu badawczego;
-- kontrakty wejścia i wyjścia agentów;
-- zakres pilotażu;
-- wymagania modułu PrestaShop 9.
+## Źródło prawdy
 
-## Status dokumentów
+Wszystkie artefakty projektu powstają wyłącznie tutaj. Inne repozytoria mogą być czytane referencyjnie, lecz przeniesienie elementu wymaga audytu duplikatów, licencji, bezpieczeństwa i zgodności.
 
-Dokumenty oznaczone jako „projekt” lub „wersja 0.1” nie są jeszcze ostatecznymi wymaganiami wdrożeniowymi. Każda trwała decyzja powinna zostać zapisana w `docs/decisions/`.
+## Plan
+
+Realizacja przebiega przez fazy od ładu i modelu wiedzy, przez agentów, makiety, moduł, wyszukiwarkę i bibliotekę startową, aż po wdrożenie oraz utrzymanie. Pełny plan: [MASTER_PLAN.md](docs/MASTER_PLAN.md).
