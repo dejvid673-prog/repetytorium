@@ -1,0 +1,21 @@
+# Uzupełniona kopia musi przejść schemas/a00-control-record.schema.json.
+control_id: "CTRL-0000"
+context_version: "0.3"
+mode: "live"
+trigger_type: "owner_command"
+goal: ""
+classification: "plan_execution"
+priority: "P2"
+facts: []
+inferences: []
+protected_decisions: []
+affected_objects: []
+authority_check: "within_scope"
+decision: "no_action"
+mutations: []
+evidence_paths: []
+blockers: []
+next_safe_step: ""
+owner_decision_required: false
+supersedes_control_id: null
+created_at: ""
