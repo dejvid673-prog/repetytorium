@@ -1,25 +1,23 @@
 # Artykuły
 
-Katalog przechowuje źródłowe wersje artykułów i ich metadane.
+Katalog przechowuje źródłowe wersje artykułów i metadane.
 
-## Planowane stany katalogowe
+## Planowane stany
 
-- `drafts/`;
-- `review/`;
-- `approved/`;
-- `published/`;
-- `archived/`.
+`drafts/`, `review/`, `approved/`, `published/`, `disabled/`, `archived/`.
 
-Status zapisany w metadanych jest obowiązujący; po ustaleniu mechanizmu automatyzacji katalogi nie mogą być jedynym sposobem określania statusu.
+Status w metadanych jest obowiązujący. Katalog nie może być jedynym źródłem statusu.
 
 ## Zasady
 
-- Każdy artykuł ma trwały identyfikator.
-- Każde istotne twierdzenie musi prowadzić do źródła.
-- Powiązanie produktu wymaga uzasadnienia i zatwierdzenia.
-- Artykuł musi posiadać datę weryfikacji.
-- Nie wolno nadpisywać historii opublikowanego materiału.
-- Materiały o chemii i zdrowiu ryb wymagają obowiązkowego fact-checku.
-- Publikacja w PrestaShop nie zastępuje zapisania zatwierdzonej wersji w repozytorium.
+- trwały identyfikator i wersja;
+- ważne twierdzenia prowadzą do źródeł;
+- brak reklam i relacji produktowych;
+- widoczność niezależna od weryfikacji;
+- zapis osoby, daty i zakresu kontroli;
+- historia opublikowanego materiału nie jest nadpisywana;
+- chemia i zdrowie ryb wymagają A40 oraz A41;
+- istotna korekta posiada notę i ponowną kontrolę;
+- PrestaShop nie zastępuje wersji źródłowej w GitHub.
 
-Format pliku i front matter zostaną ustalone po zaprojektowaniu schematów danych.
+Format front matter zostanie ustalony w Fazie 1 i zwalidowany schematem.
