@@ -11,3 +11,7 @@ Każdy wpis posiada co najmniej ID, nazwę, ścieżkę, wersję i status. Rejest
 - `phase-gates.yaml` — warunki przejścia między fazami.
 
 Status zmienia się tylko razem z dowodem. Deklaracja agenta nie zastępuje decyzji A00 ani raportu bramy.
+
+- `work-packages.yaml` — konkretne rezultaty, zależności i stan realizacji;
+- `source-materials.yaml` — materiały dostarczone przez właściciela;
+- `external-components.yaml` — kandydaci znalezieni na GitHubie i decyzje audytowe.
