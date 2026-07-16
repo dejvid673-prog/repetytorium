@@ -1,5 +1,6 @@
 version: "0.4"
 context_version: "0.3"
+state_revision: 5
 audit_policy:
   required_before_execution: true
   plan: "docs/AGENT_AUDIT_PLAN.md"
@@ -28,7 +29,7 @@ agents:
     workflow: "workflows/project-control.yaml"
     tests: "tests/agents/A00/cases.yaml"
     activation_depends_on: "WP-0007"
-    last_audit: "reports/agent-audits/A00/2026-07-16-reaudit.md"
+    last_audit: "reports/agent-audits/A00/2026-07-16-utility-reaudit-v0.4.md"
     admission_decision: "OWNER-0001"
   - id: A01
     name: "Audytor Kontekstu i Ładu"
