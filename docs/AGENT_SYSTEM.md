@@ -2,7 +2,7 @@
 
 ## Zasada
 
-Wąska specjalizacja ogranicza błędy tylko przy jednoznacznych kontraktach. Agent nie jest osobą posiadającą pełną władzę nad obszarem; jest kontrolowanym wykonawcą.
+Wąska specjalizacja ogranicza błędy tylko przy jednoznacznych kontraktach. Agent nie jest osobą posiadającą pełną władzę nad obszarem; jest kontrolowanym wykonawcą. Istnienie kontraktu oznacza rolę planowaną, nie aktywną.
 
 ## Project Context Gate
 
@@ -18,7 +18,13 @@ Przed zadaniem agent raportuje:
 - kryteria akceptacji;
 - konflikty lub braki.
 
-Brak któregokolwiek elementu zatrzymuje pracę.
+Brak któregokolwiek elementu zatrzymuje pracę. Context Gate nie zastępuje audytu roli ani testu gotowości zadania.
+
+## Dopuszczenie agenta
+
+Każdy agent przechodzi procedurę z `docs/AGENT_AUDIT_PLAN.md`. Audyt obejmuje konstrukcję kontraktu, nakładanie kompetencji, dostępność narzędzi, cztery testy zachowania oraz wymagane audyty krzyżowe. Status kanoniczny znajduje się w `registries/agents.yaml`.
+
+Agent z `audit_pending`, `changes_required`, `suspended` albo `retired` nie wykonuje zadań. `pass_conditional` zezwala wyłącznie na klasy zadań wymienione w raporcie.
 
 ## Hierarchia instrukcji
 
