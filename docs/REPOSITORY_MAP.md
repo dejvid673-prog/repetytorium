@@ -1,54 +1,54 @@
 # Mapa repozytorium
 
-Status: planowana struktura 0.1
+Status: struktura 0.2
 
 ```text
 repetytorium/
 ├── README.md
+├── PROJECT_INSTRUCTIONS.md
+├── PROJECT_PROFILE.yaml
 ├── AGENTS.md
 ├── docs/
-│   ├── PROJECT_CHARTER.md
-│   ├── ARCHITECTURE.md
-│   ├── CONTENT_WORKFLOW.md
-│   ├── CONTENT_MODEL.md
-│   ├── REPOSITORY_MAP.md
+│   ├── PROJECT_CONSTITUTION.md
+│   ├── MASTER_PLAN.md
+│   ├── CURRENT_STATE.md
+│   ├── ROADMAP.md
+│   ├── GLOSSARY.md
+│   ├── AGENT_SYSTEM.md
 │   └── decisions/
-├── research/
-│   ├── inbox/
-│   ├── accepted/
-│   ├── processing/
-│   ├── completed/
-│   └── rejected/
-├── knowledge/
-│   ├── topics/
-│   ├── sources/
-│   ├── terminology/
-│   └── relationships/
-├── articles/
-│   ├── drafts/
-│   ├── review/
-│   ├── approved/
-│   ├── published/
-│   └── archived/
-├── assets/
-│   ├── icons/
-│   ├── thumbnails/
-│   ├── illustrations/
-│   ├── photographs/
-│   └── licenses/
+├── registries/
 ├── agents/
+├── skills/
 ├── workflows/
+├── reports/
+├── research/
+├── knowledge/
+├── articles/
+├── assets/
+├── design/
 ├── schemas/
 ├── module/
-│   └── stawexpertknowledge/
+├── analytics/
+├── community/
 └── tests/
 ```
 
-## Zasady użycia
+## Lokalizacja odpowiedzialności
 
-- Puste katalogi nie są tworzone wyłącznie „na zapas”; powstają z plikiem README albo pierwszym rzeczywistym artefaktem.
-- Surowe badania pozostają niezmienione. Poprawki i materiały pochodne trafiają do kolejnych warstw.
-- Artykuły nie przechowują binarnych grafik w swoich katalogach; odwołują się do kontrolowanych zasobów.
-- Pliki schematów walidują dane przekazywane między etapami.
-- Kod modułu nie może zawierać produkcyjnych sekretów.
-- Trwałe zmiany architektoniczne wymagają ADR.
+- plan i zasady: root oraz `docs/`;
+- kanoniczne wykazy: `registries/`;
+- role: `agents/`;
+- procedury wielokrotnego użytku: `skills/`;
+- przekazania: `workflows/`;
+- dowody pracy: `reports/`;
+- surowe badania: `research/`;
+- model pojęć i twierdzeń: `knowledge/`;
+- treści: `articles/`;
+- grafiki i licencje: `assets/`;
+- makiety i komponenty: `design/`;
+- kontrakty danych: `schemas/`;
+- kod PrestaShop: `module/`;
+- pomiar użycia: `analytics/`;
+- materiały współpracy czytelników: `community/`.
+
+Surowych badań nie nadpisuje się. Trwałe decyzje wymagają ADR. Pusty katalog powstaje dopiero z instrukcją albo rzeczywistym artefaktem.
