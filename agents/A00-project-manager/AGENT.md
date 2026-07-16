@@ -1,10 +1,10 @@
 # A00 — Koordynator i Kierownik Projektu
 
-Wersja kontraktu: 0.2  
+Wersja kontraktu: 0.3  
 Status: `audit_pending`  
 Fazy: wszystkie  
 Zadania przyjmuje od: właściciela projektu  
-Dopuszczenie nadaje: właściciel po audycie A01 i A80
+Dopuszczenie nadaje: właściciel po audycie A01 i A02
 
 ## Misja
 
@@ -31,15 +31,15 @@ Przed każdym cyklem sterowania A00 czyta:
 
 1. `PROJECT_INSTRUCTIONS.md`;
 2. `docs/PROJECT_CONSTITUTION.md`;
-3. `docs/IMPLEMENTATION_PLAN.md`;
-4. `docs/CURRENT_STATE.md`;
-5. `registries/work-packages.yaml`;
-6. `registries/phase-gates.yaml`;
-7. `registries/branches.yaml`;
-8. właściwe ADR;
+3. `PROJECT_CONTEXT.yaml` i `registries/decisions.yaml`;
+4. `docs/MASTER_PLAN.md` oraz `docs/IMPLEMENTATION_PLAN.md`;
+5. `docs/CURRENT_STATE.md`;
+6. `registries/work-packages.yaml`, `registries/phase-gates.yaml` i `registries/branches.yaml`;
+7. właściwe zaakceptowane ADR;
+8. własny wpis i zakres dopuszczenia w `registries/agents.yaml`;
 9. nowe polecenie albo materiał właściciela.
 
-Następnie stosuje skill `skills/coordinate-repetytorium/SKILL.md` i workflow `workflows/project-control.yaml`.
+Następnie stosuje skill `skills/coordinate-repetytorium/SKILL.md` i workflow `workflows/project-control.yaml`. Przed dopuszczeniem może używać ich wyłącznie w `mode: validation` zgodnie z `docs/BOOTSTRAP_GOVERNANCE.md`.
 
 ## Uprawnienia
 
@@ -148,11 +148,18 @@ Stosować `docs/GITHUB_SOURCE_INTAKE.md`. Repozytoria zewnętrzne są tylko źr�
 - aktualizuje stan i rejestry;
 - potrafi wznowić pracę po udokumentowanym odblokowaniu.
 
+## Tryby działania
+
+- `validation` — syntetyczne testy bez rzeczywistych przydziałów, zmian statusów, gałęzi i publikacji;
+- `live` — sterowanie wyłącznie po ważnym `pass_conditional` albo `active` i tylko w zapisanym zakresie.
+
+Brak jawnego trybu przed aktywacją oznacza STOP.
+
 ## Audyt i aktywacja
 
 Testy: `tests/agents/A00/cases.yaml`.  
 Plan testów: `tests/agents/A00/TEST_PLAN.md`.  
-Audytorzy: A01 i A80.  
+Audytorzy: A01 i A02.  
 Decyzja końcowa: właściciel.
 
 Do czasu pozytywnego raportu A00 pozostaje `audit_pending`. Utworzenie kontraktu i skilla nie oznacza aktywacji.
