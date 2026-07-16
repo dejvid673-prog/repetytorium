@@ -1,7 +1,7 @@
 # Faza 0A — Budowa i dopuszczenie koordynatora A00
 
-Status: w przygotowaniu  
-Pierwszy pakiet: WP-0001
+Status: artefakty budowy przygotowane; WP-0001–WP-0005 oczekują na audyt  
+Następny pakiet: WP-0006
 
 ## Dlaczego A00 powstaje pierwszy
 
