@@ -1,0 +1,108 @@
+version: "0.1"
+owner: "A00"
+status_values:
+  - PLANNED
+  - OPEN
+  - UNDER_REVIEW
+  - PASSED
+  - FAILED
+  - WAIVED
+gates:
+  - id: G0
+    name: "Ład i dopuszczenie agentów"
+    status: OPEN
+    requires:
+      - "plan bazowy i zależności opisane"
+      - "role Fazy 1 mają co najmniej pass_conditional"
+      - "brak krytycznych nakładań kompetencji"
+      - "Context Gate i próbne przekazanie zaliczone"
+      - "akceptacja właściciela"
+    evidence_paths:
+      - "docs/AGENT_AUDIT_PLAN.md"
+      - "reports/agent-audits/"
+      - "registries/agents.yaml"
+  - id: G1K
+    name: "Fundament wiedzy"
+    status: PLANNED
+    depends_on: [G0]
+    requires:
+      - "walidowalne schematy"
+      - "fixture różnych typów treści"
+      - "model ryzyka i dowodów"
+      - "brak relacji produktowych"
+  - id: G1T
+    name: "Środowiska DEV i TEST"
+    status: PLANNED
+    depends_on: [G0]
+    requires:
+      - "ENV-DEV READY"
+      - "ENV-TEST READY"
+      - "niezależne odtworzenie przez A80"
+  - id: G2
+    name: "Fabryka treści"
+    status: PLANNED
+    depends_on: [G1K]
+    requires:
+      - "pełny przebieg pilotażowy"
+      - "wersjonowane przekazania"
+      - "audyt dowodów i bezpieczeństwa"
+  - id: G3
+    name: "System UX i makiety"
+    status: PLANNED
+    depends_on: [G1K, G2_CONTENT_SAMPLE]
+    requires:
+      - "zaakceptowane desktop i mobile"
+      - "udokumentowane komponenty"
+      - "audyt WCAG 2.2 AA"
+      - "akceptacja właściciela"
+  - id: G4
+    name: "Rdzeń modułu"
+    status: PLANNED
+    depends_on: [G1K, G1T]
+    requires:
+      - "instalacja, aktualizacja i odinstalowanie"
+      - "idempotentny import"
+      - "bezpieczeństwo i uprawnienia"
+      - "brak zmian core"
+  - id: G5
+    name: "Front Office i wyszukiwarka"
+    status: PLANNED
+    depends_on: [G2, G3, G4]
+    requires:
+      - "testy zapytań"
+      - "zgodność z makietami"
+      - "audyty A80, A81 i A82"
+  - id: G6
+    name: "Biblioteka startowa"
+    status: PLANNED
+    depends_on: [G2, G5]
+    requires:
+      - "brak pustych publicznych kategorii"
+      - "źródła, status i historia każdej treści"
+      - "prawa do każdej grafiki"
+  - id: G7
+    name: "Analityka, kontakt i korekty"
+    status: PLANNED
+    depends_on: [G1K, G1T, G5]
+    requires:
+      - "katalog zdarzeń i retencja"
+      - "rozdział danych kontaktowych"
+      - "procedura zgody i usunięcia"
+  - id: G8
+    name: "Kwalifikacja wydania"
+    status: PLANNED
+    depends_on: [G6, G7]
+    requires:
+      - "brak błędów krytycznych i wysokich"
+      - "udowodniony rollback"
+      - "UAT właściciela"
+  - id: G9
+    name: "Uruchomienie"
+    status: PLANNED
+    depends_on: [G8, OWNER_LAUNCH_APPROVAL]
+    requires:
+      - "backup"
+      - "smoke test"
+      - "monitoring"
+      - "raport powdrożeniowy"
+last_reviewed: "2026-07-16"
