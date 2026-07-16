@@ -1,6 +1,6 @@
 # Materiały źródłowe właściciela
 
-Tutaj właściciel może dodawać instrukcje, dokumentację, przykłady i pliki pomocnicze. Materiały są wejściem do projektu, lecz nie zmieniają automatycznie konstytucji, zakresu ani planu.
+To jest katalog publicznego repozytorium. Właściciel może tu dodawać wyłącznie instrukcje, dokumentację, przykłady i pliki pomocnicze, które wolno publicznie przechowywać. Materiały są wejściem do projektu, lecz nie zmieniają automatycznie konstytucji, zakresu ani planu.
 
 ## Planowane grupy
 
@@ -29,6 +29,10 @@ Do pliku warto dołączyć informację:
 - czy zastępuje wcześniejszy materiał;
 - do czego ma zostać użyty;
 - czy zawiera treści wymagające zgody lub atrybucji.
+
+## Obowiązkowy preflight
+
+Przed uploadem należy zastosować `workflows/source-material-intake.yaml` i metadane zgodne ze schematem `schemas/source-material-intake.schema.json`. Plik zawierający dane osobowe, sekrety albo materiał bez prawa redystrybucji nie może trafić nawet tymczasowo do historii Git.
 
 ## Kontrola wejścia
 
