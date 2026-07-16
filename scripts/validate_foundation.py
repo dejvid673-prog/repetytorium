@@ -78,7 +78,7 @@ if len(agents) != 28:
 def phase_allowed(spec: str, phase: str) -> bool:
     if spec == "all":
         return True
-    phase_match = re.match(r"(\\d+)", phase)
+    phase_match = re.match(r"(\d+)", phase)
     phase_number = int(phase_match.group(1)) if phase_match else None
     for raw in (part.strip() for part in spec.split(",")):
         if raw == phase:
@@ -86,7 +86,7 @@ def phase_allowed(spec: str, phase: str) -> bool:
         if raw.endswith("+") and raw[:-1].isdigit() and phase_number is not None:
             if phase_number >= int(raw[:-1]):
                 return True
-        range_match = re.fullmatch(r"(\\d+)-(\\d+)", raw)
+        range_match = re.fullmatch(r"(\d+)-(\d+)", raw)
         if range_match and phase_number is not None:
             lo, hi = map(int, range_match.groups())
             if lo <= phase_number <= hi:
