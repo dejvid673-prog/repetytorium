@@ -26,6 +26,7 @@ proposed_decisions:
 activation:
   A00: "audit_pending"
   bootstrap_auditors: ["A01", "A02"]
+  bootstrap_auditor_status: "pass_conditional"
   bootstrap_scope: "bootstrap_audit_only"
 owner_direction:
   scope_confirmed: true
