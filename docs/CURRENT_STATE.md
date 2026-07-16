@@ -1,51 +1,62 @@
 # Aktualny stan projektu
 
 Ostatnia aktualizacja: 2026-07-16  
-Faza: 0A — Budowa koordynatora projektu  
-Stan: A00 i jego narzędzia kontrolne utworzone; oczekują na niezależny audyt
+Kontekst: 0.3  
+Faza: 0A — ponowny audyt koordynatora  
+Stan: poprawki po audycie wdrożone; A00 oczekuje na decyzję właściciela
 
-## Zakończone w draft PR #1
+## Wykonane poprawki
 
-- fundament projektu, konstytucja, zakres i decyzje;
-- strategiczny i wykonawczy plan faz;
-- konkretny plan realizacji i rejestr pakietów pracy;
-- strategia gałęzi, blokad, środowisk i bram;
-- kontrakty 27 planowanych agentów;
-- kontrakt A00 w wersji 0.2;
-- repozytoryjny skill `coordinate-repetytorium`;
-- wznawialny workflow sterowania projektem;
-- schema oraz szablon zadania;
-- testy zachowania A00 — zdefiniowane, ale niewykonane;
-- szablony raportu stanu i decyzji właściciela;
-- kontrolowane miejsce `source-materials/`;
-- procedura pozyskiwania agentów, skilli i workflow z całego GitHuba;
-- rejestr zewnętrznych kandydatów z trzema źródłami referencyjnymi;
-- rejestr materiałów właściciela.
+- usunięto zależność kołową audytu przez ograniczony bootstrap;
+- utworzono A02 do audytu workflow, skilli i schematów;
+- A80 pozostawiono jako technicznego QA PrestaShop;
+- dodano kanoniczny `PROJECT_CONTEXT.yaml` i rejestr decyzji;
+- dodano bezpieczny `mode: validation` A00;
+- wyłączono implicit invocation skilla A00;
+- uzupełniono aktorów, blokady, anulowanie i wznowienie workflow;
+- wzmocniono schemat i szablon zadania;
+- ujednolicono fazy agentów i właścicieli pakietów;
+- rozdzielono tworzenie od audytu w pakietach wysokiego ryzyka;
+- dodano schema i workflow przyjmowania materiałów publicznych;
+- dodano instrukcję bezpiecznego `research/inbox/`;
+- dodano repozytoryjny walidator i GitHub Actions bez zewnętrznych akcji.
 
-## Status A00
+## Wyniki walidacji
 
-A00 pozostaje `audit_pending`. Kontrakt, skill, workflow i testy istnieją, ale nie zostały jeszcze niezależnie wykonane i ocenione. A00 nie ma jeszcze formalnego dopuszczenia do sterowania innymi agentami.
+GitHub Actions run 29500960174: SUCCESS.
 
-## Najbliższe pakiety
+- 28 agentów;
+- 69 pakietów pracy;
+- 13 bram;
+- 13 kanonicznych stanów workflow;
+- brak właściciela pakietu poza zakresem faz;
+- poprawne schematy JSON;
+- 7/7 scenariuszy A00 PASS w `mode: validation`.
 
-1. WP-0001–WP-0005 — przegląd kompletności utworzonych artefaktów A00.
-2. WP-0006 — wykonanie testów i audytu A00 przez A01 oraz A80.
-3. WP-0007 — decyzja właściciela o `pass_conditional` albo wymaganych poprawkach.
-4. WP-0010 — dopiero potem audyt ról kontrolnych.
-5. WP-0013 — raport Bramy G0.
+Raport: `reports/audits/2026-07-16-foundation-reaudit.md`.
 
-## Zablokowane
+## Status agentów
 
-- aktywowanie pozostałych agentów;
-- Faza 1K i 1T;
-- skille wykonawcze dla badań, UX i PrestaShop;
-- produkcyjne workflow;
-- artykuły, makiety i kod modułu.
+- A01: `pass_conditional`, wyłącznie `bootstrap_audit`;
+- A02: `pass_conditional`, wyłącznie `bootstrap_audit`;
+- A00: `audit_pending`, raport rekomenduje `pass_conditional`;
+- pozostałe role: `audit_pending`.
 
-## Materiały właściciela
+## Pakiety i bramy
 
-Instrukcje i przykłady można umieszczać w `source-materials/`. Raporty głębokich badań trafiają do `research/inbox/`. Każdy materiał zostanie zarejestrowany i sklasyfikowany przed wpływem na plan.
+- WP-0001–WP-0005: REVIEW;
+- WP-0006: REVIEW — raport czeka na decyzję właściciela;
+- WP-0007: BLOCKED do decyzji właściciela;
+- G0A: UNDER_REVIEW;
+- G0B: UNDER_REVIEW;
+- G0 i wszystkie fazy wykonawcze: zablokowane.
+
+## Otwarte decyzje właściciela
+
+1. Nadać albo odmówić A00 `pass_conditional` w zakresie wskazanym w raporcie.
+2. Zatwierdzić albo odrzucić ADR-0005 dotyczący gałęzi i bram.
+3. Wybrać licencję przed publicznym współtworzeniem.
 
 ## Najbliższy krok
 
-Wykonać WP-0006: zamrozić wersję kontraktu A00, uruchomić siedem przypadków testowych, przeprowadzić audyt A01/A80 i przygotować właścicielowi raport z decyzją o dopuszczeniu.
+Decyzja właściciela dotycząca A00. Do tego czasu A00 nie steruje żywymi zadaniami, a draft PR #1 nie jest gotowy do scalenia.
