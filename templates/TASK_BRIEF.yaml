@@ -1,6 +1,7 @@
+# Szablon jest celowo niekompletny i nie przechodzi walidacji przed uzupełnieniem.
 task_id: "TASK-0000"
 title: ""
-context_version: "0.2"
+context_version: "0.3"
 phase: ""
 work_package: "WP-0000"
 classification: "plan_execution"
@@ -8,6 +9,7 @@ status: "INTAKE"
 owner_agent: "A00"
 executor_agents: []
 reviewer_agents: []
+separation_of_duties_confirmed: true
 scope:
   included: []
   excluded: []
@@ -26,7 +28,10 @@ outputs:
 acceptance_criteria: []
 test_plan: []
 blockers: []
-owner_decision: null
+decision_ids: []
 branch: null
 pr_number: null
 evidence_paths: []
+created_at: ""
+updated_at: ""
+cancel_reason: null
