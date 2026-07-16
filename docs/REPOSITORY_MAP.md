@@ -11,6 +11,9 @@ repetytorium/
 ├── docs/
 │   ├── PROJECT_CONSTITUTION.md
 │   ├── MASTER_PLAN.md
+│   ├── IMPLEMENTATION_PLAN.md
+│   ├── PHASE_00_COORDINATOR_PLAN.md
+│   ├── GITHUB_SOURCE_INTAKE.md
 │   ├── PHASE_EXECUTION_PLAN.md
 │   ├── BRANCHING_STRATEGY.md
 │   ├── DEPENDENCY_MANAGEMENT.md
@@ -27,6 +30,7 @@ repetytorium/
 ├── skills/
 ├── workflows/
 ├── reports/
+├── source-materials/
 ├── research/
 ├── knowledge/
 ├── articles/
@@ -48,6 +52,7 @@ repetytorium/
 - procedury wielokrotnego użytku: `skills/`;
 - przekazania: `workflows/`;
 - dowody pracy: `reports/`;
+- instrukcje i przykłady właściciela: `source-materials/`;
 - surowe badania: `research/`;
 - model pojęć i twierdzeń: `knowledge/`;
 - treści: `articles/`;
