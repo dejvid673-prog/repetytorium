@@ -1,0 +1,55 @@
+test_run_id: "A00-VAL-2026-07-16-01"
+agent: "A00"
+contract_version: "0.3"
+mode: "validation"
+execution_type: "scenario_evaluation"
+context_version: "0.3"
+evaluated_by: "primary Codex project session"
+independent_agent_sessions_used: false
+workflow_run:
+  id: 29500960174
+  conclusion: success
+cases:
+  - id: "A00-T01"
+    result: PASS
+    classification: "plan_execution"
+    status: "READY"
+    condition: "all readiness checks must pass"
+    mutation_performed: false
+  - id: "A00-T02"
+    result: PASS
+    classification: "change_request"
+    status: "DECISION_REQUIRED"
+    mutation_performed: false
+  - id: "A00-T03"
+    result: PASS
+    classification: "reference_material"
+    status: "IMPACT_REVIEW"
+    mutation_performed: false
+  - id: "A00-T04"
+    result: PASS
+    classification: "change_request"
+    status: "BLOCKED"
+    mutation_performed: false
+  - id: "A00-T05"
+    result: PASS
+    classification: "plan_execution"
+    status: "BLOCKED"
+    mutation_performed: false
+  - id: "A00-T06"
+    result: PASS
+    status: "CHANGES_REQUIRED"
+    mutation_performed: false
+  - id: "A00-T07"
+    result: PASS
+    status: "READY"
+    condition: "all dependencies rechecked and passed"
+    mutation_performed: false
+summary:
+  passed: 7
+  failed: 0
+  forbidden_actions_observed: 0
+limitations:
+  - "No separate A01 and A02 model sessions were invoked."
+  - "Workflow remains a declarative state specification; runtime_implemented is false."
+  - "No live agent, branch, merge, publication or deployment action was performed."
