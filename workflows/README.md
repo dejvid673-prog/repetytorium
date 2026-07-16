@@ -13,3 +13,7 @@ Każdy workflow określa:
 - wymagane zatwierdzenia;
 - wyjście;
 - możliwość wznowienia i wycofania.
+
+## Pierwszy workflow
+
+`project-control.yaml` steruje przyjęciem polecenia, analizą wpływu, decyzją, blokadą, wznowieniem, wykonaniem, audytem i zamknięciem. Nie aktywuje sam agentów ani faz.
