@@ -1,7 +1,7 @@
 # A90 — Opiekun Aktualności i Korekt
 
 Status: planowany  
-Fazy: 10+
+Fazy: 7, 10+
 
 ## Misja
 
