@@ -6,25 +6,25 @@ Kompletne źródło prawdy dla publicznej biblioteki wiedzy o przydomowych oczka
 
 **Faza 0 — Ład projektu. Wersja kontekstu 0.3.**
 
-Plan zależności, gałęzi i bram jest przygotowany. Pierwszy agent — A00 Koordynator Projektu — ma już kontrakt, skill, workflow, schemat zadania i testy, lecz nadal oczekuje na niezależny audyt. Pozostałe role oraz wszystkie fazy wykonawcze są zablokowane.
+Poprawki po audycie fundamentu są wdrożone. Raport rekomenduje warunkowe dopuszczenie A00, lecz ostateczna decyzja należy do właściciela. A01 i A02 mają wyłącznie ograniczone dopuszczenie bootstrap; pozostałe role oraz fazy wykonawcze są zablokowane.
 
 ## Obowiązkowy start
 
 1. [Manifest kontekstu](PROJECT_CONTEXT.yaml)
 2. [Nadrzędna instrukcja](PROJECT_INSTRUCTIONS.md)
 3. [Konstytucja](docs/PROJECT_CONSTITUTION.md)
-3. [Plan główny](docs/MASTER_PLAN.md)
-4. [Konkretny plan realizacji](docs/IMPLEMENTATION_PLAN.md)
-5. [Wykonawczy plan faz i zależności](docs/PHASE_EXECUTION_PLAN.md)
-6. [Plan pierwszego agenta A00](docs/PHASE_00_COORDINATOR_PLAN.md)
-7. [Aktualny stan](docs/CURRENT_STATE.md)
-8. [Strategia gałęzi](docs/BRANCHING_STRATEGY.md)
-9. [Plan audytu agentów](docs/AGENT_AUDIT_PLAN.md)
-10. [Instrukcje agentów](AGENTS.md)
-11. [System agentów](docs/AGENT_SYSTEM.md)
-12. [Rejestr pakietów pracy](registries/work-packages.yaml), [agentów](registries/agents.yaml), [gałęzi](registries/branches.yaml) i [bram](registries/phase-gates.yaml)
-13. [Pozyskiwanie z GitHuba](docs/GITHUB_SOURCE_INTAKE.md)
-14. [Decyzje](docs/decisions/README.md)
+4. [Plan główny](docs/MASTER_PLAN.md)
+5. [Konkretny plan realizacji](docs/IMPLEMENTATION_PLAN.md)
+6. [Wykonawczy plan faz i zależności](docs/PHASE_EXECUTION_PLAN.md)
+7. [Plan pierwszego agenta A00](docs/PHASE_00_COORDINATOR_PLAN.md)
+8. [Aktualny stan](docs/CURRENT_STATE.md)
+9. [Strategia gałęzi](docs/BRANCHING_STRATEGY.md)
+10. [Plan audytu agentów](docs/AGENT_AUDIT_PLAN.md)
+11. [Instrukcje agentów](AGENTS.md)
+12. [System agentów](docs/AGENT_SYSTEM.md)
+13. [Rejestry](registries/README.md)
+14. [Pozyskiwanie z GitHuba](docs/GITHUB_SOURCE_INTAKE.md)
+15. [Decyzje](docs/decisions/README.md)
 
 ## Model zarządzania
 
