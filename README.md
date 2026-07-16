@@ -6,21 +6,24 @@ Kompletne źródło prawdy dla publicznej biblioteki wiedzy o przydomowych oczka
 
 **Faza 0 — Ład projektu. Wersja kontekstu 0.2.**
 
-Plan zależności, gałęzi i bram jest przygotowany. Wszystkie 27 kontraktów agentów oczekuje na audyt; żaden agent nie ma jeszcze statusu `active`. Nie ma działającego modułu, gotowych artykułów ani wdrożenia.
+Plan zależności, gałęzi i bram jest przygotowany. Pierwszy agent — A00 Koordynator Projektu — ma już kontrakt, skill, workflow, schemat zadania i testy, lecz nadal oczekuje na niezależny audyt. Pozostałe role oraz wszystkie fazy wykonawcze są zablokowane.
 
 ## Obowiązkowy start
 
 1. [Nadrzędna instrukcja](PROJECT_INSTRUCTIONS.md)
 2. [Konstytucja](docs/PROJECT_CONSTITUTION.md)
 3. [Plan główny](docs/MASTER_PLAN.md)
-4. [Wykonawczy plan faz i zależności](docs/PHASE_EXECUTION_PLAN.md)
-5. [Aktualny stan](docs/CURRENT_STATE.md)
-6. [Strategia gałęzi](docs/BRANCHING_STRATEGY.md)
-7. [Plan audytu agentów](docs/AGENT_AUDIT_PLAN.md)
-8. [Instrukcje agentów](AGENTS.md)
-9. [System agentów](docs/AGENT_SYSTEM.md)
-10. [Rejestr agentów](registries/agents.yaml), [gałęzi](registries/branches.yaml) i [bram](registries/phase-gates.yaml)
-11. [Decyzje](docs/decisions/README.md)
+4. [Konkretny plan realizacji](docs/IMPLEMENTATION_PLAN.md)
+5. [Wykonawczy plan faz i zależności](docs/PHASE_EXECUTION_PLAN.md)
+6. [Plan pierwszego agenta A00](docs/PHASE_00_COORDINATOR_PLAN.md)
+7. [Aktualny stan](docs/CURRENT_STATE.md)
+8. [Strategia gałęzi](docs/BRANCHING_STRATEGY.md)
+9. [Plan audytu agentów](docs/AGENT_AUDIT_PLAN.md)
+10. [Instrukcje agentów](AGENTS.md)
+11. [System agentów](docs/AGENT_SYSTEM.md)
+12. [Rejestr pakietów pracy](registries/work-packages.yaml), [agentów](registries/agents.yaml), [gałęzi](registries/branches.yaml) i [bram](registries/phase-gates.yaml)
+13. [Pozyskiwanie z GitHuba](docs/GITHUB_SOURCE_INTAKE.md)
+14. [Decyzje](docs/decisions/README.md)
 
 ## Model zarządzania
 
