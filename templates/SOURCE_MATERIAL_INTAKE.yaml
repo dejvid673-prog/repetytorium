@@ -1,0 +1,19 @@
+source_id: "MAT-0000"
+path: "source-materials/"
+title: ""
+type: "owner_instruction | brand | prestashop | domain | example | customer_question | other"
+origin: ""
+provided_at: ""
+replaces: []
+owner_intent: ""
+rights_or_license: ""
+contains_personal_data: false
+contains_secrets: false
+status: "received"
+classification: null
+affected_phases: []
+affected_work_packages: []
+conflicts: []
+decision_required: false
+routed_to_agents: []
+notes: ""
