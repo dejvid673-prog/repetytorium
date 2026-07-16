@@ -2,48 +2,48 @@
 
 Ostatnia aktualizacja: 2026-07-16  
 Faza: 0 — Ład projektu  
-Stan: w toku
+Stan: fundament przygotowany, oczekuje na zatwierdzenie właściciela
 
-## Zakończone
+## Zakończone w draft PR #1
 
-- utworzono repozytorium;
-- ustalono GitHub jako źródło prawdy;
-- określono główny zakres;
-- wykluczono sprzedażowe powiązania produktów;
-- ustalono PrestaShop 9;
-- ustalono publiczne czytanie w trybie gościa;
-- ustalono jawność wykorzystania AI;
-- przyjęto współpracę przez e-mail i przyszłe przypadki;
-- przyjęto WCAG 2.2 AA;
-- rozpoczęto system agentów i plan główny.
+- GitHub jako źródło prawdy;
+- nadrzędna instrukcja i profil projektu;
+- konstytucja;
+- karta projektu i zakres;
+- plan główny oraz roadmapa;
+- system kontroli zmian;
+- Project Context Gate;
+- rejestr i osobne kontrakty agentów;
+- rozdzielenie badań, redakcji, audytów, UX, grafiki, PrestaShop, QA i utrzymania;
+- neutralność bez reklam produktów;
+- publiczne czytanie bez wymaganego konta;
+- jawność AI i współpraca przez e-mail;
+- przyszła moderowana biblioteka przypadków;
+- WCAG 2.2 AA;
+- zasady bezpieczeństwa, wkładu i licencji;
+- usunięcie wykrytych sprzeczności z dokumentacji 0.1.
 
-## W toku
+## Wymaga zatwierdzenia właściciela
 
-- katalogowanie wszystkich decyzji;
-- rozbudowa dokumentów nadrzędnych;
-- tworzenie kontraktów agentów;
-- usuwanie sprzeczności z pierwszej wersji dokumentacji;
-- przygotowanie draft PR #1.
+- zakres 0.2;
+- konstytucja;
+- plan faz 0–11;
+- system agentów;
+- zasada kontrolowanych zmian;
+- rozpoczęcie Fazy 1.
 
 ## Nie rozpoczęto
 
-- schematów danych;
-- właściwych definicji skilli;
-- workflow wykonywalnych;
-- badań pilotażowych;
-- artykułów;
-- systemu wizualnego;
-- modułu PrestaShop;
-- analityki;
-- wdrożenia.
+- schematy danych;
+- właściwe skille;
+- wykonywalne workflow;
+- badanie pilotażowe;
+- artykuły;
+- system wizualny;
+- kod modułu;
+- analityka produkcyjna;
+- wdrożenie.
 
-## Najbliższa brama
+## Następny krok po zatwierdzeniu
 
-Zatwierdzenie przez właściciela:
-
-- konstytucji;
-- planu głównego;
-- systemu agentów;
-- zaktualizowanego zakresu.
-
-Po zatwierdzeniu rozpoczyna się Faza 1. Zmiana stanu wymaga aktualizacji tego pliku.
+Faza 1: taksonomia, typy artykułów, terminologia, synonimy, model twierdzeń, źródeł, korekt, statusów oraz pakietu badawczego.
