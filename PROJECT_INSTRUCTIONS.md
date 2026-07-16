@@ -29,12 +29,14 @@ Przed pracą każdy agent czyta:
 1. `PROJECT_INSTRUCTIONS.md`;
 2. `docs/PROJECT_CONSTITUTION.md`;
 3. `docs/MASTER_PLAN.md`;
-4. `docs/CURRENT_STATE.md`;
-5. `AGENTS.md`;
-6. zaakceptowane ADR dotyczące zadania;
-7. własny plik `agents/<id>/AGENT.md`;
-8. instrukcje katalogów objętych zadaniem;
-9. prompt konkretnego zadania.
+4. `docs/PHASE_EXECUTION_PLAN.md`;
+5. `docs/CURRENT_STATE.md`;
+6. `docs/BRANCHING_STRATEGY.md` i `docs/DEPENDENCY_MANAGEMENT.md`;
+7. `AGENTS.md`;
+8. zaakceptowane ADR dotyczące zadania;
+9. własny plik `agents/<id>/AGENT.md` oraz aktualny wpis w `registries/agents.yaml`;
+10. instrukcje katalogów objętych zadaniem;
+11. manifest gałęzi i prompt konkretnego zadania.
 
 Konflikt zgłasza do A00. Agent nie wybiera samodzielnie wygodniejszej instrukcji.
 
@@ -120,6 +122,8 @@ Plan nie jest zmieniany nieformalnie. Nowa potrzeba trafia do A00, który klasyf
 - nowy obszar poza zakresem.
 
 Zmiana wpływająca na zakres, architekturę, bezpieczeństwo, dane albo agentów wymaga aktualizacji planu, rejestru i odpowiedniego ADR. Historia decyzji pozostaje zachowana.
+
+Praca wykonawcza odbywa się według `docs/BRANCHING_STRATEGY.md`. Numer fazy nie wystarcza do rozpoczęcia zadania. A00 nadaje status `READY` dopiero po sprawdzeniu dopuszczenia agenta, zależności, bram, wejść i wymaganego środowiska. Agent bez ważnego audytu albo zadanie ze statusem `BLOCKED` nie rozpoczyna pracy.
 
 ## 10. Raportowanie
 
