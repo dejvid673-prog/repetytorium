@@ -1,78 +1,61 @@
 # Model wiedzy i treści
 
-Status: projekt 0.1
+Status: projekt 0.2
 
-## Podstawowe obiekty
+## Obiekty
 
 - problem;
 - objaw;
 - możliwa przyczyna;
-- parametr wody;
+- parametr;
 - pomiar lub obserwacja;
-- działanie;
+- działanie ogólne;
 - zagrożenie;
-- organizm;
-- gatunek;
+- organizm i gatunek;
 - choroba;
 - typ zbiornika;
 - urządzenie lub metoda;
+- sezon;
 - artykuł;
-- produkt;
-- źródło.
+- twierdzenie;
+- źródło;
+- zasób wizualny;
+- korekta;
+- osoba weryfikująca;
+- przyszły przypadek czytelnika.
 
-## Przykładowe relacje
+Nie ma obiektu relacji z produktem.
 
-- objaw **może wskazywać na** problem;
-- problem **może wynikać z** przyczyny;
-- przyczynę **można sprawdzić przez** pomiar;
-- działanie **dotyczy** problemu;
-- działanie **ma ograniczenie**;
-- artykuł **wyjaśnia** obiekt wiedzy;
-- artykuł **jest powiązany z** innym artykułem;
-- produkt **może wspierać** działanie;
-- twierdzenie **jest poparte przez** źródło.
+## Relacje
 
-Relacje muszą dopuszczać niepewność. Jeden objaw nie oznacza automatycznie jednej diagnozy.
+- objaw może wskazywać na problem;
+- problem może wynikać z przyczyny;
+- przyczynę można różnicować przez obserwację lub pomiar;
+- działanie dotyczy problemu i ma ograniczenia;
+- twierdzenie jest poparte, kwestionowane albo ograniczone przez źródło;
+- artykuł wyjaśnia obiekty wiedzy i prowadzi do innych artykułów;
+- korekta zmienia określoną wersję;
+- przypadek ilustruje problem po moderacji.
 
 ## Typy artykułów
 
-1. Problem.
-2. Objaw ryb.
-3. Choroba.
-4. Parametr wody.
-5. Gatunek ryby.
-6. Poradnik.
-7. Procedura sezonowa.
-8. Budowa i technika.
-9. Substancja lub metoda.
-10. Porównanie rozwiązań.
+Problem, objaw ryb, choroba, parametr wody, gatunek, poradnik, procedura sezonowa, budowa i technika, substancja lub metoda, porównanie rozwiązań oraz korekta/przypadek.
 
-Każdy typ otrzyma osobny szablon i wymagane pola.
+## Metadane artykułu
 
-## Minimalne metadane artykułu
-
-- trwały identyfikator;
-- wersja;
-- status;
-- typ;
-- tytuł;
-- slug;
-- streszczenie;
-- kategoria;
-- grupa odbiorców;
-- główne pytanie użytkownika;
+- ID i wersja;
+- typ, tytuł, slug i streszczenie;
+- kategoria, intencja i odbiorca;
 - treść;
-- źródła;
-- twierdzenia wymagające kontroli;
+- użyte twierdzenia i źródła;
 - ostrzeżenia;
 - powiązane artykuły;
-- proponowane produkty;
-- grafiki i teksty alternatywne;
-- data utworzenia;
-- data ostatniej weryfikacji;
-- planowana data kolejnego przeglądu;
-- historia zatwierdzeń.
+- grafiki, licencje i alt text;
+- widoczność;
+- status redakcyjny;
+- status weryfikacji;
+- osoba, data i zakres kontroli;
+- daty utworzenia, publikacji, modyfikacji i następnego przeglądu;
+- historia korekt i zatwierdzeń.
 
-## Ważne rozróżnienie
-
-Artykuł jest prezentacją wybranego fragmentu wiedzy. Model problemów, objawów, przyczyn i pomiarów powinien być przechowywany niezależnie, aby w przyszłości umożliwić wyszukiwarkę problemową oraz kreator diagnostyczny.
+Widoczność nie oznacza weryfikacji. Jeden objaw nie oznacza jednej diagnozy.
