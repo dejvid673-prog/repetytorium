@@ -19,10 +19,12 @@ Nie instalujemy zewnętrznego komponentu bezpośrednio z wyszukiwarki, listy „
    - odrzucić duplikaty oraz elementy niedopasowane.
 
 3. **Zamrożenie źródła**
-   - zapisać dokładny commit lub tag;
+   - zapisać dokładny commit lub tag oraz datę pobrania;
    - nie opierać audytu na ruchomej gałęzi `main`.
 
 4. **Audyt**
+   - najpierw statyczna inspekcja bez uruchamiania kodu;
+   - kod uruchamiać dopiero w środowisku jednorazowym, bez sekretów i domyślnie bez sieci;
    - licencja i wymagane oznaczenia;
    - aktywność i reputacja projektu;
    - zależności oraz możliwość usunięcia;
