@@ -1,12 +1,12 @@
 # Agenci projektu
 
-Status: system planowany 0.2.
+Status: system kontrolowany; aktywacja wyłącznie według `registries/agents.yaml`.
 
-Każdy agent ma osobny katalog i plik `AGENT.md`. Rejestr kanoniczny znajduje się w `registries/agents.yaml`.
+Każdy agent ma osobny katalog i plik `AGENT.md`. Istnienie kontraktu nie oznacza dopuszczenia. Status, wersję, zakres i ostatni audyt określa rejestr kanoniczny.
 
 ## Grupy
 
-- **Zarządzanie:** A00–A01.
+- **Zarządzanie i ład:** A00–A02.
 - **Wiedza i badania:** A10–A24.
 - **Planowanie i redakcja:** A30–A32.
 - **Kontrola merytoryczna:** A40–A41.
@@ -16,13 +16,13 @@ Każdy agent ma osobny katalog i plik `AGENT.md`. Rejestr kanoniczny znajduje si
 - **Jakość i analityka:** A80–A85.
 - **Utrzymanie i współpraca:** A90–A95.
 
-Wąskie role nie oznaczają uruchamiania wszystkich agentów naraz. A00 wybiera tylko role potrzebne w aktualnej fazie.
-
 ## Reguły
 
-- zadania przydziela A00;
-- A01 kontroluje Context Gate;
+- zadania przydziela A00 po sprawdzeniu dopuszczenia i gotowości;
+- A01 kontroluje kontekst, hierarchię, ład i przekazania;
+- A02 kontroluje workflow, skille, schematy, szablony i testy;
 - agent nie przejmuje odpowiedzialności innego agenta;
-- autor nie zatwierdza samodzielnie materiału wysokiego ryzyka;
-- przekazanie pracy zawiera wersję, status i nierozwiązane problemy;
-- nowy agent wymaga kontraktu, rejestru, testów i analizy wpływu.
+- autor nie zatwierdza własnego wyniku;
+- przekazanie zawiera wersję, status, dowody i nierozwiązane problemy;
+- nowy agent lub zmiana kontraktu wymaga rejestru, testów, audytu i analizy wpływu.
+

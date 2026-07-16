@@ -33,6 +33,16 @@ required_files = [
     "schemas/a00-control-record.schema.json",
     "templates/A00_CONTROL_RECORD.yaml",
     "docs/decisions/owner-0001-a00-conditional-admission.md",
+    "docs/decisions/owner-0002-a01-a02-conditional-admission.md",
+    "agents/A01-context-governance-auditor/AGENT.md",
+    "agents/A02-workflow-schema-auditor/AGENT.md",
+    "tests/agents/A01/cases.yaml",
+    "tests/agents/A02/cases.yaml",
+    "reports/agent-audits/A01/2026-07-16-full-audit-v0.2.md",
+    "reports/agent-audits/A02/2026-07-16-full-audit-v0.2.md",
+    "reports/tests/A01/2026-07-16-validation-results-v0.2.yaml",
+    "reports/tests/A02/2026-07-16-validation-results-v0.2.yaml",
+    "reports/control/CTRL-0002-a01-a02-admission.yaml",
     "registries/agents.yaml",
     "registries/work-packages.yaml",
     "registries/phase-gates.yaml",
@@ -56,6 +66,7 @@ for registry in [
     "registries/work-packages.yaml",
     "registries/phase-gates.yaml",
     "registries/branches.yaml",
+    "registries/decisions.yaml",
 ]:
     if not re.search(r"^state_revision: [0-9]+$", read(registry), re.MULTILINE):
         fail(f"registry missing state_revision: {registry}")
@@ -163,6 +174,14 @@ if "READY_IF_" in cases:
 if 'mode: "validation"' not in cases:
     fail("A00 tests do not declare validation mode")
 
+for agent_id, expected_count in [("A01", 6), ("A02", 6)]:
+    audit_cases = read(f"tests/agents/{agent_id}/cases.yaml")
+    case_count = len(re.findall(rf'^  - id: "{agent_id}-T[0-9]+"$', audit_cases, re.MULTILINE))
+    if case_count != expected_count:
+        fail(f"expected {expected_count} {agent_id} test cases, found {case_count}")
+    if 'mode: "validation"' not in audit_cases:
+        fail(f"{agent_id} tests do not declare validation mode")
+
 skill_policy = read("skills/coordinate-repetytorium/agents/openai.yaml")
 if "allow_implicit_invocation: false" not in skill_policy:
     fail("A00 skill implicit invocation must remain disabled before admission")
@@ -197,9 +216,41 @@ for expected in [
         fail(f"source intake template missing safety invariant: {expected}")
 
 context = read("PROJECT_CONTEXT.yaml")
-for expected in ['version: "0.3"', 'A00: "pass_conditional"', 'bootstrap_status: "closed_after_A00_admission"']:
+for expected in [
+    'version: "0.3"',
+    'A00: "pass_conditional"',
+    'A01: "pass_conditional"',
+    'A02: "pass_conditional"',
+    'assurance_roles_decision: "OWNER-0002"',
+    'bootstrap_status: "closed_after_A00_admission"',
+]:
     if expected not in context:
         fail(f"context manifest missing {expected}")
+
+for expected in [
+    'contract_version: "0.4"',
+    'contract_version: "0.2"',
+    'agent_context_and_governance_audit',
+    'agent_workflow_and_test_audit',
+    'admission_decision: "OWNER-0002"',
+]:
+    if expected not in agents_text:
+        fail(f"agent registry missing admission invariant: {expected}")
+
+for wp_id in ["WP-0001", "WP-0002", "WP-0003", "WP-0004", "WP-0005", "WP-0006", "WP-0007", "WP-0010"]:
+    if work_packages.get(wp_id, {}).get("status") != "COMPLETED":
+        fail(f"{wp_id} must be COMPLETED after A01/A02 admission")
+if work_packages.get("WP-0011", {}).get("status") != "READY":
+    fail("WP-0011 must be READY after A01/A02 admission")
+
+decisions = read("registries/decisions.yaml")
+if 'id: "OWNER-0002"' not in decisions:
+    fail("decision registry missing OWNER-0002")
+
+current_state = read("docs/CURRENT_STATE.md")
+for expected in ["Wersja stanu: 5", "A01 i A02", "WP-0011: `READY`"]:
+    if expected not in current_state:
+        fail(f"current state missing {expected}")
 
 print(f"agents={len(agents)} work_packages={len(work_packages)} gates={len(gates)}")
 for warning in warnings:

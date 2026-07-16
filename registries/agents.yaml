@@ -1,6 +1,6 @@
-version: "0.4"
+version: "0.5"
 context_version: "0.3"
-state_revision: 5
+state_revision: 6
 audit_policy:
   required_before_execution: true
   plan: "docs/AGENT_AUDIT_PLAN.md"
@@ -8,12 +8,12 @@ audit_policy:
   default_admission_owner: A00
   assurance_roles_admission_owner: OWNER
   bootstrap_procedure: "docs/BOOTSTRAP_GOVERNANCE.md"
-  current_state: "contracts_exist_but_no_agent_is_fully_active"
+  current_state: "A00_A01_A02_conditionally_admitted"
 agents:
   - id: A00
     name: "Koordynator i Kierownik Projektu"
     path: "agents/A00-project-manager/AGENT.md"
-    contract_version: "0.3"
+    contract_version: "0.4"
     status: pass_conditional
     phases: "all"
     receives_tasks_from: OWNER
@@ -34,20 +34,37 @@ agents:
   - id: A01
     name: "Audytor Kontekstu i Ładu"
     path: "agents/A01-context-governance-auditor/AGENT.md"
+    contract_version: "0.2"
     status: pass_conditional
     phases: "all"
-    receives_tasks_from: "OWNER_OR_A00"
-    activation_scope: ["bootstrap_audit"]
-    last_audit: "reports/agent-audits/A01/2026-07-16-bootstrap-audit.md"
+    receives_tasks_from: A00
+    activation_scope:
+      - "agent_context_and_governance_audit"
+      - "task_context_gate_review"
+      - "instruction_conflict_analysis"
+      - "change_request_governance_review"
+      - "state_consistency_governance_review"
+    tests: "tests/agents/A01/cases.yaml"
+    activation_depends_on: "WP-0010"
+    last_audit: "reports/agent-audits/A01/2026-07-16-full-audit-v0.2.md"
+    admission_decision: "OWNER-0002"
   - id: A02
     name: "Audytor Workflow, Skilli i Schematów"
     path: "agents/A02-workflow-schema-auditor/AGENT.md"
-    contract_version: "0.1"
+    contract_version: "0.2"
     status: pass_conditional
     phases: "0,1K,1T,10"
-    receives_tasks_from: "OWNER_OR_A00"
-    activation_scope: ["bootstrap_audit"]
-    last_audit: "reports/agent-audits/A02/2026-07-16-bootstrap-audit.md"
+    receives_tasks_from: A00
+    activation_scope:
+      - "agent_workflow_and_test_audit"
+      - "workflow_state_machine_audit"
+      - "schema_template_fixture_audit"
+      - "skill_permission_and_invocation_audit"
+      - "validation_claim_audit"
+    tests: "tests/agents/A02/cases.yaml"
+    activation_depends_on: "WP-0010"
+    last_audit: "reports/agent-audits/A02/2026-07-16-full-audit-v0.2.md"
+    admission_decision: "OWNER-0002"
   - id: A10
     name: "Kurator Przyjęcia Badań"
     path: "agents/A10-research-intake-curator/AGENT.md"

@@ -1,5 +1,5 @@
-version: "0.2"
-state_revision: 3
+version: "0.3"
+state_revision: 4
 owner: "A00"
 status_values:
   - PLANNED
@@ -16,35 +16,35 @@ work_packages:
     phase: "0A"
     name: "Kontrakt koordynatora A00"
     owner_agent: "A00"
-    status: "REVIEW"
+    status: "COMPLETED"
     depends_on: []
     output: "agents/A00-project-manager/AGENT.md"
   - id: "WP-0002"
     phase: "0A"
     name: "Schema i szablon zadania"
     owner_agent: "A00"
-    status: "REVIEW"
+    status: "COMPLETED"
     depends_on: ["WP-0001"]
     output: "schemas/project-task.schema.json"
   - id: "WP-0003"
     phase: "0A"
     name: "Skill koordynacyjny"
     owner_agent: "A00"
-    status: "REVIEW"
+    status: "COMPLETED"
     depends_on: ["WP-0001"]
     output: "skills/coordinate-repetytorium/SKILL.md"
   - id: "WP-0004"
     phase: "0A"
     name: "Workflow sterowania projektem"
     owner_agent: "A00"
-    status: "REVIEW"
+    status: "COMPLETED"
     depends_on: ["WP-0001", "WP-0002"]
     output: "workflows/project-control.yaml"
   - id: "WP-0005"
     phase: "0A"
     name: "Definicja testów A00"
     owner_agent: "A00"
-    status: "REVIEW"
+    status: "COMPLETED"
     depends_on: ["WP-0001", "WP-0003", "WP-0004"]
     output: "tests/agents/A00/cases.yaml"
   - id: "WP-0006"
@@ -80,14 +80,14 @@ work_packages:
     phase: "0C"
     name: "Audyt ról kontrolnych"
     owner_agent: "A00"
-    status: "BLOCKED"
+    status: "COMPLETED"
     depends_on: ["WP-0007"]
     output: "reports/agent-audits/"
   - id: "WP-0011"
     phase: "0C"
     name: "Schematy przekazań agentów"
     owner_agent: "A01"
-    status: "BLOCKED"
+    status: "READY"
     depends_on: ["WP-0010"]
     output: "schemas/"
   - id: "WP-0012"

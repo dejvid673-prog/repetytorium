@@ -1,4 +1,5 @@
-version: "0.1"
+version: "0.2"
+state_revision: 1
 owner: "OWNER"
 status_values:
   - proposed
@@ -26,5 +27,8 @@ decisions:
     status: accepted
   - id: "OWNER-0001"
     path: "docs/decisions/owner-0001-a00-conditional-admission.md"
+    status: accepted
+  - id: "OWNER-0002"
+    path: "docs/decisions/owner-0002-a01-a02-conditional-admission.md"
     status: accepted
 last_reviewed: "2026-07-16"

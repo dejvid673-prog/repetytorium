@@ -1,8 +1,8 @@
 version: "0.3"
 project: "Repetytorium Staw Expert"
 repository: "dejvid673-prog/repetytorium"
-status: "foundation_correction_and_reaudit"
-active_phase: "0A"
+status: "control_roles_conditionally_admitted"
+active_phase: "0C"
 active_branch: "agent/repository-foundation"
 source_of_truth:
   decisions: "registries/decisions.yaml"
@@ -22,16 +22,19 @@ accepted_decisions:
   - "ADR-0004"
   - "ADR-0006"
   - "OWNER-0001"
+  - "OWNER-0002"
 proposed_decisions:
   - "ADR-0005"
 activation:
   A00: "pass_conditional"
-  bootstrap_auditors: ["A01", "A02"]
-  bootstrap_auditor_status: "pass_conditional"
-  bootstrap_scope: "bootstrap_audit_only"
+  A01: "pass_conditional"
+  A02: "pass_conditional"
+  assurance_roles_scope: "bounded_audits_only"
+  assurance_roles_decision: "OWNER-0002"
   bootstrap_status: "closed_after_A00_admission"
 owner_direction:
   scope_confirmed: true
   production_publication_requires_new_approval: true
   phase_gate_approval_required: true
 last_updated: "2026-07-16"
+
