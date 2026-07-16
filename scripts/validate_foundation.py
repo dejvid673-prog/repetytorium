@@ -29,6 +29,10 @@ required_files = [
     "PROJECT_CONTEXT.yaml",
     "PROJECT_INSTRUCTIONS.md",
     "docs/BOOTSTRAP_GOVERNANCE.md",
+    "agents/A00-project-manager/OPERATING_PROTOCOL.md",
+    "schemas/a00-control-record.schema.json",
+    "templates/A00_CONTROL_RECORD.yaml",
+    "docs/decisions/owner-0001-a00-conditional-admission.md",
     "registries/agents.yaml",
     "registries/work-packages.yaml",
     "registries/phase-gates.yaml",
@@ -142,6 +146,61 @@ if "runtime_implemented: false" not in workflow:
     fail("declarative workflow must disclose missing runtime")
 
 cases = read("tests/agents/A00/cases.yaml")
+case_count = len(re.findall(r'^  - id: "A00-T[0-9]+"
+    fail("A00 tests use non-canonical conditional statuses")
+if 'mode: "validation"' not in cases:
+    fail("A00 tests do not declare validation mode")
+
+skill_policy = read("skills/coordinate-repetytorium/agents/openai.yaml")
+if "allow_implicit_invocation: false" not in skill_policy:
+    fail("A00 skill implicit invocation must remain disabled before admission")
+
+schema = json.loads(read("schemas/project-task.schema.json") or "{}")
+required = set(schema.get("required", []))
+template = read("templates/TASK_BRIEF.yaml")
+template_keys = set(re.findall(r"^([a-z_]+):", template, re.MULTILINE))
+missing_template_keys = sorted(required - template_keys)
+if missing_template_keys:
+    fail(f"task template missing schema keys: {missing_template_keys}")
+
+control_schema = json.loads(read("schemas/a00-control-record.schema.json") or "{}")
+control_required = set(control_schema.get("required", []))
+control_template = read("templates/A00_CONTROL_RECORD.yaml")
+control_template_keys = set(re.findall(r"^([a-z_]+):", control_template, re.MULTILINE))
+missing_control_keys = sorted(control_required - control_template_keys)
+if missing_control_keys:
+    fail(f"A00 control template missing schema keys: {missing_control_keys}")
+
+for invariant in ["one active task per conflict_key", "state mutations are revisioned and atomic", "missing specialist never expands A00 role"]:
+    if invariant not in workflow:
+        fail(f"A00 workflow missing invariant: {invariant}")
+
+source_template = read("templates/SOURCE_MATERIAL_INTAKE.yaml")
+for expected in [
+    "public_repository_acknowledged: true",
+    "contains_personal_data: false",
+    "contains_secrets: false",
+]:
+    if expected not in source_template:
+        fail(f"source intake template missing safety invariant: {expected}")
+
+context = read("PROJECT_CONTEXT.yaml")
+for expected in ['version: "0.3"', 'A00: "pass_conditional"', 'bootstrap_status: "closed_after_A00_admission"']:
+    if expected not in context:
+        fail(f"context manifest missing {expected}")
+
+print(f"agents={len(agents)} work_packages={len(work_packages)} gates={len(gates)}")
+for warning in warnings:
+    print(f"WARNING: {warning}")
+for error in errors:
+    print(f"ERROR: {error}")
+if errors:
+    print(f"VALIDATION FAILED: {len(errors)} error(s)")
+    sys.exit(1)
+print("VALIDATION PASSED")
+, cases, re.MULTILINE))
+if case_count != 15:
+    fail(f"expected 15 A00 test cases, found {case_count}")
 if "READY_IF_" in cases:
     fail("A00 tests use non-canonical conditional statuses")
 if 'mode: "validation"' not in cases:
