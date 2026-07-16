@@ -1,0 +1,105 @@
+version: "0.1"
+id: "WF-PROJECT-CONTROL"
+name: "Sterowanie projektem przez A00"
+owner: "A00"
+trigger:
+  - "nowe polecenie właściciela"
+  - "nowy materiał źródłowy"
+  - "wynik agenta"
+  - "blokada"
+  - "wniosek o przejście bramy"
+states:
+  - INTAKE
+  - CLASSIFIED
+  - IMPACT_REVIEW
+  - DECISION_REQUIRED
+  - BLOCKED
+  - READY
+  - ACTIVE
+  - REVIEW
+  - CHANGES_REQUIRED
+  - ACCEPTED
+  - MERGED
+  - CLOSED
+  - CANCELLED
+transitions:
+  - from: INTAKE
+    to: CLASSIFIED
+    requires:
+      - "cel zapisany"
+      - "klasa polecenia wybrana"
+      - "niezmienne decyzje wskazane"
+  - from: CLASSIFIED
+    to: IMPACT_REVIEW
+    requires:
+      - "dotknięte fazy, pakiety, role i pliki"
+      - "ryzyka oraz zależności"
+  - from: IMPACT_REVIEW
+    to: DECISION_REQUIRED
+    when: "zmiana zakresu, architektury, danych, bezpieczeństwa albo istotnej struktury agentów"
+  - from: DECISION_REQUIRED
+    to: IMPACT_REVIEW
+    requires:
+      - "udokumentowana decyzja właściciela"
+  - from: IMPACT_REVIEW
+    to: BLOCKED
+    when: "co najmniej jedna zależność lub zgoda nie jest spełniona"
+  - from: BLOCKED
+    to: IMPACT_REVIEW
+    requires:
+      - "dowód usunięcia każdej blokady"
+  - from: IMPACT_REVIEW
+    to: READY
+    requires:
+      - "pakiet pracy istnieje"
+      - "bramy i środowisko są gotowe"
+      - "wejścia są kompletne"
+      - "wykonawca i audytor są dopuszczeni"
+      - "kryteria oraz testy są zdefiniowane"
+  - from: READY
+    to: ACTIVE
+    requires:
+      - "karta zadania"
+      - "zarejestrowana gałąź"
+      - "draft PR"
+  - from: ACTIVE
+    to: REVIEW
+    requires:
+      - "komplet wyjść"
+      - "raport wykonawcy"
+      - "dowody testów"
+  - from: REVIEW
+    to: CHANGES_REQUIRED
+    when: "co najmniej jedno kryterium lub audyt nie przeszedł"
+  - from: CHANGES_REQUIRED
+    to: ACTIVE
+    requires:
+      - "zakres poprawek przypisany właściwemu wykonawcy"
+  - from: REVIEW
+    to: ACCEPTED
+    requires:
+      - "wszystkie kryteria spełnione"
+      - "wymagane audyty pozytywne"
+      - "otwarte ryzyka zaakceptowane"
+  - from: ACCEPTED
+    to: MERGED
+    requires:
+      - "zgoda właściwa dla gałęzi i fazy"
+  - from: MERGED
+    to: CLOSED
+    requires:
+      - "rejestry i CURRENT_STATE zaktualizowane"
+      - "następny krok wskazany"
+resume:
+  key: "task_id"
+  requires:
+    - "ostatni stan"
+    - "wersje wejść"
+    - "lista blokad"
+    - "dowody"
+error_handling:
+  instruction_conflict: "STOP_AND_ESCALATE"
+  missing_input: "BLOCKED"
+  scope_change: "DECISION_REQUIRED"
+  missing_evidence: "CHANGES_REQUIRED"
+  unsafe_external_component: "CANCELLED"
