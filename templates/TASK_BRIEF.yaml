@@ -1,0 +1,32 @@
+task_id: "TASK-0000"
+title: ""
+context_version: "0.2"
+phase: ""
+work_package: "WP-0000"
+classification: "plan_execution"
+status: "INTAKE"
+owner_agent: "A00"
+executor_agents: []
+reviewer_agents: []
+scope:
+  included: []
+  excluded: []
+  allowed_paths: []
+  forbidden_paths: []
+depends_on: []
+required_gates: []
+required_environment: []
+inputs:
+  - path: ""
+    version: ""
+    required: true
+outputs:
+  - path: ""
+    description: ""
+acceptance_criteria: []
+test_plan: []
+blockers: []
+owner_decision: null
+branch: null
+pr_number: null
+evidence_paths: []
