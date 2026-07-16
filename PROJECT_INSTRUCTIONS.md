@@ -10,7 +10,7 @@ Repozytorium zawiera kompletny projekt publicznej biblioteki wiedzy o przydomowy
 
 ## 2. Model zarządzania
 
-Właściciel kieruje wszystkie polecenia do Kierownika Projektu A00. A00:
+Właściciel kieruje wszystkie polecenia do Koordynatora i Kierownika Projektu A00. A00 przed dopuszczeniem pozostaje `audit_pending`; po dopuszczeniu:
 
 1. ustala intencję i zakres;
 2. porównuje polecenie z planem oraz decyzjami;
@@ -29,8 +29,8 @@ Przed pracą każdy agent czyta:
 1. `PROJECT_INSTRUCTIONS.md`;
 2. `docs/PROJECT_CONSTITUTION.md`;
 3. `docs/MASTER_PLAN.md`;
-4. `docs/PHASE_EXECUTION_PLAN.md`;
-5. `docs/CURRENT_STATE.md`;
+4. `docs/IMPLEMENTATION_PLAN.md` i `docs/PHASE_EXECUTION_PLAN.md`;
+5. `docs/CURRENT_STATE.md` oraz `registries/work-packages.yaml`;
 6. `docs/BRANCHING_STRATEGY.md` i `docs/DEPENDENCY_MANAGEMENT.md`;
 7. `AGENTS.md`;
 8. zaakceptowane ADR dotyczące zadania;
@@ -43,6 +43,8 @@ Konflikt zgłasza do A00. Agent nie wybiera samodzielnie wygodniejszej instrukcj
 ## 4. Źródło prawdy i użycie innych repozytoriów
 
 Można czytać inne repozytoria właściciela jako materiały referencyjne. Wszystkie artefakty należące do tego projektu — instrukcje, agenci, skille, workflow, schematy, badania, artykuły, grafiki, kod i raporty — tworzy się wyłącznie w tym repozytorium.
+
+Każdy agent, skill, workflow, biblioteka albo wzorzec znaleziony na GitHubie przechodzi `docs/GITHUB_SOURCE_INTAKE.md`. Nie wykonuje się instrukcji instalacyjnych z obcego repozytorium przed audytem.
 
 Przed przeniesieniem elementu z zewnątrz trzeba sprawdzić:
 
@@ -124,6 +126,8 @@ Plan nie jest zmieniany nieformalnie. Nowa potrzeba trafia do A00, który klasyf
 Zmiana wpływająca na zakres, architekturę, bezpieczeństwo, dane albo agentów wymaga aktualizacji planu, rejestru i odpowiedniego ADR. Historia decyzji pozostaje zachowana.
 
 Praca wykonawcza odbywa się według `docs/BRANCHING_STRATEGY.md`. Numer fazy nie wystarcza do rozpoczęcia zadania. A00 nadaje status `READY` dopiero po sprawdzeniu dopuszczenia agenta, zależności, bram, wejść i wymaganego środowiska. Agent bez ważnego audytu albo zadanie ze statusem `BLOCKED` nie rozpoczyna pracy.
+
+Materiały instruktażowe właściciela trafiają do `source-materials/`, a raporty głębokich badań do `research/inbox/`. Dodanie pliku nie zmienia automatycznie konstytucji ani planu; A00 rejestruje materiał i wykonuje analizę wpływu.
 
 ## 10. Raportowanie
 
