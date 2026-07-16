@@ -1,6 +1,6 @@
 # Nadrzędna instrukcja projektu
 
-Wersja kontekstu: 0.2  
+Wersja kontekstu: 0.3  
 Projekt: Repetytorium Staw Expert  
 Repozytorium: `dejvid673-prog/repetytorium`
 
@@ -10,7 +10,7 @@ Repozytorium zawiera kompletny projekt publicznej biblioteki wiedzy o przydomowy
 
 ## 2. Model zarządzania
 
-Właściciel kieruje wszystkie polecenia do Koordynatora i Kierownika Projektu A00. A00 przed dopuszczeniem pozostaje `audit_pending`; po dopuszczeniu:
+Właściciel kieruje wszystkie polecenia do Koordynatora i Kierownika Projektu A00. Do czasu jego dopuszczenia działa wyłącznie ograniczony bootstrap z `docs/BOOTSTRAP_GOVERNANCE.md`. A00 przed dopuszczeniem pozostaje `audit_pending`; po dopuszczeniu:
 
 1. ustala intencję i zakres;
 2. porównuje polecenie z planem oraz decyzjami;
@@ -26,17 +26,18 @@ Pozostali agenci nie rozszerzają samodzielnie zakresu i nie zmieniają planu g�
 
 Przed pracą każdy agent czyta:
 
-1. `PROJECT_INSTRUCTIONS.md`;
-2. `docs/PROJECT_CONSTITUTION.md`;
-3. `docs/MASTER_PLAN.md`;
-4. `docs/IMPLEMENTATION_PLAN.md` i `docs/PHASE_EXECUTION_PLAN.md`;
-5. `docs/CURRENT_STATE.md` oraz `registries/work-packages.yaml`;
-6. `docs/BRANCHING_STRATEGY.md` i `docs/DEPENDENCY_MANAGEMENT.md`;
-7. `AGENTS.md`;
-8. zaakceptowane ADR dotyczące zadania;
-9. własny plik `agents/<id>/AGENT.md` oraz aktualny wpis w `registries/agents.yaml`;
-10. instrukcje katalogów objętych zadaniem;
-11. manifest gałęzi i prompt konkretnego zadania.
+1. `PROJECT_CONTEXT.yaml`;
+2. `PROJECT_INSTRUCTIONS.md`;
+3. `docs/PROJECT_CONSTITUTION.md`;
+4. `docs/MASTER_PLAN.md`;
+5. `docs/IMPLEMENTATION_PLAN.md` i `docs/PHASE_EXECUTION_PLAN.md`;
+6. `docs/CURRENT_STATE.md` oraz `registries/work-packages.yaml`;
+7. `docs/BRANCHING_STRATEGY.md` i `docs/DEPENDENCY_MANAGEMENT.md`;
+8. `AGENTS.md`;
+9. zaakceptowane ADR dotyczące zadania;
+10. własny plik `agents/<id>/AGENT.md` oraz aktualny wpis w `registries/agents.yaml`;
+11. instrukcje katalogów objętych zadaniem;
+12. manifest gałęzi i prompt konkretnego zadania.
 
 Konflikt zgłasza do A00. Agent nie wybiera samodzielnie wygodniejszej instrukcji.
 
