@@ -6,7 +6,7 @@ Kompletne źródło prawdy dla publicznej biblioteki wiedzy o przydomowych oczka
 
 **Faza 0 — Ład projektu. Wersja kontekstu 0.3.**
 
-Poprawki po audycie fundamentu są wdrożone. Raport rekomenduje warunkowe dopuszczenie A00, lecz ostateczna decyzja należy do właściciela. A01 i A02 mają wyłącznie ograniczone dopuszczenie bootstrap; pozostałe role oraz fazy wykonawcze są zablokowane.
+A00 0.4 został warunkowo dopuszczony decyzją właściciela po 15 testach zachowania i pozytywnej walidacji GitHub Actions. G0A ma status PASSED. Następny krok to pełne dopuszczenie A01 i A02 do zwykłych audytów; pozostałe role oraz fazy wykonawcze są zablokowane.
 
 ## Obowiązkowy start
 
