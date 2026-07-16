@@ -8,9 +8,34 @@ status_values:
   - FAILED
   - WAIVED
 gates:
+  - id: G0A
+    name: "Koordynator A00"
+    status: OPEN
+    requires:
+      - "kontrakt, skill, workflow i testy A00 zamrożone"
+      - "testy A00 wykonane"
+      - "audyt A01 i A80"
+      - "decyzja właściciela o dopuszczeniu"
+    evidence_paths:
+      - "agents/A00-project-manager/AGENT.md"
+      - "tests/agents/A00/"
+      - "reports/agent-audits/A00/"
+  - id: G0B
+    name: "Kontrolowane wejścia i źródła"
+    status: UNDER_REVIEW
+    requires:
+      - "rejestr pakietów pracy"
+      - "rejestr materiałów właściciela"
+      - "procedura audytu elementów z GitHuba"
+      - "szablony zadania i decyzji"
+    evidence_paths:
+      - "registries/work-packages.yaml"
+      - "registries/source-materials.yaml"
+      - "docs/GITHUB_SOURCE_INTAKE.md"
   - id: G0
     name: "Ład i dopuszczenie agentów"
     status: OPEN
+    depends_on: [G0A, G0B]
     requires:
       - "plan bazowy i zależności opisane"
       - "role Fazy 1 mają co najmniej pass_conditional"
