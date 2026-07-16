@@ -10,7 +10,7 @@ status_values:
 gates:
   - id: G0A
     name: "Koordynator A00"
-    status: UNDER_REVIEW
+    status: PASSED
     requires:
       - "kontrakt, skill, workflow i testy A00 zamrożone"
       - "testy A00 wykonane"
