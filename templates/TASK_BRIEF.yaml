@@ -1,15 +1,23 @@
 # Szablon jest celowo niekompletny i nie przechodzi walidacji przed uzupełnieniem.
 task_id: "TASK-0000"
+control_id: "CTRL-0000"
 title: ""
+requested_by: "OWNER"
 context_version: "0.3"
 phase: ""
 work_package: "WP-0000"
 classification: "plan_execution"
+priority: "P2"
+risk_level: "medium"
 status: "INTAKE"
+previous_status: null
+state_revision: 0
+input_fingerprint: ""
 owner_agent: "A00"
 executor_agents: []
 reviewer_agents: []
 separation_of_duties_confirmed: true
+conflict_keys: []
 scope:
   included: []
   excluded: []
@@ -35,3 +43,4 @@ evidence_paths: []
 created_at: ""
 updated_at: ""
 cancel_reason: null
+supersedes_task_id: null
