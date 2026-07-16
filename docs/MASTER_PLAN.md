@@ -1,7 +1,9 @@
 # Plan główny
 
-Status: obowiązujący plan bazowy 0.2  
-Zasada: cały znany zakres jest ujęty w planie; realizacja przebiega według zależności.
+Status: obowiązujący plan bazowy 0.3  
+Zasada: cały znany zakres jest ujęty w planie; realizacja przebiega według zależności, nie wyłącznie według numerów faz.
+
+Plan wykonawczy z etapami, torami równoległymi i bramami: `docs/PHASE_EXECUTION_PLAN.md`. Strategię gałęzi opisuje `docs/BRANCHING_STRATEGY.md`, a blokady `docs/DEPENDENCY_MANAGEMENT.md`.
 
 ## Faza 0 — Ład projektu
 
@@ -17,13 +19,19 @@ Artefakty:
 - system agentów;
 - rejestry;
 - mechanizm zmiany planu;
-- aktualny stan projektu.
+- aktualny stan projektu;
+- strategia gałęzi i rejestr zależności;
+- plan audytu oraz dopuszczania agentów;
+- bramy fazowe i szablony raportów;
+- kryteria gotowości środowisk.
 
 Kryteria zakończenia:
 
 - brak sprzeczności w dokumentach nadrzędnych;
 - każdy agent ma osobny kontrakt;
-- każdy agent przechodzi Context Gate;
+- role potrzebne w następnej fazie przechodzą audyt konstrukcji, testy i Context Gate;
+- krytyczne nakładanie kompetencji jest usunięte;
+- rejestry gałęzi i bram odzwierciedlają stan faktyczny;
 - właściciel zatwierdza plan bazowy.
 
 ## Faza 1 — Architektura wiedzy
@@ -48,6 +56,24 @@ Kryteria zakończenia:
 - przykładowe dane reprezentują kilka różnych tematów;
 - nie ma relacji produktowych;
 - wysokie ryzyko jest oznaczane maszynowo.
+
+## Faza 1T — Fundament środowiska technicznego
+
+Cel: przygotować powtarzalne środowiska PrestaShop 9, testy i CI niezależnie od prac nad modelem wiedzy.
+
+Zakres:
+
+- przypięte wersje technologii;
+- odtwarzalne DEV i TEST;
+- syntetyczne dane;
+- standardy kodu i konfiguracji;
+- lint, analiza statyczna, testy i kontrola sekretów;
+- backup, restore, migracje i rollback;
+- niezależne odtworzenie przez A80.
+
+Tor 1T może działać równolegle z Fazą 1 po Bramie G0. Implementacja encji czeka jednak na zatwierdzone schematy wiedzy.
+
+Kryteria zakończenia: bramy ENV-DEV i ENV-TEST mają status READY.
 
 ## Faza 2 — Fabryka badań i treści
 
