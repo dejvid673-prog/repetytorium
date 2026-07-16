@@ -8,15 +8,16 @@ Przed pracą agent musi przeczytać:
 
 1. `PROJECT_INSTRUCTIONS.md`;
 2. `docs/PROJECT_CONSTITUTION.md`;
-3. `docs/MASTER_PLAN.md`;
+3. `docs/MASTER_PLAN.md` i `docs/PHASE_EXECUTION_PLAN.md`;
 4. `docs/CURRENT_STATE.md`;
-5. ten plik;
-6. właściwe ADR;
-7. własny `agents/<id>/AGENT.md`;
-8. instrukcje katalogów objętych zadaniem;
-9. prompt zadania od A00.
+5. `docs/BRANCHING_STRATEGY.md` i `docs/DEPENDENCY_MANAGEMENT.md`;
+6. ten plik;
+7. właściwe ADR;
+8. własny `agents/<id>/AGENT.md` i wpis w `registries/agents.yaml`;
+9. instrukcje katalogów objętych zadaniem;
+10. manifest gałęzi i prompt zadania od A00.
 
-Następnie przechodzi Project Context Gate z `docs/AGENT_SYSTEM.md`. Bez wyniku PASS nie rozpoczyna pracy.
+Następnie przechodzi Project Context Gate z `docs/AGENT_SYSTEM.md`. Sam kontrakt nie daje uprawnienia do działania. Agent musi mieć dopuszczenie zgodne z `docs/AGENT_AUDIT_PLAN.md`, a zadanie status `READY`. Bez obu warunków nie rozpoczyna pracy.
 
 ## Kierowanie pracą
 
@@ -77,7 +78,9 @@ Każdy zasób posiada pochodzenie, licencję, zakres użycia i tekst alternatywn
 
 ## Git i zmiany
 
-- osobna gałąź;
+- gałąź utworzona zgodnie z `docs/BRANCHING_STRATEGY.md`;
+- wpis w `registries/branches.yaml` i manifest gałęzi;
+- sprawdzone zależności i bramy;
 - minimalny zakres;
 - brak nadpisywania cudzych zmian;
 - decyzje architektoniczne jako ADR;
