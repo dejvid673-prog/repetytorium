@@ -1,0 +1,12 @@
+version: "0.1"
+tools:
+  - id: bolt-diy
+    repository: "stackblitz-labs/bolt.diy"
+    purpose: "referencja workflow prototypowania i podglądu"
+    license_review: required_before_copy
+    import_status: not_approved
+  - id: dyad
+    repository: "dyad-sh/dyad"
+    purpose: "referencja lokalnego kreatora aplikacji i iteracji UI"
+    license_review: required_per_path
+    import_status: not_approved
