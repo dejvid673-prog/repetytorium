@@ -28,24 +28,45 @@ flowchart TD
     R9 --> O10["10: utrzymanie"]
 ```
 
-## Faza 0 — Ład, plan i dopuszczenie agentów
+## Faza 0 — Koordynator, ład i dopuszczenie agentów
 
-**Gałąź:** bieżąca `agent/repository-foundation`, następnie przy kolejnych poprawkach `phase/00-governance`  
-**Cel:** ustalić zasady, zależności i zweryfikować role przed pracą wykonawczą.
+**Gałąź:** bieżąca `agent/repository-foundation`, następnie `phase/00-governance`  
+**Cel:** najpierw zbudować kontrolę projektu, następnie dopuścić role wykonawcze.
 
-### Etapy
+### Faza 0A — Koordynator A00
 
-- **0.1 Katalog decyzji:** zakres, zakazy, grupa odbiorców, AI, e-mail, korekty, analityka, przypadki.
-- **0.2 Fundament repozytorium:** instrukcje, konstytucja, ADR, rejestry i mapa.
-- **0.3 Strategia wykonania:** gałęzie, blokady, środowiska, fazy i bramy.
-- **0.4 Audyt konstrukcji 27 agentów:** wejścia, wyjścia, narzędzia, zakazy, testowalność.
-- **0.5 Audyty krzyżowe:** kontekst, dowody, bezpieczeństwo, technika, dostępność, SEO i grafiki.
-- **0.6 Korekta struktury:** poprawa, podział, połączenie lub zawieszenie ról.
-- **0.7 Kontrakty wykonywalne:** schematy wejść/wyjść, checklisty, fixture i raporty.
-- **0.8 Symulacja:** syntetyczny przepływ przez co najmniej trzy sąsiednie role.
-- **0.9 Akceptacja właściciela:** zatwierdzenie planu i struktury.
+- **0A.1:** dopracować kontrakt i chroniony kierunek A00.
+- **0A.2:** zbudować schemat oraz szablon zadania.
+- **0A.3:** zbudować repozytoryjny skill koordynacyjny.
+- **0A.4:** zbudować workflow sterowania z blokadą i wznowieniem.
+- **0A.5:** przygotować testy prawidłowej ścieżki, zmiany zakresu, braków i GitHuba.
+- **0A.6:** wykonać niezależny audyt A01/A80.
+- **0A.7:** uzyskać decyzję właściciela o dopuszczeniu.
 
-**Brama G0:** role potrzebne w następnych torach dopuszczone, brak krytycznych sprzeczności, plan zaakceptowany.
+**Brama G0A:** A00 posiada co najmniej `pass_conditional`. Utworzenie plików nie wystarcza.
+
+### Faza 0B — Kontrolowane wejścia i źródła
+
+- **0B.1:** uruchomić `source-materials/` i rejestr materiałów.
+- **0B.2:** ustalić klasyfikację nowych instrukcji oraz analizę wpływu.
+- **0B.3:** wdrożyć audyt agentów, skilli i workflow znalezionych na GitHubie.
+- **0B.4:** uruchomić rejestr pakietów pracy i decyzji właściciela.
+
+**Brama G0B:** nowa informacja nie może cicho zmienić planu ani trafić do wykonania bez klasyfikacji.
+
+### Faza 0C — System agentów
+
+- **0C.1:** audyt konstrukcji ról kontrolnych.
+- **0C.2:** audyty krzyżowe kontekstu, dowodów, bezpieczeństwa i techniki.
+- **0C.3:** poprawa, podział, połączenie albo zawieszenie ról.
+- **0C.4:** schematy wejść i wyjść.
+- **0C.5:** testy Context Gate, Golden Path, Failure Path i Handoff.
+- **0C.6:** symulacja pełnego przekazania.
+- **0C.7:** raport G0 i akceptacja właściciela.
+
+**Brama G0:** role wymagane dla 1K i 1T są dopuszczone, a plan pozostaje spójny.
+
+Szczegóły: `docs/PHASE_00_COORDINATOR_PLAN.md` oraz `docs/IMPLEMENTATION_PLAN.md`.
 
 ## Faza 1K — Fundament wiedzy
 
