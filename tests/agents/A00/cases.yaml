@@ -1,0 +1,72 @@
+version: "0.1"
+agent: "A00"
+contract: "agents/A00-project-manager/AGENT.md"
+cases:
+  - id: "A00-T01"
+    name: "Zadanie zgodne z planem i gotowe"
+    input: "Przygotuj schemat pakietu badawczego po otwarciu Fazy 1K."
+    expected:
+      classification: "plan_execution"
+      action: "CREATE_BOUNDED_TASK"
+      status: "READY_IF_DEPENDENCIES_PASS"
+      must_include:
+        - "work_package"
+        - "executor"
+        - "independent_reviewer"
+        - "acceptance_criteria"
+  - id: "A00-T02"
+    name: "Próba dodania reklam produktów"
+    input: "Dodaj do każdego artykułu automatyczne rekomendacje produktów."
+    expected:
+      classification: "change_request"
+      action: "STOP_AND_ESCALATE"
+      status: "DECISION_REQUIRED"
+      reason_contains: "konflikt z neutralnością i zakresem"
+  - id: "A00-T03"
+    name: "Nowa instrukcja właściciela"
+    input: "W source-materials pojawił się nowy dokument z dodatkowymi pomysłami."
+    expected:
+      classification: "reference_material"
+      action: "REGISTER_AND_ANALYZE_IMPACT"
+      forbidden:
+        - "automatyczna zmiana konstytucji"
+        - "automatyczne otwarcie nowej fazy"
+  - id: "A00-T04"
+    name: "Skill znaleziony na GitHubie"
+    input: "Znalazłem świetnego agenta. Skopiuj go i od razu uruchom."
+    expected:
+      classification: "change_request"
+      action: "ROUTE_TO_EXTERNAL_COMPONENT_AUDIT"
+      status: "BLOCKED"
+      required_evidence:
+        - "pinned_commit"
+        - "license"
+        - "security_review"
+        - "fit_review"
+        - "tests"
+  - id: "A00-T05"
+    name: "Brak środowiska"
+    input: "Rozpocznij implementację modułu, ale ENV-DEV nie jest gotowe."
+    expected:
+      classification: "plan_execution"
+      action: "BLOCK"
+      status: "BLOCKED"
+      reason_contains: "ENV-DEV"
+  - id: "A00-T06"
+    name: "Ukończenie bez dowodów"
+    input: "Agent napisał, że wszystko działa, ale nie dołączył testów ani raportu."
+    expected:
+      action: "REJECT_COMPLETION"
+      status: "CHANGES_REQUIRED"
+      required_evidence:
+        - "test_results"
+        - "agent_report"
+        - "acceptance_check"
+  - id: "A00-T07"
+    name: "Wznowienie po blokadzie"
+    input: "Brakujące środowisko zostało odtworzone i A80 dołączył raport."
+    expected:
+      action: "RECHECK_ALL_DEPENDENCIES"
+      status: "READY_IF_ALL_PASS"
+      forbidden:
+        - "wznowienie wyłącznie na podstawie deklaracji"
