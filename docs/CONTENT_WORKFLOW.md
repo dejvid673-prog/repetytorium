@@ -1,97 +1,38 @@
 # Workflow treści
 
-Status: projekt 0.1
+Status: projekt 0.2
 
-## Statusy
+## Statusy procesu
 
-1. `NEW_RESEARCH` — nowe badanie.
-2. `RESEARCH_ANALYSIS` — analiza materiału.
-3. `ARTICLE_PLAN` — przygotowany podział na artykuły.
-4. `DRAFTING` — redagowanie.
-5. `FACT_CHECK` — kontrola faktów, źródeł i bezpieczeństwa.
-6. `CORRECTIONS_REQUIRED` — poprawki wymagane.
-7. `VISUAL_PREPARATION` — przygotowanie zasobów wizualnych.
-8. `TECHNICAL_PREVIEW` — podgląd w warstwie publikacyjnej.
-9. `HUMAN_APPROVAL` — oczekiwanie na decyzję właściciela.
-10. `SCHEDULED` — publikacja zaplanowana.
-11. `PUBLISHED` — opublikowano.
-12. `REVIEW_REQUIRED` — potrzebna ponowna weryfikacja.
-13. `ARCHIVED` — materiał wycofany, historia zachowana.
+`NEW_RESEARCH`, `INTAKE_CHECK`, `DOMAIN_RESEARCH`, `KNOWLEDGE_MAPPING`, `ARTICLE_PLAN`, `DRAFTING`, `CONTENT_LAYOUT`, `EVIDENCE_REVIEW`, `SAFETY_REVIEW`, `CORRECTIONS_REQUIRED`, `VISUAL_PREPARATION`, `VISUAL_RIGHTS_REVIEW`, `TECHNICAL_PREVIEW`, `HUMAN_APPROVAL`, `SCHEDULED`, `PUBLISHED`, `REVIEW_REQUIRED`, `DISABLED`, `ARCHIVED`.
 
-## Etapy
+## Przepływ
 
-### 1. Przyjęcie badania
+1. A10 przyjmuje i kataloguje badanie.
+2. A11 mapuje wiedzę; A20–A24 uzupełniają właściwe dziedziny.
+3. A30 tworzy portfel oraz konspekty.
+4. A31 redaguje.
+5. A32 układa prezentację treści.
+6. A40 sprawdza dowody.
+7. A41 sprawdza bezpieczeństwo i zgodność.
+8. A60 tworzy zasoby, A61 sprawdza prawa i poprawność.
+9. A72 buduje podgląd.
+10. A80–A82 wykonują właściwe kontrole.
+11. Właściciel zatwierdza przez A00.
+12. A72 publikuje.
+13. A90 monitoruje i prowadzi korekty.
 
-Koordynator:
+## Cofanie
 
-- nadaje identyfikator;
-- sprawdza kompletność;
-- rejestruje pochodzenie i datę;
-- blokuje przetwarzanie, jeśli brakuje kluczowych plików.
+Każda brama może zwrócić materiał do wskazanego etapu z listą błędów. Agent nie poprawia w ukryciu artefaktu należącego do innej roli.
 
-### 2. Analiza
+## Widoczność i weryfikacja
 
-Analityk:
+Widoczność: włączony/wyłączony.  
+Weryfikacja: oczekuje, redakcyjna, merytoryczna, wymaga korekty, wycofana.
 
-- czyta całość;
-- tworzy mapę pojęć;
-- rozpoznaje duplikaty i luki;
-- dzieli materiał na planowane artykuły;
-- przypisuje źródła i twierdzenia;
-- przygotowuje konspekty.
+Status weryfikacji zapisuje osobę, datę, zakres i wersję.
 
-### 3. Redakcja
+## Korekty
 
-Redaktor:
-
-- pracuje wyłącznie na zatwierdzonym pakiecie;
-- używa właściwego szablonu artykułu;
-- rozdziela fakty, hipotezy i ostrzeżenia;
-- przygotowuje metadane, linki i briefy grafik.
-
-### 4. Weryfikacja
-
-Weryfikator:
-
-- porównuje artykuł z badaniem;
-- sprawdza źródła, jednostki i logikę;
-- oznacza sprzeczności;
-- blokuje niebezpieczne lub nieudokumentowane zalecenia;
-- przekazuje precyzyjną listę poprawek.
-
-### 5. Warstwa wizualna
-
-Grafik:
-
-- przygotowuje elementy zgodne z systemem wizualnym;
-- zapisuje źródło i licencję;
-- optymalizuje format;
-- dostarcza tekst alternatywny.
-
-### 6. Podgląd techniczny
-
-Integrator:
-
-- waliduje pakiet;
-- importuje wersję roboczą;
-- buduje podgląd;
-- sprawdza linki, grafiki i relacje;
-- nie zmienia samodzielnie znaczenia treści.
-
-### 7. Zatwierdzenie
-
-Właściciel podejmuje decyzję:
-
-- zatwierdzić;
-- zwrócić do poprawy;
-- odłożyć;
-- odrzucić;
-- opublikować później.
-
-### 8. Publikacja i utrzymanie
-
-Po publikacji zapisuje się identyfikator, URL, wersję, datę i wynik kontroli. Monitoring wykrywa materiały nieaktualne, błędne linki, zmienione produkty i wymagane przeglądy.
-
-## Zasada cofania
-
-Każdy etap może zwrócić materiał do wskazanego wcześniejszego etapu z raportem problemów. Nie wolno poprawiać problemu w ukryciu poza zakresem roli.
+Istotna korekta posiada datę, opis, wersję i ponowną kontrolę. Podziękowanie imienne wymaga zgody. Drobna korekta językowa pozostaje w historii, ale nie musi mieć widocznego komunikatu.
