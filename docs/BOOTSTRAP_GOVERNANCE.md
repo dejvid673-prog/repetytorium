@@ -39,4 +39,4 @@ Przed dopuszczeniem A00 wolno uruchomić jego skill tylko z jawnym parametrem `m
 
 ## Wygaśnięcie
 
-Procedura przestaje być ścieżką przydzielania zadań po uzyskaniu przez A00 statusu co najmniej `pass_conditional`. Pozostaje w repozytorium jako zapis sposobu uruchomienia systemu.
+Procedura przestaje być ścieżką przydzielania zadań po uzyskaniu przez A00 statusu co najmniej `pass_conditional`. Dopuszczenia A01 i A02 ograniczone do `bootstrap_audit` nie przechodzą automatycznie na zwykłe audyty agentów. Wymagają osobnego rozszerzenia zakresu. Dokument pozostaje jako zapis sposobu uruchomienia systemu.
