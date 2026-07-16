@@ -14,7 +14,7 @@ gates:
     requires:
       - "kontrakt, skill, workflow i testy A00 zamrożone"
       - "testy A00 wykonane"
-      - "audyt A01 i A80"
+      - "audyt A01 i A02"
       - "decyzja właściciela o dopuszczeniu"
     evidence_paths:
       - "agents/A00-project-manager/AGENT.md"
@@ -28,10 +28,15 @@ gates:
       - "rejestr materiałów właściciela"
       - "procedura audytu elementów z GitHuba"
       - "szablony zadania i decyzji"
+      - "schema i workflow przyjęcia materiału publicznego"
+      - "rejestr decyzji"
     evidence_paths:
       - "registries/work-packages.yaml"
       - "registries/source-materials.yaml"
       - "docs/GITHUB_SOURCE_INTAKE.md"
+      - "schemas/source-material-intake.schema.json"
+      - "workflows/source-material-intake.yaml"
+      - "registries/decisions.yaml"
   - id: G0
     name: "Ład i dopuszczenie agentów"
     status: OPEN
