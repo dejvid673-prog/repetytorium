@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dejvid673-prog/repetytorium/schemas/source-material-intake.schema.json",
+  "title": "Source material intake",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_id",
+    "path",
+    "title",
+    "type",
+    "origin",
+    "provided_at",
+    "owner_intent",
+    "rights_basis",
+    "public_repository_acknowledged",
+    "contains_personal_data",
+    "contains_secrets",
+    "status",
+    "decision_required"
+  ],
+  "properties": {
+    "source_id": {
+      "type": "string",
+      "pattern": "^MAT-[0-9]{4,}$"
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "enum": [
+        "owner_instruction",
+        "brand",
+        "prestashop",
+        "domain",
+        "research_report",
+        "example",
+        "customer_question",
+        "other"
+      ]
+    },
+    "origin": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provided_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "owner_intent": {
+      "type": "string",
+      "minLength": 1
+    },
+    "rights_basis": {
+      "enum": [
+        "owner_created",
+        "licensed",
+        "public_domain",
+        "permission_recorded"
+      ]
+    },
+    "license_or_permission_reference": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "public_repository_acknowledged": {
+      "const": true
+    },
+    "contains_personal_data": {
+      "const": false
+    },
+    "contains_secrets": {
+      "const": false
+    },
+    "status": {
+      "enum": [
+        "received",
+        "triage",
+        "accepted_reference",
+        "decision_required",
+        "routed",
+        "rejected"
+      ]
+    },
+    "replaces": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "classification": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "affected_phases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "affected_work_packages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "decision_required": {
+      "type": "boolean"
+    },
+    "routed_to_agents": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^A[0-9]{2}$"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}
