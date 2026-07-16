@@ -24,4 +24,7 @@ decisions:
   - id: "ADR-0006"
     path: "docs/decisions/0006-bootstrap-audit-procedure.md"
     status: accepted
+  - id: "OWNER-0001"
+    path: "docs/decisions/owner-0001-a00-conditional-admission.md"
+    status: accepted
 last_reviewed: "2026-07-16"
