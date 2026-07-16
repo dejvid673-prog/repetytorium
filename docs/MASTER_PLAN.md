@@ -34,7 +34,7 @@ Kryteria zakończenia:
 - rejestry gałęzi i bram odzwierciedlają stan faktyczny;
 - właściciel zatwierdza plan bazowy.
 
-## Faza 1 — Architektura wiedzy
+## Faza 1K — Architektura wiedzy
 
 Cel: ustalić, co przechowujemy i jak elementy są powiązane.
 
@@ -71,7 +71,7 @@ Zakres:
 - backup, restore, migracje i rollback;
 - niezależne odtworzenie przez A80.
 
-Tor 1T może działać równolegle z Fazą 1 po Bramie G0. Implementacja encji czeka jednak na zatwierdzone schematy wiedzy.
+Tor 1T może działać równolegle z Fazą 1K po Bramie G0. Implementacja encji czeka jednak na zatwierdzone schematy wiedzy.
 
 Kryteria zakończenia: bramy ENV-DEV i ENV-TEST mają status READY.
 
