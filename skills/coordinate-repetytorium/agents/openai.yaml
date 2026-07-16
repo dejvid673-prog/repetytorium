@@ -1,0 +1,7 @@
+interface:
+  display_name: "Koordynator Repetytorium"
+  short_description: "Pilnuje planu, zależności i bram projektu"
+  default_prompt: "Użyj $coordinate-repetytorium, aby sklasyfikować polecenie, sprawdzić zależności i przygotować następny bezpieczny pakiet pracy."
+
+policy:
+  allow_implicit_invocation: true
