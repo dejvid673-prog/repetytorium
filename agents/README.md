@@ -1,54 +1,28 @@
 # Agenci projektu
 
-Status: plan 0.1 — definicje wykonawcze nie zostały jeszcze utworzone.
+Status: system planowany 0.2.
 
-## Agent 0 — koordynator
+Każdy agent ma osobny katalog i plik `AGENT.md`. Rejestr kanoniczny znajduje się w `registries/agents.yaml`.
 
-Rejestruje zadania, kontroluje kompletność, statusy, kolejność etapów, raporty błędów i bramy zatwierdzenia. Nie tworzy samodzielnie treści ani nie publikuje.
+## Grupy
 
-## Agent 1 — analityk badań i architekt wiedzy
+- **Zarządzanie:** A00–A01.
+- **Wiedza i badania:** A10–A24.
+- **Planowanie i redakcja:** A30–A32.
+- **Kontrola merytoryczna:** A40–A41.
+- **UX i interfejs:** A50–A51.
+- **Grafika:** A60–A61.
+- **PrestaShop i publikacja:** A70–A72.
+- **Jakość i analityka:** A80–A85.
+- **Utrzymanie i współpraca:** A90–A95.
 
-Czyta badanie, buduje mapę tematów, rozpoznaje luki i duplikaty, dzieli materiał na artykuły, przypisuje źródła i przygotowuje konspekty.
+Wąskie role nie oznaczają uruchamiania wszystkich agentów naraz. A00 wybiera tylko role potrzebne w aktualnej fazie.
 
-## Agent 2 — redaktor merytoryczny i internetowy
+## Reguły
 
-Przekształca zatwierdzone pakiety w czytelne artykuły. Nie dopisuje brakujących faktów. Przygotowuje metadane, linki i briefy dla grafik.
-
-## Agent 3 — integrator PrestaShop
-
-Waliduje pakiet publikacyjny, przygotowuje podgląd, integruje treść z modułem i wykonuje zatwierdzoną publikację. Nie zmienia znaczenia materiału.
-
-## Agent 4 — projektant i programista interfejsu
-
-Buduje system komponentów, strony kategorii, artykułu, wyszukiwarki i nawigacji. Nie jest uruchamiany dla każdej publikacji, jeżeli istniejące komponenty są wystarczające.
-
-## Agent 5 — grafik interfejsu i treści
-
-Tworzy lub dobiera legalne grafiki, ikony i miniatury. Prowadzi informacje o licencji i pochodzeniu. Współpracuje z redaktorem i projektantem interfejsu.
-
-## Kontrola merytoryczna
-
-Sprawdza zgodność ze źródłami, jednostki, bezpieczeństwo, sprzeczności i zakres pewności. Początkowo może być workflow kontrolnym; później osobnym agentem.
-
-## Kontrola publikacyjna
-
-Sprawdza kompletność, linki, grafiki, SEO, responsywność, dostępność i zgodność podglądu. Początkowo może być workflow kontrolnym; później osobnym agentem.
-
-## Wymagania przyszłej definicji agenta
-
-Każdy agent musi otrzymać:
-
-- cel;
-- zakres;
-- zakazy;
-- format wejściowy;
-- format wyjściowy;
-- dostępne narzędzia i skille;
-- kroki działania;
-- obsługę braków i błędów;
-- kryteria akceptacji;
-- testy;
-- format raportu;
-- zasady eskalacji do człowieka.
-
-Nie należy tworzyć agenta, jeśli zadanie jest jednorazowe albo nie ma stabilnego kontraktu wejścia i wyjścia.
+- zadania przydziela A00;
+- A01 kontroluje Context Gate;
+- agent nie przejmuje odpowiedzialności innego agenta;
+- autor nie zatwierdza samodzielnie materiału wysokiego ryzyka;
+- przekazanie pracy zawiera wersję, status i nierozwiązane problemy;
+- nowy agent wymaga kontraktu, rejestru, testów i analizy wpływu.
