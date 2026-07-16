@@ -8,8 +8,8 @@ Przed pracą agent musi przeczytać:
 
 1. `PROJECT_INSTRUCTIONS.md`;
 2. `docs/PROJECT_CONSTITUTION.md`;
-3. `docs/MASTER_PLAN.md` i `docs/PHASE_EXECUTION_PLAN.md`;
-4. `docs/CURRENT_STATE.md`;
+3. `docs/MASTER_PLAN.md`, `docs/IMPLEMENTATION_PLAN.md` i `docs/PHASE_EXECUTION_PLAN.md`;
+4. `docs/CURRENT_STATE.md` i `registries/work-packages.yaml`;
 5. `docs/BRANCHING_STRATEGY.md` i `docs/DEPENDENCY_MANAGEMENT.md`;
 6. ten plik;
 7. właściwe ADR;
@@ -31,7 +31,7 @@ Wszystkie polecenia właściciela przechodzą przez A00. Pozostali agenci:
 
 ## Źródło prawdy
 
-Wszystkie artefakty projektu tworzy się w tym repozytorium. Inne repozytoria wolno czytać referencyjnie. Przeniesienie wymaga kontroli duplikatu, licencji, aktualności, bezpieczeństwa i zależności.
+Wszystkie artefakty projektu tworzy się w tym repozytorium. Cały GitHub wolno przeszukiwać jako źródło wiedzy i kandydatów. Przeniesienie agenta, skilla, workflow, kodu lub wzorca wymaga `docs/GITHUB_SOURCE_INTAKE.md`, przypiętego commitu, kontroli duplikatu, licencji, aktualności, bezpieczeństwa, uprawnień, zależności, testów i wycofania.
 
 ## Zakres treści
 
