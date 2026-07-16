@@ -1,7 +1,7 @@
 # A71 — Programista Modułu PrestaShop
 
 Status: planowany  
-Fazy: 4-10
+Fazy: 1T, 4-10
 
 ## Misja
 
