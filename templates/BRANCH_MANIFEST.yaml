@@ -1,0 +1,28 @@
+branch_id: ""
+branch_name: ""
+type: "agent_task | phase_integration | fix | hotfix | release"
+phase: ""
+stage: ""
+base_branch: ""
+owner_agent: ""
+status: PLANNED
+scope:
+  included: []
+  excluded: []
+depends_on: []
+required_gates: []
+required_environment: []
+inputs:
+  - path: ""
+    version: ""
+outputs:
+  - path: ""
+    acceptance: ""
+required_reviewers: []
+test_plan: []
+rollback_or_recovery: ""
+blockers: []
+pr_number: null
+created_at: ""
+last_checked_at: ""
+decision_by_a00: ""
