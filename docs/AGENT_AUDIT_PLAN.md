@@ -1,7 +1,8 @@
 # Plan audytu i dopuszczania agentów
 
 Status: audyt wymagany przed pracą wykonawczą  
-Zakres: 27 kontraktów z `registries/agents.yaml`
+Zakres: 27 kontraktów z `registries/agents.yaml`  
+Przydział audytorów i kolejność fal: `docs/AGENT_AUDIT_MATRIX.md`
 
 ## Cel
 
