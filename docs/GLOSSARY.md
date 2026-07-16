@@ -1,0 +1,22 @@
+# Słownik projektu
+
+- **Agent** — wyspecjalizowana rola wykonująca powtarzalny proces według własnego kontraktu.
+- **A00** — Kierownik Projektu i jedyna brama przyjmująca polecenia właściciela.
+- **Skill** — wielokrotnego użytku instrukcja wykonania konkretnej klasy zadań; nie jest agentem.
+- **Workflow** — kolejność kroków i przekazań między rolami.
+- **Prompt zadaniowy** — instrukcja pojedynczego wykonania, podrzędna wobec zasad projektu.
+- **Badanie źródłowe** — dostarczony materiał wejściowy zachowany bez modyfikacji.
+- **Pakiet dowodowy** — twierdzenia, źródła, sprzeczności, poziom pewności i ograniczenia.
+- **Twierdzenie** — pojedyncza weryfikowalna informacja wykorzystana w treści.
+- **Artykuł** — redakcyjna prezentacja wybranego zakresu wiedzy.
+- **Weryfikacja redakcyjna** — kontrola struktury, języka i zgodności z materiałem.
+- **Weryfikacja merytoryczna** — kontrola faktów przez rolę posiadającą wymagany zakres kompetencji.
+- **Widoczność** — techniczny stan włączony/wyłączony, niezależny od jakości.
+- **Korekta** — udokumentowana zmiana opublikowanego materiału.
+- **Przypadek czytelnika** — moderowany i zanonimizowany opis rzeczywistego problemu.
+- **Źródło prawdy** — repozytorium GitHub.
+- **Context Gate** — obowiązkowa kontrola znajomości kontekstu przed pracą.
+- **ADR** — trwały zapis decyzji architektonicznej.
+- **Wniosek o zmianę** — propozycja modyfikująca zatwierdzony plan albo zakres.
+- **Artefakt** — plik, kod, dane, grafika, raport lub inny trwały wynik pracy.
+- **Wysokie ryzyko** — treść dotycząca m.in. chemii, toksyczności, dawkowania, chorób, leczenia, prawa albo bezpieczeństwa.
