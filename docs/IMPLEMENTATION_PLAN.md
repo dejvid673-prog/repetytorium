@@ -49,7 +49,7 @@ To jest pierwszy wykonywany obszar. Pozostałe role nie są aktywowane przed pow
 
 6. **0A.6 Audyt A00**
    - A01: zgodność z kontekstem i planem;
-   - A80: wykonalność procedur, formatów i narzędzi;
+   - A02: wykonalność procedur, formatów i narzędzi;
    - właściciel: granice decyzyjne.
    - Wyjście: raport w `reports/agent-audits/A00/`.
 
