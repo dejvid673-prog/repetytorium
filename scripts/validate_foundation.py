@@ -51,6 +51,15 @@ for path in ROOT.rglob("*.json"):
     except Exception as exc:
         fail(f"invalid JSON {path.relative_to(ROOT)}: {exc}")
 
+for registry in [
+    "registries/agents.yaml",
+    "registries/work-packages.yaml",
+    "registries/phase-gates.yaml",
+    "registries/branches.yaml",
+]:
+    if not re.search(r"^state_revision: [0-9]+$", read(registry), re.MULTILINE):
+        fail(f"registry missing state_revision: {registry}")
+
 for path in list(ROOT.rglob("*.yaml")) + list(ROOT.rglob("*.yml")):
     text = path.read_text(encoding="utf-8")
     if "\t" in text:
