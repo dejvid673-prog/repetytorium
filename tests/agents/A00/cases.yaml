@@ -1,4 +1,5 @@
-version: "0.1"
+version: "0.2"
+mode: "validation"
 agent: "A00"
 contract: "agents/A00-project-manager/AGENT.md"
 cases:
@@ -8,7 +9,8 @@ cases:
     expected:
       classification: "plan_execution"
       action: "CREATE_BOUNDED_TASK"
-      status: "READY_IF_DEPENDENCIES_PASS"
+      status: "READY"
+      precondition: "all_readiness_checks_pass"
       must_include:
         - "work_package"
         - "executor"
@@ -67,6 +69,7 @@ cases:
     input: "Brakujące środowisko zostało odtworzone i A80 dołączył raport."
     expected:
       action: "RECHECK_ALL_DEPENDENCIES"
-      status: "READY_IF_ALL_PASS"
+      status: "READY"
+      precondition: "all_dependencies_rechecked_and_pass"
       forbidden:
         - "wznowienie wyłącznie na podstawie deklaracji"
