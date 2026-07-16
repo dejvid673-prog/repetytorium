@@ -1,11 +1,13 @@
-version: "0.3"
+version: "0.4"
 context_version: "0.2"
 audit_policy:
   required_before_execution: true
   plan: "docs/AGENT_AUDIT_PLAN.md"
   report_template: "templates/AGENT_AUDIT_REPORT.md"
-  admission_owner: A00
-  current_state: "contracts_exist_but_no_agent_is_active"
+  default_admission_owner: A00
+  assurance_roles_admission_owner: OWNER
+  bootstrap_procedure: "docs/BOOTSTRAP_GOVERNANCE.md"
+  current_state: "contracts_exist_but_no_agent_is_fully_active"
 agents:
   - id: A00
     name: "Koordynator i Kierownik Projektu"
@@ -25,6 +27,15 @@ agents:
     status: audit_pending
     phases: "all"
     receives_tasks_from: A00
+    last_audit: null
+  - id: A02
+    name: "Audytor Workflow, Skilli i Schematów"
+    path: "agents/A02-workflow-schema-auditor/AGENT.md"
+    contract_version: "0.1"
+    status: audit_pending
+    phases: "0,1K,1T,10"
+    receives_tasks_from: "OWNER_OR_A00"
+    activation_scope: null
     last_audit: null
   - id: A10
     name: "Kurator Przyjęcia Badań"
@@ -142,14 +153,14 @@ agents:
     name: "Architekt Modułu PrestaShop"
     path: "agents/A70-prestashop-module-architect/AGENT.md"
     status: audit_pending
-    phases: "4+"
+    phases: "1T,4+"
     receives_tasks_from: A00
     last_audit: null
   - id: A71
     name: "Programista Modułu PrestaShop"
     path: "agents/A71-prestashop-implementer/AGENT.md"
     status: audit_pending
-    phases: "4-10"
+    phases: "1T,4-10"
     receives_tasks_from: A00
     last_audit: null
   - id: A72
@@ -163,7 +174,7 @@ agents:
     name: "Audytor Techniczny"
     path: "agents/A80-technical-qa/AGENT.md"
     status: audit_pending
-    phases: "4-10"
+    phases: "1T,4-10"
     receives_tasks_from: A00
     last_audit: null
   - id: A81
@@ -191,7 +202,7 @@ agents:
     name: "Opiekun Aktualności i Korekt"
     path: "agents/A90-content-maintenance-corrections/AGENT.md"
     status: audit_pending
-    phases: "10+"
+    phases: "7,10+"
     receives_tasks_from: A00
     last_audit: null
   - id: A95
