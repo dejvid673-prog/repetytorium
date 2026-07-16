@@ -1,6 +1,6 @@
 task_id: "TASK-1001"
 title: "Przygotowanie słownika terminów"
-context_version: "0.2"
+context_version: "0.3"
 phase: "1K"
 work_package: "WP-1001"
 classification: "plan_execution"
@@ -11,6 +11,7 @@ executor_agents:
 reviewer_agents:
   - "A40"
   - "A82"
+separation_of_duties_confirmed: true
 scope:
   included:
     - "terminy polskie, potoczne i naukowe"
@@ -46,7 +47,10 @@ blockers:
     reason: "Brama G0 niezamknięta"
     owner: "A00"
     unblock_evidence: "raport G0 ze statusem PASSED"
-owner_decision: null
+decision_ids: []
 branch: null
 pr_number: null
 evidence_paths: []
+created_at: "2026-07-16T12:00:00Z"
+updated_at: "2026-07-16T12:00:00Z"
+cancel_reason: null
