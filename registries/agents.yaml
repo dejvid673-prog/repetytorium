@@ -8,11 +8,16 @@ audit_policy:
   current_state: "contracts_exist_but_no_agent_is_active"
 agents:
   - id: A00
-    name: "Kierownik Projektu"
+    name: "Koordynator i Kierownik Projektu"
     path: "agents/A00-project-manager/AGENT.md"
+    contract_version: "0.2"
     status: audit_pending
     phases: "all"
-    receives_tasks_from: A00
+    receives_tasks_from: OWNER
+    skill: "skills/coordinate-repetytorium/SKILL.md"
+    workflow: "workflows/project-control.yaml"
+    tests: "tests/agents/A00/cases.yaml"
+    activation_depends_on: "WP-0007"
     last_audit: null
   - id: A01
     name: "Audytor Kontekstu i Ładu"
