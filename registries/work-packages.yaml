@@ -1,5 +1,5 @@
-version: "0.3"
-state_revision: 4
+version: "0.4"
+state_revision: 5
 owner: "A00"
 status_values:
   - PLANNED
@@ -85,9 +85,10 @@ work_packages:
     output: "reports/agent-audits/"
   - id: "WP-0011"
     phase: "0C"
-    name: "Schematy przekazań agentów"
-    owner_agent: "A01"
-    status: "READY"
+    name: "Pozyskanie i adaptacja schematów przekazań agentów"
+    owner_agent: "A00"
+    status: "BLOCKED"
+    blocker: "DISC-001 oraz przypisanie właściwego wykonawcy nie są zakończone"
     depends_on: ["WP-0010"]
     output: "schemas/"
   - id: "WP-0012"

@@ -1,0 +1,51 @@
+control_id: "CTRL-0003"
+context_version: "0.3"
+mode: "live"
+trigger_type: "owner_command"
+goal: "Utworzyć odczytowy backlog poszukiwań GitHub dla pobocznych zadań Codexa i zatrzymać przedwczesne WP-0011."
+classification: "change_request"
+priority: "P1"
+facts:
+  - "Właściciel zezwolił Codexowi na odczyt repozytorium i zabronił ingerencji w jego budowę."
+  - "Właściciel chce przekazywać A00 surowe wyniki pobocznych poszukiwań."
+  - "WP-0011 ma właściciela A01, którego dopuszczenie nie obejmuje tworzenia schematów."
+inferences:
+  - "Poszukiwania zewnętrzne mogą ograniczyć dublowanie istniejących rozwiązań i koszt własnego projektowania."
+  - "WP-0011 wymaga ponownej analizy gotowości po dostarczeniu DISC-001."
+protected_decisions:
+  - "ADR-0001"
+  - "ADR-0002"
+  - "ADR-0003"
+  - "ADR-0004"
+  - "ADR-0006"
+  - "OWNER-0001"
+  - "OWNER-0002"
+affected_objects:
+  - "external component discovery"
+  - "Codex read-only tasks"
+  - "WP-0011"
+  - "docs/GITHUB_SOURCE_INTAKE.md"
+  - "registries/work-packages.yaml"
+  - "registries/decisions.yaml"
+  - "docs/CURRENT_STATE.md"
+authority_check: "owner_decision_required"
+decision: "update_state"
+mutations:
+  - path: "registries/work-packages.yaml"
+    from_revision: 4
+    to_revision: 5
+    summary: "WP-0011 cofnięto z READY do BLOCKED do czasu DISC-001 i ustalenia wykonawcy."
+  - path: "registries/decisions.yaml"
+    from_revision: 1
+    to_revision: 2
+    summary: "Dodano OWNER-0003 i obowiązkowe poszukiwanie zewnętrzne przed istotną budową własną."
+evidence_paths:
+  - "docs/CODEX_READ_ONLY_RESEARCH_BACKLOG.md"
+  - "docs/decisions/owner-0003-read-only-codex-discovery.md"
+blockers:
+  - "WP-0011: oczekuje na DISC-001 i ponowne przypisanie wykonawcy"
+next_safe_step: "Uruchomić poboczne zadanie DISC-001 w Codexie działającym wyłącznie odczytowo."
+owner_decision_required: false
+supersedes_control_id: null
+created_at: "2026-07-16T21:00:00Z"
+

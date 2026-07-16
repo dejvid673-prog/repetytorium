@@ -1,7 +1,7 @@
 version: "0.3"
 project: "Repetytorium Staw Expert"
 repository: "dejvid673-prog/repetytorium"
-status: "control_roles_conditionally_admitted"
+status: "read_only_external_discovery"
 active_phase: "0C"
 active_branch: "agent/repository-foundation"
 source_of_truth:
@@ -23,6 +23,7 @@ accepted_decisions:
   - "ADR-0006"
   - "OWNER-0001"
   - "OWNER-0002"
+  - "OWNER-0003"
 proposed_decisions:
   - "ADR-0005"
 activation:
@@ -32,6 +33,12 @@ activation:
   assurance_roles_scope: "bounded_audits_only"
   assurance_roles_decision: "OWNER-0002"
   bootstrap_status: "closed_after_A00_admission"
+external_discovery:
+  required_before_significant_custom_build: true
+  codex_repository_access: "read_only"
+  codex_mutations_allowed: false
+  backlog: "docs/CODEX_READ_ONLY_RESEARCH_BACKLOG.md"
+  decision: "OWNER-0003"
 owner_direction:
   scope_confirmed: true
   production_publication_requires_new_approval: true

@@ -34,6 +34,8 @@ required_files = [
     "templates/A00_CONTROL_RECORD.yaml",
     "docs/decisions/owner-0001-a00-conditional-admission.md",
     "docs/decisions/owner-0002-a01-a02-conditional-admission.md",
+    "docs/decisions/owner-0003-read-only-codex-discovery.md",
+    "docs/CODEX_READ_ONLY_RESEARCH_BACKLOG.md",
     "agents/A01-context-governance-auditor/AGENT.md",
     "agents/A02-workflow-schema-auditor/AGENT.md",
     "tests/agents/A01/cases.yaml",
@@ -43,6 +45,7 @@ required_files = [
     "reports/tests/A01/2026-07-16-validation-results-v0.2.yaml",
     "reports/tests/A02/2026-07-16-validation-results-v0.2.yaml",
     "reports/control/CTRL-0002-a01-a02-admission.yaml",
+    "reports/control/CTRL-0003-read-only-codex-discovery.yaml",
     "registries/agents.yaml",
     "registries/work-packages.yaml",
     "registries/phase-gates.yaml",
@@ -223,6 +226,9 @@ for expected in [
     'A02: "pass_conditional"',
     'assurance_roles_decision: "OWNER-0002"',
     'bootstrap_status: "closed_after_A00_admission"',
+    'decision: "OWNER-0003"',
+    'codex_repository_access: "read_only"',
+    'codex_mutations_allowed: false',
 ]:
     if expected not in context:
         fail(f"context manifest missing {expected}")
@@ -240,17 +246,32 @@ for expected in [
 for wp_id in ["WP-0001", "WP-0002", "WP-0003", "WP-0004", "WP-0005", "WP-0006", "WP-0007", "WP-0010"]:
     if work_packages.get(wp_id, {}).get("status") != "COMPLETED":
         fail(f"{wp_id} must be COMPLETED after A01/A02 admission")
-if work_packages.get("WP-0011", {}).get("status") != "READY":
-    fail("WP-0011 must be READY after A01/A02 admission")
+if work_packages.get("WP-0011", {}).get("status") != "BLOCKED":
+    fail("WP-0011 must remain BLOCKED until DISC-001 and executor assignment are complete")
 
 decisions = read("registries/decisions.yaml")
-if 'id: "OWNER-0002"' not in decisions:
-    fail("decision registry missing OWNER-0002")
+for decision_id in ["OWNER-0002", "OWNER-0003"]:
+    if f'id: "{decision_id}"' not in decisions:
+        fail(f"decision registry missing {decision_id}")
 
 current_state = read("docs/CURRENT_STATE.md")
-for expected in ["Wersja stanu: 5", "A01 i A02", "WP-0011: `READY`"]:
+for expected in ["Wersja stanu: 6", "Codex poboczny", "WP-0011: `BLOCKED`", "DISC-001"]:
     if expected not in current_state:
         fail(f"current state missing {expected}")
+
+research_backlog = read("docs/CODEX_READ_ONLY_RESEARCH_BACKLOG.md")
+for expected in [
+    "tryb tylko do odczytu",
+    "Codex nie może:",
+    "DISC-001",
+    "DISC-005",
+    "DISC-012",
+    "nie wykonano żadnej zmiany w repozytorium",
+]:
+    if expected not in research_backlog:
+        fail(f"Codex research backlog missing invariant: {expected}")
+if len(re.findall(r"^### DISC-[0-9]{3} ", research_backlog, re.MULTILINE)) != 15:
+    fail("Codex research backlog must define 15 primary DISC tasks")
 
 print(f"agents={len(agents)} work_packages={len(work_packages)} gates={len(gates)}")
 for warning in warnings:

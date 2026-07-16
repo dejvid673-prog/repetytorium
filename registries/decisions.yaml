@@ -1,5 +1,5 @@
-version: "0.2"
-state_revision: 1
+version: "0.3"
+state_revision: 2
 owner: "OWNER"
 status_values:
   - proposed
@@ -30,5 +30,8 @@ decisions:
     status: accepted
   - id: "OWNER-0002"
     path: "docs/decisions/owner-0002-a01-a02-conditional-admission.md"
+    status: accepted
+  - id: "OWNER-0003"
+    path: "docs/decisions/owner-0003-read-only-codex-discovery.md"
     status: accepted
 last_reviewed: "2026-07-16"

@@ -1,10 +1,10 @@
 # Aktualny stan projektu
 
 Ostatnia aktualizacja: 2026-07-16  
-Wersja stanu: 5  
+Wersja stanu: 6  
 Kontekst: 0.3  
-Faza: 0C — role kontrolne dopuszczone warunkowo  
-Stan: A00, A01 i A02 mają ograniczone `pass_conditional`; G0A zamknięta pozytywnie
+Faza: 0C — zewnętrzne poszukiwanie przed dalszą budową agentów  
+Stan: A00, A01 i A02 mają ograniczone `pass_conditional`; Codex poboczny działa wyłącznie odczytowo
 
 ## A00
 
@@ -14,7 +14,7 @@ Stan: A00, A01 i A02 mają ograniczone `pass_conditional`; G0A zamknięta pozyty
 - testy: 15/15 PASS;
 - raport: `reports/agent-audits/A00/2026-07-16-utility-reaudit-v0.4.md`.
 
-A00 może prowadzić triage, zależności, priorytety, rejestry, pakiety, audyty, przyjmowanie materiałów, karty zadań i naprawę spójności stanu. Nie może zmieniać zakresu, wykonywać pracy specjalistycznej, scalać do `main`, publikować ani wdrażać.
+A00 koordynuje poszukiwania, porządkuje surowe wyniki, usuwa duplikaty i stosuje procedurę przyjęcia zewnętrznego komponentu. Nie może uznać kandydata za przyjętego bez wymaganych dowodów, audytu i decyzji.
 
 ## A01 i A02
 
@@ -23,27 +23,28 @@ A00 może prowadzić triage, zależności, priorytety, rejestry, pakiety, audyty
 - decyzja: OWNER-0002;
 - testy A01: 6/6 PASS;
 - testy A02: 6/6 PASS;
-- zakres: wyłącznie klasy audytu jawnie wpisane w kontraktach i rejestrze;
 - ograniczenie: testy syntetyczne wykonano w jednej głównej sesji, bez niezależnych sesji krzyżowych.
 
-A01 może audytować kontekst, ład, hierarchię instrukcji, Context Gate i spójność stanu. A02 może audytować workflow, skille, schematy, szablony, fixture i twierdzenia o walidacji. Żaden z nich nie może naprawiać badanego elementu w tym samym zadaniu ani samodzielnie aktywować agentów.
+A01 audytuje kontekst, ład i zakres. A02 audytuje workflow, skille, schematy i testy. Żaden z nich nie jest zatwierdzonym twórcą schematów WP-0011.
 
-## Naprawa spójności
+## Codex poboczny — tryb read-only
 
-Przed dopuszczeniem naprawiono `STATE_DIVERGENCE`:
+Decyzja OWNER-0003 ustanawia Codexa jako pomocniczego wykonawcę poszukiwań GitHub:
 
-- wersję A00 w rejestrze zsynchronizowano do 0.4;
-- WP-0001–WP-0007 mają spójny status `COMPLETED`;
-- kanoniczny rejestr decyzji otrzymał `state_revision`;
-- wygasły zakres bootstrap A01/A02 zastąpiono decyzją OWNER-0002.
+- może czytać to repozytorium i publiczny GitHub;
+- nie może zmieniać plików, gałęzi, commitów, PR, issue ani rejestrów;
+- dostarcza użytkownikowi surowe dane i dowody;
+- A00 wykonuje integrację wyników z projektem;
+- backlog: `docs/CODEX_READ_ONLY_RESEARCH_BACKLOG.md`.
 
-Dowód: `reports/audits/2026-07-16-state-divergence-repair-a01-a02.md`.
+Poszukiwanie jest wymagane przed istotnym tworzeniem lub przebudową własnego agenta, skilla, workflow albo mechanizmu agentowego. Nie dotyczy każdej drobnej czynności.
 
 ## Pakiety i bramy
 
 - WP-0001–WP-0007: `COMPLETED`;
-- WP-0010: `COMPLETED` — pełny audyt A01/A02;
-- WP-0011: `READY` — schematy przekazań agentów;
+- WP-0010: `COMPLETED`;
+- WP-0011: `BLOCKED` — oczekuje na DISC-001 i ustalenie właściwego wykonawcy;
+- WP-0012: `BLOCKED`;
 - G0A: `PASSED`;
 - G0B: `UNDER_REVIEW`;
 - G0: `OPEN`;
@@ -54,9 +55,10 @@ Dowód: `reports/audits/2026-07-16-state-divergence-repair-a01-a02.md`.
 - ADR-0005 — strategia gałęzi i bram;
 - licencja przed publicznym współtworzeniem;
 - A01/A02 wymagają niezależnego audytu krzyżowego przed statusem `active`;
-- workflow A00 pozostaje deklaratywny (`runtime_implemented: false`).
+- workflow A00 pozostaje deklaratywny (`runtime_implemented: false`);
+- zewnętrzne rozwiązania nie eliminują audytu licencji, bezpieczeństwa, integracji i rollbacku.
 
 ## Następny bezpieczny krok
 
-Rozpocząć WP-0011: przygotować walidowalne schematy przekazań agentów. Nie uruchamiać jeszcze produkcji treści, implementacji modułu ani Fazy 1K/1T.
+Uruchomić `DISC-001 — Protokoły handoff, checkpoint i resume` w pobocznym Codexie z dostępem wyłącznie do odczytu. Po dostarczeniu surowych kandydatów A00 przeprowadzi deduplikację, ocenę i ponowny test gotowości WP-0011.
 
