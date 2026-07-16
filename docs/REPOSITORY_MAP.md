@@ -11,12 +11,18 @@ repetytorium/
 ├── docs/
 │   ├── PROJECT_CONSTITUTION.md
 │   ├── MASTER_PLAN.md
+│   ├── PHASE_EXECUTION_PLAN.md
+│   ├── BRANCHING_STRATEGY.md
+│   ├── DEPENDENCY_MANAGEMENT.md
+│   ├── ENVIRONMENT_READINESS.md
+│   ├── AGENT_AUDIT_PLAN.md
 │   ├── CURRENT_STATE.md
 │   ├── ROADMAP.md
 │   ├── GLOSSARY.md
 │   ├── AGENT_SYSTEM.md
 │   └── decisions/
 ├── registries/
+├── templates/
 ├── agents/
 ├── skills/
 ├── workflows/
@@ -36,7 +42,8 @@ repetytorium/
 ## Lokalizacja odpowiedzialności
 
 - plan i zasady: root oraz `docs/`;
-- kanoniczne wykazy: `registries/`;
+- kanoniczne wykazy agentów, gałęzi i bram: `registries/`;
+- raporty wzorcowe i manifesty: `templates/`;
 - role: `agents/`;
 - procedury wielokrotnego użytku: `skills/`;
 - przekazania: `workflows/`;
