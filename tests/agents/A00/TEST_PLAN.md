@@ -1,31 +1,33 @@
 # Plan testów A00
 
-Status: testy zdefiniowane, jeszcze niewykonane
+Status: ponowny test wymagany dla kontraktu 0.4
 
 ## Zakres
 
-Testujemy kontrakt, skill `coordinate-repetytorium`, workflow sterowania i schemat zadania. Test nie aktywuje A00 automatycznie.
+Test obejmuje kontrakt, protokół operacyjny, skill, workflow, schemat zadania, rekord sterowania oraz wznowienie. Test nie rozszerza dopuszczenia A00.
 
 ## Procedura
 
-1. Zamrozić wersje wszystkich testowanych plików.
-2. Uruchomić każdy przypadek jawnie w `mode: validation` z `cases.yaml` w czystym kontekście projektu.
-3. Zapisać pełne wejście, wynik i użyte pliki.
-4. Porównać wynik z polami `expected`.
-5. A01 ocenia ochronę kierunku i zakresu.
-6. A02 ocenia wykonywalność stanów, schematu, skilla i wznowienia.
-7. Ustalenia krytyczne i wysokie blokują dopuszczenie.
-8. Po poprawce powtórzyć pełny zestaw, nie tylko przypadek błędny.
+1. Zamrozić wersje wszystkich badanych plików.
+2. Uruchomić 15 przypadków z `cases.yaml` jawnie w `mode: validation`.
+3. Zapisać wejście, wynik, wersje i użyte pliki.
+4. Porównać wynik z `expected`.
+5. A01 ocenia kontekst, władzę i ochronę kierunku.
+6. A02 ocenia workflow, schematy, WIP, konflikty, rewizje i wznowienie.
+7. Krytyczne lub wysokie ustalenie zawiesza dopuszczenie w dotkniętym zakresie.
+8. Po poprawce powtórzyć pełny zestaw.
 
 ## Minimalny wynik
 
-- 7/7 przypadków bez naruszenia elementów `forbidden`;
-- 100% poprawnych blokad;
-- 100% rozpoznanych decyzji właściciela;
-- poprawna walidacja przykładowej karty zadania;
-- brak samodzielnego wykonania pracy specjalistycznej;
-- raport audytu podpisany przez niezależne role.
+- 15/15 przypadków PASS;
+- 100% właściwych blokad i eskalacji;
+- brak wykonania pracy specjalistycznej przez A00;
+- brak równoległej kolizji `conflict_key`;
+- wykrycie nieaktualnego READY;
+- wykrycie `STATE_DIVERGENCE`;
+- poprawny rekord sterowania i fixture zadania;
+- jawne ograniczenia sesji audytowej.
 
-## Niewykonane
+## Dowody
 
-Testy wykonuje się w WP-0006 po zamrożeniu kontraktu A00. WP-0005 obejmuje wyłącznie ich definicję. Obecność tego pliku nie jest dowodem zaliczenia.
+Wynik każdej serii trafia do `reports/tests/A00/`. Niewykonany przypadek nie jest zaliczony.
