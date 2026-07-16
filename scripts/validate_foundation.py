@@ -146,7 +146,10 @@ if "runtime_implemented: false" not in workflow:
     fail("declarative workflow must disclose missing runtime")
 
 cases = read("tests/agents/A00/cases.yaml")
-case_count = len(re.findall(r'^  - id: "A00-T[0-9]+"
+case_count = len(re.findall(r'^  - id: "A00-T[0-9]+"$', cases, re.MULTILINE))
+if case_count != 15:
+    fail(f"expected 15 A00 test cases, found {case_count}")
+if "READY_IF_" in cases:
     fail("A00 tests use non-canonical conditional statuses")
 if 'mode: "validation"' not in cases:
     fail("A00 tests do not declare validation mode")
