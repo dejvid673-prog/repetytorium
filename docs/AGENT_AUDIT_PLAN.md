@@ -1,7 +1,7 @@
 # Plan audytu i dopuszczania agentów
 
 Status: audyt wymagany przed pracą wykonawczą  
-Zakres: 27 kontraktów z `registries/agents.yaml`  
+Zakres: 28 kontraktów z `registries/agents.yaml`  
 Przydział audytorów i kolejność fal: `docs/AGENT_AUDIT_MATRIX.md`
 
 ## Cel
@@ -46,6 +46,7 @@ Audytorzy oceniają tylko własne obszary i nie zatwierdzają sami siebie.
 | Audytor | Kontroluje |
 |---|---|
 | A01 | znajomość kontekstu, hierarchię instrukcji, zakres, przekazania i rozdział ról |
+| A02 | wykonalność workflow, skilli, schematów, szablonów i testów agentów |
 | A40 | metody źródłowe agentów A20–A24, A30–A32 i kryteria dowodów |
 | A41 | bezpieczeństwo treści, prawo, prywatność, zgody i komunikację ryzyka |
 | A61 | metody pozyskiwania, tworzenia, licencjonowania i atrybucji grafik |
@@ -53,7 +54,7 @@ Audytorzy oceniają tylko własne obszary i nie zatwierdzają sami siebie.
 | A81 | odpowiedzialności UX/UI i implementacji wobec WCAG 2.2 AA |
 | A82 | odpowiedzialności taksonomii, treści, UX i modułu wobec SEO oraz wyszukiwania |
 
-A00 agreguje wyniki. Właściciel rozstrzyga zmiany wpływające na zakres, liczbę głównych ról albo architekturę.
+Po aktywacji A00 agreguje wyniki. W bootstrapie robi to właściciel lub wskazany koordynator bez prawa do samodopuszczenia. Właściciel rozstrzyga zmiany wpływające na zakres, liczbę głównych ról albo architekturę.
 
 ## Faza C — Macierz nakładania kompetencji
 
@@ -113,7 +114,7 @@ Ponowny audyt jest wymagany po zmianie kontraktu, narzędzi, modelu danych, isto
 
 Nie aktywujemy wszystkich agentów naraz.
 
-1. A00 i A01 — sterowanie, kontekst, rejestry.
+1. A01 i A02 w trybie bootstrap, następnie A00 — sterowanie, kontekst, workflow i rejestry.
 2. A11, A40, A41, A80 — architektura wiedzy i kontrola.
 3. A10, A20–A24, A30–A32 — badania i treść pilotażowa.
 4. A50, A51, A60, A61, A81 — UX i grafika.
@@ -127,7 +128,7 @@ Dopuszczenie dotyczy konkretnej wersji kontraktu i klasy zadań, a nie nieograni
 
 Brama G0 może zostać zamknięta pozytywnie, gdy:
 
-- wszystkie role potrzebne w Fazie 1 mają status co najmniej `pass_conditional`;
+- wszystkie role potrzebne w Fazie 1K i 1T mają status co najmniej `pass_conditional`;
 - pozostałe role są `audit_pending` z zaplanowanym terminem albo świadomie nieaktywne;
 - nie ma krytycznego dublowania odpowiedzialności;
 - audytor nie zatwierdza własnej pracy;
