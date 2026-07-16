@@ -13,15 +13,23 @@ agents:
     name: "Koordynator i Kierownik Projektu"
     path: "agents/A00-project-manager/AGENT.md"
     contract_version: "0.3"
-    status: audit_pending
+    status: pass_conditional
     phases: "all"
     receives_tasks_from: OWNER
+    activation_scope:
+      - "project_triage"
+      - "dependency_and_priority_control"
+      - "work_package_and_registry_control"
+      - "agent_audit_coordination"
+      - "source_material_intake"
+      - "task_and_control_record_preparation"
+      - "state_consistency_repair"
     skill: "skills/coordinate-repetytorium/SKILL.md"
     workflow: "workflows/project-control.yaml"
     tests: "tests/agents/A00/cases.yaml"
     activation_depends_on: "WP-0007"
-    activation_scope: null
     last_audit: "reports/agent-audits/A00/2026-07-16-reaudit.md"
+    admission_decision: "OWNER-0001"
   - id: A01
     name: "Audytor Kontekstu i Ładu"
     path: "agents/A01-context-governance-auditor/AGENT.md"
