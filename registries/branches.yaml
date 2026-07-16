@@ -1,0 +1,197 @@
+version: "0.1"
+state_revision: 1
+owner: "A00"
+status_values:
+  - PLANNED
+  - BLOCKED
+  - READY
+  - ACTIVE
+  - REVIEW
+  - CHANGES_REQUIRED
+  - ACCEPTED
+  - MERGED
+  - CANCELLED
+branches:
+  - id: BR-000
+    name: "main"
+    type: stable
+    phase: "all"
+    base: null
+    owner_agent: A00
+    depends_on: []
+    produces: "zatwierdzone źródło prawdy i wydania"
+    status: ACTIVE
+    gate: null
+    pr: null
+  - id: BR-001
+    name: "agent/repository-foundation"
+    type: legacy_foundation
+    phase: "0"
+    base: "main"
+    owner_agent: A00
+    depends_on: []
+    produces: "fundament repozytorium i plan wykonawczy"
+    required_by:
+      - BR-010
+      - BR-011
+    status: REVIEW
+    gate: G0
+    pr: 1
+  - id: BR-010
+    name: "phase/01-knowledge-foundation"
+    type: phase_integration
+    phase: "1K"
+    base: "main"
+    owner_agent: A00
+    depends_on:
+      - BR-001
+      - G0
+    produces: "zatwierdzone schematy i model wiedzy"
+    required_by:
+      - BR-020
+      - BR-030
+      - BR-040
+    status: BLOCKED
+    blocker: "G0 niezamknięta"
+    gate: G1K
+    pr: null
+  - id: BR-011
+    name: "phase/01t-technical-environment"
+    type: phase_integration
+    phase: "1T"
+    base: "main"
+    owner_agent: A00
+    depends_on:
+      - BR-001
+      - G0
+    produces: "powtarzalne środowiska DEV i TEST"
+    required_by:
+      - BR-040
+      - BR-070
+    status: BLOCKED
+    blocker: "G0 niezamknięta"
+    gate: G1T
+    pr: null
+  - id: BR-020
+    name: "phase/02-content-pipeline"
+    type: phase_integration
+    phase: "2"
+    base: "main"
+    owner_agent: A00
+    depends_on:
+      - G1K
+    produces: "zweryfikowany workflow i pakiety pilotażowe"
+    required_by:
+      - BR-030
+      - BR-050
+      - BR-060
+    status: BLOCKED
+    gate: G2
+    pr: null
+  - id: BR-030
+    name: "phase/03-ux-design-system"
+    type: phase_integration
+    phase: "3"
+    base: "main"
+    owner_agent: A00
+    depends_on:
+      - G1K
+      - "punkt 2.9 dla minimum trzech typów artykułu"
+    produces: "zatwierdzone makiety i system projektowy"
+    required_by:
+      - BR-050
+    status: BLOCKED
+    gate: G3
+    pr: null
+  - id: BR-040
+    name: "phase/04-prestashop-core"
+    type: phase_integration
+    phase: "4"
+    base: "main"
+    owner_agent: A00
+    depends_on:
+      - G1K
+      - G1T
+    produces: "bezpieczny rdzeń modułu i importer"
+    required_by:
+      - BR-050
+    status: BLOCKED
+    gate: G4
+    pr: null
+  - id: BR-050
+    name: "phase/05-frontoffice-search"
+    type: phase_integration
+    phase: "5"
+    base: "main"
+    owner_agent: A00
+    depends_on:
+      - G2
+      - G3
+      - G4
+    produces: "Front Office, wyszukiwarka i SEO"
+    required_by:
+      - BR-060
+      - BR-070
+    status: BLOCKED
+    gate: G5
+    pr: null
+  - id: BR-060
+    name: "phase/06-launch-library"
+    type: phase_integration
+    phase: "6"
+    base: "main"
+    owner_agent: A00
+    depends_on:
+      - G2
+      - G5
+    produces: "biblioteka startowa"
+    required_by:
+      - BR-080
+    status: BLOCKED
+    gate: G6
+    pr: null
+  - id: BR-070
+    name: "phase/07-feedback-analytics"
+    type: phase_integration
+    phase: "7"
+    base: "main"
+    owner_agent: A00
+    depends_on:
+      - G1K
+      - G1T
+      - G5
+    produces: "kontakt, korekty i analityka"
+    required_by:
+      - BR-080
+    status: BLOCKED
+    gate: G7
+    pr: null
+  - id: BR-080
+    name: "phase/08-release-qualification"
+    type: phase_integration
+    phase: "8"
+    base: "main"
+    owner_agent: A00
+    depends_on:
+      - G6
+      - G7
+    produces: "kandydatka wydania po pełnym QA"
+    required_by:
+      - BR-090
+    status: BLOCKED
+    gate: G8
+    pr: null
+  - id: BR-090
+    name: "release/<wersja>"
+    type: release
+    phase: "9"
+    base: "main"
+    owner_agent: A00
+    depends_on:
+      - G8
+      - OWNER_LAUNCH_APPROVAL
+    produces: "wdrożone wydanie"
+    status: BLOCKED
+    gate: G9
+    pr: null
+last_reviewed: "2026-07-16"

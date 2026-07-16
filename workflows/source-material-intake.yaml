@@ -1,0 +1,66 @@
+version: "0.1"
+id: "WF-SOURCE-MATERIAL-INTAKE"
+owner: "A00"
+preflight_owner: "OWNER"
+public_repository: true
+preflight_before_upload:
+  - "confirm no secrets"
+  - "confirm no personal or customer data"
+  - "confirm redistribution rights"
+  - "confirm public repository awareness"
+states:
+  - PREFLIGHT
+  - RECEIVED
+  - TRIAGE
+  - DECISION_REQUIRED
+  - ACCEPTED_REFERENCE
+  - ROUTED
+  - REJECTED
+transitions:
+  - from: PREFLIGHT
+    to: RECEIVED
+    actor: OWNER
+    requires:
+      - "valid metadata"
+      - "rights basis"
+      - "public repository acknowledged"
+      - "contains_personal_data is false"
+      - "contains_secrets is false"
+  - from: RECEIVED
+    to: TRIAGE
+    actor: A00
+    requires:
+      - "registry entry"
+      - "duplicate check"
+      - "context conflict check"
+  - from: TRIAGE
+    to: DECISION_REQUIRED
+    actor: A00
+    when: "scope, architecture or binding instruction may change"
+  - from: DECISION_REQUIRED
+    to: ACCEPTED_REFERENCE
+    actor: OWNER
+    requires:
+      - "decision id"
+  - from: TRIAGE
+    to: ACCEPTED_REFERENCE
+    actor: A00
+    when: "reference only and no binding conflict"
+  - from: ACCEPTED_REFERENCE
+    to: ROUTED
+    actor: A00
+    requires:
+      - "target work package"
+      - "admitted target agent"
+  - from: PREFLIGHT
+    to: REJECTED
+    actor: OWNER
+    when: "privacy, secrets or rights check fails"
+  - from: TRIAGE
+    to: REJECTED
+    actor: A00
+    when: "duplicate, unusable or unlawful material"
+rules:
+  raw_email_and_customer_files: "never_store"
+  unredacted_photos: "never_store"
+  upload_does_not_change_plan: true

@@ -1,0 +1,22 @@
+# Uzupełniona kopia musi przejść schemas/source-material-intake.schema.json.
+source_id: "MAT-0000"
+path: "source-materials/"
+title: ""
+type: "other"
+origin: ""
+provided_at: ""
+replaces: []
+owner_intent: ""
+rights_basis: "owner_created"
+license_or_permission_reference: null
+public_repository_acknowledged: true
+contains_personal_data: false
+contains_secrets: false
+status: "received"
+classification: null
+affected_phases: []
+affected_work_packages: []
+conflicts: []
+decision_required: false
+routed_to_agents: []
+notes: ""

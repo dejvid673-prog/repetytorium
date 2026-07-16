@@ -1,0 +1,60 @@
+version: "0.1"
+policy: "docs/GITHUB_SOURCE_INTAKE.md"
+status_values:
+  - discovered
+  - shortlisted
+  - audit_pending
+  - rejected
+  - reference_only
+  - approved_for_adaptation
+  - approved_dependency
+candidates:
+  - id: "SRC-001"
+    repository: "github/awesome-copilot"
+    url: "https://github.com/github/awesome-copilot"
+    reference: "main"
+    pinned_commit: null
+    type: "catalog"
+    license_observed: "MIT"
+    status: "reference_only"
+    useful_patterns:
+      - "oddzielenie agentów, instrukcji, skilli i workflow"
+      - "katalog zasobów"
+      - "jawne zalecenie inspekcji przed instalacją"
+    adopted_files: []
+    approval: null
+    note: "społecznościowa kolekcja; każdy element wymaga osobnego audytu"
+  - id: "SRC-002"
+    repository: "openai/openai-agents-python"
+    url: "https://github.com/openai/openai-agents-python"
+    reference: "main"
+    pinned_commit: null
+    type: "framework_reference"
+    license_observed: "MIT"
+    status: "reference_only"
+    useful_patterns:
+      - "guardrails"
+      - "handoffs"
+      - "human in the loop"
+      - "tracing"
+    adopted_files: []
+    approval: null
+    note: "framework nie został wybrany jako zależność projektu"
+  - id: "SRC-003"
+    repository: "microsoft/agent-framework"
+    url: "https://github.com/microsoft/agent-framework"
+    reference: "main"
+    pinned_commit: null
+    type: "framework_reference"
+    license_observed: "MIT"
+    status: "reference_only"
+    useful_patterns:
+      - "workflow sekwencyjny i równoległy"
+      - "handoff"
+      - "checkpointing i wznowienie"
+      - "obserwowalność"
+      - "deklaratywne definicje agentów"
+    adopted_files: []
+    approval: null
+    note: "framework nie został wybrany jako zależność projektu"
+last_reviewed: "2026-07-16"

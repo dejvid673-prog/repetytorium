@@ -1,0 +1,45 @@
+project:
+  id: staw-expert-repetytorium
+  name: "Repetytorium Staw Expert"
+  repository: "dejvid673-prog/repetytorium"
+  context_version: "0.3"
+  status: planning
+  language_primary: pl
+  platform: "PrestaShop 9"
+  source_of_truth: github
+  owner_role: human_owner
+  project_manager_agent: A00
+  project_manager_activation: audit_pending
+  bootstrap_owner: human_owner
+
+scope:
+  home_ponds: true
+  hobby_ponds: true
+  production_aquaculture: false
+  product_advertising: false
+  calculators: false
+  pond_user_profile: false
+  emergency_mode: false
+  public_forum_initially: false
+  future_curated_cases: true
+  email_submissions: true
+
+publication:
+  guest_reading: true
+  account_required: false
+  human_approval_required: true
+  automatic_production_publish: false
+  visibility_independent_from_verification: true
+
+quality:
+  accessibility_target: "WCAG 2.2 AA"
+  require_sources: true
+  require_independent_review_for_high_risk_content: true
+  disclose_ai_assistance: true
+
+governance:
+  all_commands_through_project_manager: true
+  before_a00_activation_use_bootstrap: true
+  agent_context_gate_required: true
+  architectural_changes_require_adr: true
+  project_artifacts_only_in_this_repository: true

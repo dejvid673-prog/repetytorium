@@ -1,0 +1,47 @@
+version: "0.3"
+project: "Repetytorium Staw Expert"
+repository: "dejvid673-prog/repetytorium"
+status: "read_only_external_discovery"
+active_phase: "0C"
+active_branch: "agent/repository-foundation"
+source_of_truth:
+  decisions: "registries/decisions.yaml"
+  agents: "registries/agents.yaml"
+  work_packages: "registries/work-packages.yaml"
+  gates: "registries/phase-gates.yaml"
+  branches: "registries/branches.yaml"
+binding_documents:
+  - "PROJECT_INSTRUCTIONS.md"
+  - "docs/PROJECT_CONSTITUTION.md"
+  - "docs/PROJECT_CHARTER.md"
+  - "docs/MASTER_PLAN.md"
+accepted_decisions:
+  - "ADR-0001"
+  - "ADR-0002"
+  - "ADR-0003"
+  - "ADR-0004"
+  - "ADR-0006"
+  - "OWNER-0001"
+  - "OWNER-0002"
+  - "OWNER-0003"
+proposed_decisions:
+  - "ADR-0005"
+activation:
+  A00: "pass_conditional"
+  A01: "pass_conditional"
+  A02: "pass_conditional"
+  assurance_roles_scope: "bounded_audits_only"
+  assurance_roles_decision: "OWNER-0002"
+  bootstrap_status: "closed_after_A00_admission"
+external_discovery:
+  required_before_significant_custom_build: true
+  codex_repository_access: "read_only"
+  codex_mutations_allowed: false
+  backlog: "docs/CODEX_READ_ONLY_RESEARCH_BACKLOG.md"
+  decision: "OWNER-0003"
+owner_direction:
+  scope_confirmed: true
+  production_publication_requires_new_approval: true
+  phase_gate_approval_required: true
+last_updated: "2026-07-16"
+

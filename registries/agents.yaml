@@ -1,0 +1,242 @@
+version: "0.5"
+context_version: "0.3"
+state_revision: 6
+audit_policy:
+  required_before_execution: true
+  plan: "docs/AGENT_AUDIT_PLAN.md"
+  report_template: "templates/AGENT_AUDIT_REPORT.md"
+  default_admission_owner: A00
+  assurance_roles_admission_owner: OWNER
+  bootstrap_procedure: "docs/BOOTSTRAP_GOVERNANCE.md"
+  current_state: "A00_A01_A02_conditionally_admitted"
+agents:
+  - id: A00
+    name: "Koordynator i Kierownik Projektu"
+    path: "agents/A00-project-manager/AGENT.md"
+    contract_version: "0.4"
+    status: pass_conditional
+    phases: "all"
+    receives_tasks_from: OWNER
+    activation_scope:
+      - "project_triage"
+      - "dependency_and_priority_control"
+      - "work_package_and_registry_control"
+      - "agent_audit_coordination"
+      - "source_material_intake"
+      - "task_and_control_record_preparation"
+      - "state_consistency_repair"
+    skill: "skills/coordinate-repetytorium/SKILL.md"
+    workflow: "workflows/project-control.yaml"
+    tests: "tests/agents/A00/cases.yaml"
+    activation_depends_on: "WP-0007"
+    last_audit: "reports/agent-audits/A00/2026-07-16-utility-reaudit-v0.4.md"
+    admission_decision: "OWNER-0001"
+  - id: A01
+    name: "Audytor Kontekstu i Ładu"
+    path: "agents/A01-context-governance-auditor/AGENT.md"
+    contract_version: "0.2"
+    status: pass_conditional
+    phases: "all"
+    receives_tasks_from: A00
+    activation_scope:
+      - "agent_context_and_governance_audit"
+      - "task_context_gate_review"
+      - "instruction_conflict_analysis"
+      - "change_request_governance_review"
+      - "state_consistency_governance_review"
+    tests: "tests/agents/A01/cases.yaml"
+    activation_depends_on: "WP-0010"
+    last_audit: "reports/agent-audits/A01/2026-07-16-full-audit-v0.2.md"
+    admission_decision: "OWNER-0002"
+  - id: A02
+    name: "Audytor Workflow, Skilli i Schematów"
+    path: "agents/A02-workflow-schema-auditor/AGENT.md"
+    contract_version: "0.2"
+    status: pass_conditional
+    phases: "0,1K,1T,10"
+    receives_tasks_from: A00
+    activation_scope:
+      - "agent_workflow_and_test_audit"
+      - "workflow_state_machine_audit"
+      - "schema_template_fixture_audit"
+      - "skill_permission_and_invocation_audit"
+      - "validation_claim_audit"
+    tests: "tests/agents/A02/cases.yaml"
+    activation_depends_on: "WP-0010"
+    last_audit: "reports/agent-audits/A02/2026-07-16-full-audit-v0.2.md"
+    admission_decision: "OWNER-0002"
+  - id: A10
+    name: "Kurator Przyjęcia Badań"
+    path: "agents/A10-research-intake-curator/AGENT.md"
+    status: audit_pending
+    phases: "1-2"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A11
+    name: "Architekt Taksonomii i Wiedzy"
+    path: "agents/A11-knowledge-taxonomy-architect/AGENT.md"
+    status: audit_pending
+    phases: "1+"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A20
+    name: "Badacz Chemii Wody"
+    path: "agents/A20-water-chemistry-researcher/AGENT.md"
+    status: audit_pending
+    phases: "1-2,6,10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A21
+    name: "Badacz Ekologii i Techniki Stawowej"
+    path: "agents/A21-pond-ecology-technology-researcher/AGENT.md"
+    status: audit_pending
+    phases: "1-2,6,10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A22
+    name: "Badacz Gatunków Ryb Słodkowodnych"
+    path: "agents/A22-freshwater-fish-species-researcher/AGENT.md"
+    status: audit_pending
+    phases: "1-2,6,10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A23
+    name: "Badacz Zdrowia i Chorób Ryb"
+    path: "agents/A23-fish-health-researcher/AGENT.md"
+    status: audit_pending
+    phases: "1-2,6,10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A24
+    name: "Badacz Prawa i Regulacji"
+    path: "agents/A24-regulatory-researcher/AGENT.md"
+    status: audit_pending
+    phases: "1+,7,10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A30
+    name: "Planista Portfela Artykułów"
+    path: "agents/A30-article-portfolio-planner/AGENT.md"
+    status: audit_pending
+    phases: "1-2,6"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A31
+    name: "Redaktor Treści"
+    path: "agents/A31-content-editor/AGENT.md"
+    status: audit_pending
+    phases: "2,6,10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A32
+    name: "Redaktor Prezentacji Treści"
+    path: "agents/A32-content-presentation-editor/AGENT.md"
+    status: audit_pending
+    phases: "2-3,6"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A40
+    name: "Audytor Źródeł i Dowodów"
+    path: "agents/A40-evidence-auditor/AGENT.md"
+    status: audit_pending
+    phases: "2,6,10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A41
+    name: "Audytor Bezpieczeństwa i Zgodności"
+    path: "agents/A41-safety-compliance-reviewer/AGENT.md"
+    status: audit_pending
+    phases: "2,6-10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A50
+    name: "Architekt Informacji i UX"
+    path: "agents/A50-information-ux-architect/AGENT.md"
+    status: audit_pending
+    phases: "3,5,8,10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A51
+    name: "Projektant Makiet i Prototypów UI"
+    path: "agents/A51-ui-prototype-designer/AGENT.md"
+    status: audit_pending
+    phases: "3,8,10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A60
+    name: "Projektant Zasobów Wizualnych"
+    path: "agents/A60-visual-asset-designer/AGENT.md"
+    status: audit_pending
+    phases: "3,6,10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A61
+    name: "Audytor Praw i Poprawności Grafik"
+    path: "agents/A61-visual-rights-auditor/AGENT.md"
+    status: audit_pending
+    phases: "3,6,8,10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A70
+    name: "Architekt Modułu PrestaShop"
+    path: "agents/A70-prestashop-module-architect/AGENT.md"
+    status: audit_pending
+    phases: "1T,4+"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A71
+    name: "Programista Modułu PrestaShop"
+    path: "agents/A71-prestashop-implementer/AGENT.md"
+    status: audit_pending
+    phases: "1T,4-10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A72
+    name: "Integrator i Publikator Treści"
+    path: "agents/A72-content-import-publisher/AGENT.md"
+    status: audit_pending
+    phases: "4-10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A80
+    name: "Audytor Techniczny"
+    path: "agents/A80-technical-qa/AGENT.md"
+    status: audit_pending
+    phases: "1T,4-10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A81
+    name: "Audytor Dostępności"
+    path: "agents/A81-accessibility-qa/AGENT.md"
+    status: audit_pending
+    phases: "3-10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A82
+    name: "Audytor SEO i Wyszukiwarki"
+    path: "agents/A82-seo-search-qa/AGENT.md"
+    status: audit_pending
+    phases: "5-10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A85
+    name: "Projektant Analityki"
+    path: "agents/A85-analytics-engineer/AGENT.md"
+    status: audit_pending
+    phases: "7-10"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A90
+    name: "Opiekun Aktualności i Korekt"
+    path: "agents/A90-content-maintenance-corrections/AGENT.md"
+    status: audit_pending
+    phases: "7,10+"
+    receives_tasks_from: A00
+    last_audit: null
+  - id: A95
+    name: "Kurator Przypadków Czytelników"
+    path: "agents/A95-reader-case-curator/AGENT.md"
+    status: audit_pending
+    phases: "11"
+    receives_tasks_from: A00
+    last_audit: null

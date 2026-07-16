@@ -1,0 +1,162 @@
+version: "0.3"
+id: "WF-PROJECT-CONTROL"
+name: "Sterowanie projektem przez A00"
+owner: "A00"
+specification_type: "declarative_state_machine"
+runtime_implemented: false
+control_record_schema: "schemas/a00-control-record.schema.json"
+operating_protocol: "agents/A00-project-manager/OPERATING_PROTOCOL.md"
+triggers:
+  - owner_command
+  - owner_question
+  - source_material
+  - agent_result
+  - blocker
+  - gate_request
+  - resume
+  - state_repair
+modes:
+  validation:
+    actor: "OWNER_OR_AUDITOR"
+    mutations_allowed: ["audit_report", "test_result"]
+  live:
+    actor: "A00"
+    requires:
+      - "A00 status is pass_conditional or active"
+      - "requested class is inside activation_scope"
+invariants:
+  - "facts separated from inferences"
+  - "one active task per executor by default"
+  - "one active task per conflict_key"
+  - "executor is not the only reviewer"
+  - "READY is revalidated after any relevant change"
+  - "state mutations are revisioned and atomic"
+  - "missing specialist never expands A00 role"
+  - "new owner command does not silently discard active work"
+priority_order: [P0, P1, P2, P3]
+commitment_horizon:
+  committed: "active gate, its required work packages and direct unblockers"
+  forecast: "later packages"
+states:
+  - INTAKE
+  - CLASSIFIED
+  - IMPACT_REVIEW
+  - DECISION_REQUIRED
+  - BLOCKED
+  - READY
+  - ACTIVE
+  - REVIEW
+  - CHANGES_REQUIRED
+  - ACCEPTED
+  - MERGED
+  - CLOSED
+  - CANCELLED
+transitions:
+  - from: INTAKE
+    to: CLASSIFIED
+    actor: A00
+    requires: ["goal_recorded", "trigger_relation_recorded", "facts_recorded", "classification_selected", "priority_selected", "protected_decisions_identified"]
+  - from: CLASSIFIED
+    to: IMPACT_REVIEW
+    actor: A00
+    requires: ["authority_checked", "affected_objects_recorded", "risks_recorded", "dependencies_recorded", "commitment_horizon_checked"]
+  - from: IMPACT_REVIEW
+    to: DECISION_REQUIRED
+    actor: A00
+    when: "owner_authority_required"
+  - from: DECISION_REQUIRED
+    to: IMPACT_REVIEW
+    actor: OWNER
+    requires: ["decision_id", "decision_recorded"]
+  - from: IMPACT_REVIEW
+    to: BLOCKED
+    actor: A00
+    when: "dependency, admission, conflict, WIP, freshness, environment or approval missing"
+  - from: BLOCKED
+    to: IMPACT_REVIEW
+    actor: A00
+    requires: ["all_blockers_rechecked", "unblock_evidence_recorded", "input_fingerprint_rechecked"]
+  - from: IMPACT_REVIEW
+    to: READY
+    actor: A00
+    requires: ["work_package_exists", "gates_ready", "environment_ready", "inputs_versioned", "agents_admitted", "reviewers_independent", "wip_available", "conflict_keys_available", "criteria_and_tests_defined"]
+  - from: READY
+    to: IMPACT_REVIEW
+    actor: A00
+    when: "context, input, decision or priority changed"
+  - from: READY
+    to: BLOCKED
+    actor: A00
+    when: "readiness_invalidated"
+  - from: READY
+    to: ACTIVE
+    actor: A00
+    requires: ["valid_task_brief", "registered_branch", "draft_pr", "atomic_state_update_prepared"]
+  - from: ACTIVE
+    to: IMPACT_REVIEW
+    actor: A00
+    when: "owner command changes active work"
+  - from: ACTIVE
+    to: BLOCKED
+    actor: A00
+    when: "new blocker, agent unavailability or state divergence detected"
+  - from: ACTIVE
+    to: REVIEW
+    actor: EXECUTOR
+    requires: ["outputs_complete", "executor_report", "test_evidence", "input_fingerprint_unchanged"]
+  - from: REVIEW
+    to: CHANGES_REQUIRED
+    actor: REVIEWER
+    when: "criterion or audit failed"
+  - from: CHANGES_REQUIRED
+    to: ACTIVE
+    actor: A00
+    requires: ["correction_assigned_to_proper_executor", "conflict_keys_rechecked"]
+  - from: REVIEW
+    to: ACCEPTED
+    actor: AUTHORIZED_ACCEPTOR
+    requires: ["criteria_passed", "required_audits_positive", "residual_risks_accepted", "evidence_paths_recorded"]
+  - from: ACCEPTED
+    to: MERGED
+    actor: AUTHORIZED_MERGER
+    requires: ["merge_approval_recorded"]
+  - from: MERGED
+    to: CLOSED
+    actor: A00
+    requires: ["atomic_state_update_complete", "registries_consistent", "current_state_updated", "control_record_saved", "next_step_recorded"]
+  - from: INTAKE
+    to: CANCELLED
+    actor: A00
+    requires: ["cancellation_reason"]
+  - from: DECISION_REQUIRED
+    to: CANCELLED
+    actor: OWNER
+    requires: ["decision_id", "cancellation_reason"]
+  - from: BLOCKED
+    to: CANCELLED
+    actor: AUTHORIZED_ACCEPTOR
+    requires: ["cancellation_reason"]
+  - from: READY
+    to: CANCELLED
+    actor: A00
+    requires: ["cancellation_reason"]
+  - from: ACTIVE
+    to: CANCELLED
+    actor: AUTHORIZED_ACCEPTOR
+    requires: ["partial_results_preserved", "recovery_or_cleanup_evidence", "cancellation_reason"]
+resume:
+  key: "task_id"
+  requires: ["last_state", "state_revision", "input_fingerprint", "blockers", "evidence", "active_conflict_keys", "full_readiness_recheck"]
+state_repair:
+  blocker: "STATE_DIVERGENCE"
+  action: "block dependent work, compare canonical sources, restore atomic state, record evidence"
+error_handling:
+  instruction_conflict: "BLOCKED_AND_ESCALATE"
+  missing_input: "BLOCKED"
+  scope_change: "DECISION_REQUIRED"
+  missing_evidence: "CHANGES_REQUIRED"
+  missing_agent: "BLOCKED"
+  stale_ready: "IMPACT_REVIEW"
+  conflicting_work: "BLOCKED"
+  partial_state_update: "BLOCKED_STATE_DIVERGENCE"
+  unsafe_external_component: "BLOCKED"

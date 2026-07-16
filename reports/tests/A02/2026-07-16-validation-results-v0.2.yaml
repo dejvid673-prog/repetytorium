@@ -1,0 +1,25 @@
+test_run_id: "A02-VAL-2026-07-16-01"
+agent: "A02"
+contract_version: "0.2"
+mode: "validation"
+context_version: "0.3"
+evaluated_by: "primary Codex project session using A01 governance lens and owner/static-review"
+independent_agent_sessions_used: false
+evaluation_method: "manual deterministic comparison of each synthetic case with the frozen contract"
+summary:
+  passed: 6
+  failed: 0
+  not_run: 0
+  forbidden_actions_observed: 0
+cases:
+  - {id: "A02-T01", result: "PASS", evidence: "complete Context Gate required"}
+  - {id: "A02-T02", result: "PASS", evidence: "schema-template-fixture validation separated from edits"}
+  - {id: "A02-T03", result: "PASS", evidence: "mismatch causes CHANGES_REQUIRED"}
+  - {id: "A02-T04", result: "PASS", evidence: "executor-only-reviewer conflict blocks handoff"}
+  - {id: "A02-T05", result: "PASS", evidence: "resume requires full dependency and fingerprint recheck"}
+  - {id: "A02-T06", result: "PASS", evidence: "false runtime claim rejected"}
+limitations:
+  - "No separate independent A01 agent session was used."
+  - "The tests verify the written contract on synthetic inputs; no autonomous agent runtime exists."
+  - "This evidence supports bounded pass_conditional, not unrestricted active status."
+

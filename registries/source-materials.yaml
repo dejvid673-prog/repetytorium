@@ -1,0 +1,11 @@
+version: "0.1"
+owner: "A00"
+status_values:
+  - received
+  - triage
+  - accepted_reference
+  - decision_required
+  - routed
+  - rejected
+materials: []
+last_reviewed: "2026-07-16"

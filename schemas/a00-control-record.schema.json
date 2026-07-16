@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/dejvid673-prog/repetytorium/schemas/a00-control-record.schema.json",
+  "title": "A00 control record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "control_id",
+    "context_version",
+    "mode",
+    "trigger_type",
+    "goal",
+    "classification",
+    "priority",
+    "facts",
+    "inferences",
+    "protected_decisions",
+    "affected_objects",
+    "authority_check",
+    "decision",
+    "mutations",
+    "evidence_paths",
+    "blockers",
+    "next_safe_step",
+    "owner_decision_required",
+    "created_at"
+  ],
+  "properties": {
+    "control_id": {
+      "type": "string",
+      "pattern": "^CTRL-[0-9]{4,}$"
+    },
+    "context_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "mode": {
+      "enum": [
+        "validation",
+        "live"
+      ]
+    },
+    "trigger_type": {
+      "enum": [
+        "owner_command",
+        "owner_question",
+        "source_material",
+        "agent_result",
+        "blocker",
+        "gate_request",
+        "resume",
+        "state_repair"
+      ]
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 5
+    },
+    "classification": {
+      "enum": [
+        "plan_execution",
+        "clarification",
+        "reference_material",
+        "change_request",
+        "out_of_scope"
+      ]
+    },
+    "priority": {
+      "enum": [
+        "P0",
+        "P1",
+        "P2",
+        "P3"
+      ]
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "inferences": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "protected_decisions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "affected_objects": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "authority_check": {
+      "enum": [
+        "within_scope",
+        "owner_decision_required",
+        "blocked_by_admission",
+        "blocked_by_dependency"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "answer_only",
+        "prepare_task",
+        "update_state",
+        "block",
+        "request_owner_decision",
+        "cancel",
+        "repair_state",
+        "no_action"
+      ]
+    },
+    "mutations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "from_revision",
+          "to_revision",
+          "summary"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "from_revision": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "to_revision": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "summary": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "evidence_paths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "next_safe_step": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner_decision_required": {
+      "type": "boolean"
+    },
+    "supersedes_control_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
