@@ -1,62 +1,54 @@
 # Aktualny stan projektu
 
 Ostatnia aktualizacja: 2026-07-16  
+Wersja stanu: 4  
 Kontekst: 0.3  
-Faza: 0A — ponowny audyt koordynatora  
-Stan: poprawki po audycie wdrożone; A00 oczekuje na decyzję właściciela
+Faza: 0C — przygotowanie pełnych audytów ról kontrolnych  
+Stan: A00 dopuszczony warunkowo; G0A zamknięta pozytywnie
 
-## Wykonane poprawki
+## A00
 
-- usunięto zależność kołową audytu przez ograniczony bootstrap;
-- utworzono A02 do audytu workflow, skilli i schematów;
-- A80 pozostawiono jako technicznego QA PrestaShop;
-- dodano kanoniczny `PROJECT_CONTEXT.yaml` i rejestr decyzji;
-- dodano bezpieczny `mode: validation` A00;
-- wyłączono implicit invocation skilla A00;
-- uzupełniono aktorów, blokady, anulowanie i wznowienie workflow;
-- wzmocniono schemat i szablon zadania;
-- ujednolicono fazy agentów i właścicieli pakietów;
-- rozdzielono tworzenie od audytu w pakietach wysokiego ryzyka;
-- dodano schema i workflow przyjmowania materiałów publicznych;
-- dodano instrukcję bezpiecznego `research/inbox/`;
-- dodano repozytoryjny walidator i GitHub Actions bez zewnętrznych akcji.
+- kontrakt: 0.4;
+- status: `pass_conditional`;
+- decyzja: OWNER-0001;
+- testy: 15/15 PASS;
+- GitHub Actions: 29502504632 — SUCCESS;
+- raport: `reports/agent-audits/A00/2026-07-16-utility-reaudit-v0.4.md`.
 
-## Wyniki walidacji
+A00 może prowadzić triage, zależności, priorytety, rejestry, pakiety, audyty, przyjmowanie materiałów, karty zadań i naprawę spójności stanu. Nie może zmieniać zakresu, wykonywać pracy specjalistycznej, scalać do `main`, publikować ani wdrażać.
 
-GitHub Actions run 29500960174: SUCCESS.
+## Mechanizmy operacyjne A00
 
-- 28 agentów;
-- 69 pakietów pracy;
-- 13 bram;
-- 13 kanonicznych stanów workflow;
-- brak właściciela pakietu poza zakresem faz;
-- poprawne schematy JSON;
-- 7/7 scenariuszy A00 PASS w `mode: validation`.
+- priorytety P0–P3;
+- committed i forecast;
+- limity WIP;
+- `conflict_keys`;
+- adaptacyjne ładowanie kontekstu;
+- odciski wejść i rewizje stanu;
+- ponowna kontrola starego READY;
+- atomowe aktualizacje rejestrów;
+- blokada `STATE_DIVERGENCE`;
+- rekord sterowania dla cyklu zmieniającego stan.
 
-Raport: `reports/audits/2026-07-16-foundation-reaudit.md`.
-
-## Status agentów
-
-- A01: `pass_conditional`, wyłącznie `bootstrap_audit`;
-- A02: `pass_conditional`, wyłącznie `bootstrap_audit`;
-- A00: `audit_pending`, raport rekomenduje `pass_conditional`;
-- pozostałe role: `audit_pending`.
+Pierwszy rekord: `reports/control/CTRL-0001-a00-admission.yaml`.
 
 ## Pakiety i bramy
 
-- WP-0001–WP-0005: REVIEW;
-- WP-0006: REVIEW — raport czeka na decyzję właściciela;
-- WP-0007: BLOCKED do decyzji właściciela;
-- G0A: UNDER_REVIEW;
+- WP-0001–WP-0007: zakończona budowa, audyt i dopuszczenie A00;
+- G0A: PASSED;
 - G0B: UNDER_REVIEW;
-- G0 i wszystkie fazy wykonawcze: zablokowane.
+- G0: OPEN, ale zależne od pełnego dopuszczenia ról Fazy 1K i 1T;
+- fazy wykonawcze pozostają zablokowane.
 
-## Otwarte decyzje właściciela
+## Role kontrolne
 
-1. Nadać albo odmówić A00 `pass_conditional` w zakresie wskazanym w raporcie.
-2. Zatwierdzić albo odrzucić ADR-0005 dotyczący gałęzi i bram.
-3. Wybrać licencję przed publicznym współtworzeniem.
+Dopuszczenia A01 i A02 ograniczone do bootstrapu wygasły jako ścieżka przydzielania pracy. Ich raporty pozostają dowodem historycznym. Przed zwykłymi audytami kolejnych agentów należy przeprowadzić pełny audyt A01 i A02 oraz nadać im nowy zakres.
 
-## Najbliższy krok
+## Otwarte decyzje
 
-Decyzja właściciela dotycząca A00. Do tego czasu A00 nie steruje żywymi zadaniami, a draft PR #1 nie jest gotowy do scalenia.
+- ADR-0005 — strategia gałęzi i bram;
+- licencja przed publicznym współtworzeniem.
+
+## Następny bezpieczny krok
+
+A00 przygotowuje pakiety pełnego audytu A01 i A02. Do ich dopuszczenia nie uruchamia audytu kolejnej fali ani prac Fazy 1K/1T.
