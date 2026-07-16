@@ -20,23 +20,25 @@ agents:
     workflow: "workflows/project-control.yaml"
     tests: "tests/agents/A00/cases.yaml"
     activation_depends_on: "WP-0007"
-    last_audit: null
+    activation_scope: null
+    last_audit: "reports/agent-audits/A00/2026-07-16-reaudit.md"
   - id: A01
     name: "Audytor Kontekstu i Ładu"
     path: "agents/A01-context-governance-auditor/AGENT.md"
-    status: audit_pending
+    status: pass_conditional
     phases: "all"
-    receives_tasks_from: A00
-    last_audit: null
+    receives_tasks_from: "OWNER_OR_A00"
+    activation_scope: ["bootstrap_audit"]
+    last_audit: "reports/agent-audits/A01/2026-07-16-bootstrap-audit.md"
   - id: A02
     name: "Audytor Workflow, Skilli i Schematów"
     path: "agents/A02-workflow-schema-auditor/AGENT.md"
     contract_version: "0.1"
-    status: audit_pending
+    status: pass_conditional
     phases: "0,1K,1T,10"
     receives_tasks_from: "OWNER_OR_A00"
-    activation_scope: null
-    last_audit: null
+    activation_scope: ["bootstrap_audit"]
+    last_audit: "reports/agent-audits/A02/2026-07-16-bootstrap-audit.md"
   - id: A10
     name: "Kurator Przyjęcia Badań"
     path: "agents/A10-research-intake-curator/AGENT.md"
