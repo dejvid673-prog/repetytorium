@@ -46,13 +46,13 @@ Nowa informacja jest wejściem do analizy, nie automatycznym poleceniem przebudo
 
 | Pakiet | Rezultat | Status początkowy |
 |---|---|---|
-| WP-0001 | poprawiony kontrakt A00 | w realizacji |
-| WP-0002 | schema i szablon zadania | planowany |
-| WP-0003 | skill koordynacyjny | planowany |
-| WP-0004 | workflow sterowania | planowany |
-| WP-0005 | testy zachowania A00 | planowany |
-| WP-0006 | niezależny audyt A00 | zablokowany |
-| WP-0007 | dopuszczenie warunkowe | zablokowany |
+| WP-0001 | poprawiony kontrakt A00 | REVIEW |
+| WP-0002 | schema i szablon zadania | REVIEW |
+| WP-0003 | skill koordynacyjny | REVIEW |
+| WP-0004 | workflow sterowania | REVIEW |
+| WP-0005 | testy zachowania A00 | REVIEW |
+| WP-0006 | niezależny audyt A00 | BLOCKED do dopuszczenia bootstrap A01/A02 |
+| WP-0007 | dopuszczenie warunkowe | BLOCKED |
 
 ## Audyt A00
 
@@ -63,7 +63,7 @@ A01 sprawdza:
 - prawidłowe rozpoznawanie decyzji właściciela;
 - aktualizację stanu i ADR.
 
-A80 sprawdza:
+A02 sprawdza:
 
 - czy workflow można wykonać;
 - czy statusy są jednoznaczne;
