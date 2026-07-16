@@ -27,7 +27,7 @@ Plan zależności, gałęzi i bram jest przygotowany. Pierwszy agent — A00 Koo
 
 ## Model zarządzania
 
-Właściciel kieruje polecenia do A00 — Kierownika Projektu. A00 kontroluje zakres, plan i zależności, a następnie przekazuje zadania wyspecjalizowanym agentom. Każdy agent ma osobny kontrakt w `agents/<id>/AGENT.md`.
+Właściciel kieruje polecenia do A00 — Koordynatora i Kierownika Projektu. Po pozytywnym audycie A00 będzie kontrolował zakres, plan i zależności, a następnie przekazywał zadania wyspecjalizowanym agentom. Każdy agent ma osobny kontrakt w `agents/<id>/AGENT.md`.
 
 ## Zakres
 
