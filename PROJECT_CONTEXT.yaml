@@ -21,13 +21,15 @@ accepted_decisions:
   - "ADR-0003"
   - "ADR-0004"
   - "ADR-0006"
+  - "OWNER-0001"
 proposed_decisions:
   - "ADR-0005"
 activation:
-  A00: "audit_pending"
+  A00: "pass_conditional"
   bootstrap_auditors: ["A01", "A02"]
   bootstrap_auditor_status: "pass_conditional"
   bootstrap_scope: "bootstrap_audit_only"
+  bootstrap_status: "closed_after_A00_admission"
 owner_direction:
   scope_confirmed: true
   production_publication_requires_new_approval: true
