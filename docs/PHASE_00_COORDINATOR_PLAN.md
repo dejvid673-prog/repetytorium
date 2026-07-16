@@ -1,7 +1,7 @@
 # Faza 0A — Budowa i dopuszczenie koordynatora A00
 
-Status: audyt wykonany; raport rekomenduje warunkowe dopuszczenie A00  
-Następny pakiet: WP-0007 — decyzja właściciela
+Status: zakończona — A00 0.4 ma `pass_conditional`, G0A PASSED  
+Następny obszar: Faza 0C — pełny audyt A01 i A02
 
 ## Dlaczego A00 powstaje pierwszy
 
