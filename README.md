@@ -6,18 +6,21 @@ Kompletne źródło prawdy dla publicznej biblioteki wiedzy o przydomowych oczka
 
 **Faza 0 — Ład projektu. Wersja kontekstu 0.2.**
 
-Nie ma jeszcze działającego modułu, agentów wykonawczych, gotowych artykułów ani wdrożenia. Repozytorium zawiera plan i kontrakty, które muszą zostać zatwierdzone przed Fazą 1.
+Plan zależności, gałęzi i bram jest przygotowany. Wszystkie 27 kontraktów agentów oczekuje na audyt; żaden agent nie ma jeszcze statusu `active`. Nie ma działającego modułu, gotowych artykułów ani wdrożenia.
 
 ## Obowiązkowy start
 
 1. [Nadrzędna instrukcja](PROJECT_INSTRUCTIONS.md)
 2. [Konstytucja](docs/PROJECT_CONSTITUTION.md)
 3. [Plan główny](docs/MASTER_PLAN.md)
-4. [Aktualny stan](docs/CURRENT_STATE.md)
-5. [Instrukcje agentów](AGENTS.md)
-6. [System agentów](docs/AGENT_SYSTEM.md)
-7. [Rejestr agentów](registries/agents.yaml)
-8. [Decyzje](docs/decisions/README.md)
+4. [Wykonawczy plan faz i zależności](docs/PHASE_EXECUTION_PLAN.md)
+5. [Aktualny stan](docs/CURRENT_STATE.md)
+6. [Strategia gałęzi](docs/BRANCHING_STRATEGY.md)
+7. [Plan audytu agentów](docs/AGENT_AUDIT_PLAN.md)
+8. [Instrukcje agentów](AGENTS.md)
+9. [System agentów](docs/AGENT_SYSTEM.md)
+10. [Rejestr agentów](registries/agents.yaml), [gałęzi](registries/branches.yaml) i [bram](registries/phase-gates.yaml)
+11. [Decyzje](docs/decisions/README.md)
 
 ## Model zarządzania
 
@@ -53,4 +56,4 @@ Wszystkie artefakty projektu powstają wyłącznie tutaj. Inne repozytoria mogą
 
 ## Plan
 
-Realizacja przebiega przez fazy od ładu i modelu wiedzy, przez agentów, makiety, moduł, wyszukiwarkę i bibliotekę startową, aż po wdrożenie oraz utrzymanie. Pełny plan: [MASTER_PLAN.md](docs/MASTER_PLAN.md).
+Realizacja przebiega przez fazy, etapy i formalne bramy. Po G0 równolegle mogą ruszyć fundament wiedzy 1K i środowisko techniczne 1T; dalsze gałęzie pozostają zablokowane do spełnienia swoich zależności. Plan strategiczny: [MASTER_PLAN.md](docs/MASTER_PLAN.md). Plan wykonawczy: [PHASE_EXECUTION_PLAN.md](docs/PHASE_EXECUTION_PLAN.md).
