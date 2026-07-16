@@ -1,7 +1,7 @@
 # A70 — Architekt Modułu PrestaShop
 
 Status: planowany  
-Fazy: 4+
+Fazy: 1T, 4+
 
 ## Misja
 
