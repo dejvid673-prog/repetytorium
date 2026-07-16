@@ -1,4 +1,4 @@
-version: "0.1"
+version: "0.2"
 owner: "A00"
 status_values:
   - PLANNED
@@ -49,7 +49,8 @@ work_packages:
   - id: "WP-0006"
     phase: "0A"
     name: "Wykonanie audytu A00"
-    owner_agent: "A01"
+    owner_agent: "OWNER"
+    executor_agents: ["A01", "A02"]
     status: "BLOCKED"
     depends_on: ["WP-0001", "WP-0002", "WP-0003", "WP-0004", "WP-0005"]
     output: "reports/agent-audits/A00/"
@@ -147,7 +148,8 @@ work_packages:
   - id: "WP-1007"
     phase: "1K"
     name: "Fixture i audyt fundamentu wiedzy"
-    owner_agent: "A40"
+    owner_agent: "A11"
+    reviewer_agents: ["A40", "A41", "A82"]
     status: "BLOCKED"
     depends_on: ["WP-1006"]
     output: "tests/fixtures/"
@@ -175,7 +177,8 @@ work_packages:
   - id: "WP-1104"
     phase: "1T"
     name: "Standardy kodu i CI"
-    owner_agent: "A80"
+    owner_agent: "A71"
+    reviewer_agents: ["A80"]
     status: "BLOCKED"
     depends_on: ["WP-1101"]
     output: ".github/"
@@ -211,6 +214,7 @@ work_packages:
     phase: "2"
     name: "Badania specjalistyczne"
     owner_agent: "A20"
+    collaborator_agents: ["A21", "A22", "A23", "A24"]
     status: "BLOCKED"
     depends_on: ["WP-2002"]
     output: "research/processing/"
@@ -225,6 +229,8 @@ work_packages:
     phase: "2"
     name: "Redakcja i prezentacja treści"
     owner_agent: "A31"
+    collaborator_agents: ["A32"]
+    reviewer_agents: ["A40", "A41", "A82"]
     status: "BLOCKED"
     depends_on: ["WP-2004"]
     output: "articles/"
@@ -428,6 +434,8 @@ work_packages:
     phase: "8"
     name: "Audyty bezpieczeństwa, WCAG i SEO"
     owner_agent: "A41"
+    collaborator_agents: ["A81", "A82"]
+    reviewer_agents: ["A80"]
     status: "BLOCKED"
     depends_on: ["WP-8001"]
     output: "reports/"
