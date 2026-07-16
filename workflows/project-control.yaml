@@ -1,13 +1,19 @@
-version: "0.1"
+version: "0.2"
 id: "WF-PROJECT-CONTROL"
 name: "Sterowanie projektem przez A00"
 owner: "A00"
-trigger:
-  - "nowe polecenie właściciela"
-  - "nowy materiał źródłowy"
-  - "wynik agenta"
-  - "blokada"
-  - "wniosek o przejście bramy"
+specification_type: "declarative_state_machine"
+runtime_implemented: false
+modes:
+  validation:
+    actor: "OWNER_OR_BOOTSTRAP_AUDITOR"
+    mutations_allowed:
+      - "audit_report"
+  live:
+    actor: "A00"
+    requires:
+      - "A00 has pass_conditional or active status"
+      - "requested class is inside activation_scope"
 states:
   - INTAKE
   - CLASSIFIED
@@ -25,81 +31,94 @@ states:
 transitions:
   - from: INTAKE
     to: CLASSIFIED
-    requires:
-      - "cel zapisany"
-      - "klasa polecenia wybrana"
-      - "niezmienne decyzje wskazane"
+    actor: A00
+    requires: ["goal_recorded", "classification_selected", "protected_decisions_identified"]
   - from: CLASSIFIED
     to: IMPACT_REVIEW
-    requires:
-      - "dotknięte fazy, pakiety, role i pliki"
-      - "ryzyka oraz zależności"
+    actor: A00
+    requires: ["impact_recorded", "risks_recorded", "dependencies_recorded"]
   - from: IMPACT_REVIEW
     to: DECISION_REQUIRED
-    when: "zmiana zakresu, architektury, danych, bezpieczeństwa albo istotnej struktury agentów"
+    actor: A00
+    when: "owner_authority_required"
   - from: DECISION_REQUIRED
     to: IMPACT_REVIEW
-    requires:
-      - "udokumentowana decyzja właściciela"
+    actor: OWNER
+    requires: ["decision_id", "decision_recorded"]
   - from: IMPACT_REVIEW
     to: BLOCKED
-    when: "co najmniej jedna zależność lub zgoda nie jest spełniona"
+    actor: A00
+    when: "dependency_or_approval_missing"
   - from: BLOCKED
     to: IMPACT_REVIEW
-    requires:
-      - "dowód usunięcia każdej blokady"
+    actor: A00
+    requires: ["all_blockers_rechecked", "unblock_evidence_recorded"]
   - from: IMPACT_REVIEW
     to: READY
-    requires:
-      - "pakiet pracy istnieje"
-      - "bramy i środowisko są gotowe"
-      - "wejścia są kompletne"
-      - "wykonawca i audytor są dopuszczeni"
-      - "kryteria oraz testy są zdefiniowane"
+    actor: A00
+    requires: ["work_package_exists", "gates_ready", "environment_ready", "inputs_versioned", "agents_admitted", "reviewers_independent", "criteria_and_tests_defined"]
+  - from: READY
+    to: BLOCKED
+    actor: A00
+    when: "readiness_invalidated"
   - from: READY
     to: ACTIVE
-    requires:
-      - "karta zadania"
-      - "zarejestrowana gałąź"
-      - "draft PR"
+    actor: A00
+    requires: ["valid_task_brief", "registered_branch", "draft_pr"]
+  - from: ACTIVE
+    to: BLOCKED
+    actor: A00
+    when: "new_blocker_detected"
   - from: ACTIVE
     to: REVIEW
-    requires:
-      - "komplet wyjść"
-      - "raport wykonawcy"
-      - "dowody testów"
+    actor: EXECUTOR
+    requires: ["outputs_complete", "executor_report", "test_evidence"]
   - from: REVIEW
     to: CHANGES_REQUIRED
-    when: "co najmniej jedno kryterium lub audyt nie przeszedł"
+    actor: REVIEWER
+    when: "criterion_or_audit_failed"
   - from: CHANGES_REQUIRED
     to: ACTIVE
-    requires:
-      - "zakres poprawek przypisany właściwemu wykonawcy"
+    actor: A00
+    requires: ["correction_assigned_to_proper_executor"]
   - from: REVIEW
     to: ACCEPTED
-    requires:
-      - "wszystkie kryteria spełnione"
-      - "wymagane audyty pozytywne"
-      - "otwarte ryzyka zaakceptowane"
+    actor: AUTHORIZED_ACCEPTOR
+    requires: ["criteria_passed", "required_audits_positive", "residual_risks_accepted", "evidence_paths_recorded"]
   - from: ACCEPTED
     to: MERGED
-    requires:
-      - "zgoda właściwa dla gałęzi i fazy"
+    actor: AUTHORIZED_MERGER
+    requires: ["merge_approval_recorded"]
   - from: MERGED
     to: CLOSED
-    requires:
-      - "rejestry i CURRENT_STATE zaktualizowane"
-      - "następny krok wskazany"
+    actor: A00
+    requires: ["registries_updated", "current_state_updated", "next_step_recorded"]
+  - from: INTAKE
+    to: CANCELLED
+    actor: A00
+    requires: ["cancellation_reason"]
+  - from: DECISION_REQUIRED
+    to: CANCELLED
+    actor: OWNER
+    requires: ["decision_id", "cancellation_reason"]
+  - from: BLOCKED
+    to: CANCELLED
+    actor: AUTHORIZED_ACCEPTOR
+    requires: ["cancellation_reason"]
+  - from: READY
+    to: CANCELLED
+    actor: A00
+    requires: ["cancellation_reason"]
+  - from: ACTIVE
+    to: CANCELLED
+    actor: AUTHORIZED_ACCEPTOR
+    requires: ["recovery_or_cleanup_evidence", "cancellation_reason"]
 resume:
   key: "task_id"
-  requires:
-    - "ostatni stan"
-    - "wersje wejść"
-    - "lista blokad"
-    - "dowody"
+  requires: ["last_state", "input_versions", "blockers", "evidence", "full_readiness_recheck"]
 error_handling:
-  instruction_conflict: "STOP_AND_ESCALATE"
+  instruction_conflict: "BLOCKED_AND_ESCALATE"
   missing_input: "BLOCKED"
   scope_change: "DECISION_REQUIRED"
   missing_evidence: "CHANGES_REQUIRED"
-  unsafe_external_component: "CANCELLED"
+  unsafe_external_component: "BLOCKED"
