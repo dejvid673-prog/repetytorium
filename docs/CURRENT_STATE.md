@@ -1,64 +1,51 @@
 # Aktualny stan projektu
 
 Ostatnia aktualizacja: 2026-07-16  
-Faza: 0 — Ład projektu  
-Stan: plan zależności przygotowany; audyt agentów i akceptacja właściciela pozostają otwarte
+Faza: 0A — Budowa koordynatora projektu  
+Stan: A00 i jego narzędzia kontrolne utworzone; oczekują na niezależny audyt
 
 ## Zakończone w draft PR #1
 
-- GitHub jako źródło prawdy;
-- nadrzędna instrukcja, profil i konstytucja;
-- karta projektu, zakres, roadmapa i plan faz 0–11;
-- wykonawczy plan faz, etapów, torów równoległych i bram;
-- strategia gałęzi integracyjnych oraz zadaniowych;
-- rejestr gałęzi, zależności, blokad i bram fazowych;
-- kryteria gotowości środowisk DOCS, DEV, TEST, STAGE i PROD;
-- Project Context Gate;
-- rejestr i osobne kontrakty 27 wyspecjalizowanych agentów;
-- plan audytu, dopuszczania i testowania agentów;
-- szablony raportu audytu, manifestu gałęzi i raportu bramy;
-- rozdzielenie badań, redakcji, audytów, UX, grafiki, PrestaShop, QA i utrzymania;
-- neutralność bez reklam produktów;
-- publiczne czytanie bez wymaganego konta;
-- jawność AI i współpraca przez e-mail;
-- przyszła moderowana biblioteka przypadków;
-- WCAG 2.2 AA;
-- zasady bezpieczeństwa, wkładu i licencji.
+- fundament projektu, konstytucja, zakres i decyzje;
+- strategiczny i wykonawczy plan faz;
+- konkretny plan realizacji i rejestr pakietów pracy;
+- strategia gałęzi, blokad, środowisk i bram;
+- kontrakty 27 planowanych agentów;
+- kontrakt A00 w wersji 0.2;
+- repozytoryjny skill `coordinate-repetytorium`;
+- wznawialny workflow sterowania projektem;
+- schema oraz szablon zadania;
+- testy zachowania A00 — zdefiniowane, ale niewykonane;
+- szablony raportu stanu i decyzji właściciela;
+- kontrolowane miejsce `source-materials/`;
+- procedura pozyskiwania agentów, skilli i workflow z całego GitHuba;
+- rejestr zewnętrznych kandydatów z trzema źródłami referencyjnymi;
+- rejestr materiałów właściciela.
 
-## Ważne rozróżnienie
+## Status A00
 
-Kontrakty agentów są przygotowane, ale żaden agent nie ma jeszcze statusu `active`. Wszystkie role mają status `audit_pending`. Nie utworzono jeszcze produkcyjnych skilli ani nie wykonano testów agentów.
+A00 pozostaje `audit_pending`. Kontrakt, skill, workflow i testy istnieją, ale nie zostały jeszcze niezależnie wykonane i ocenione. A00 nie ma jeszcze formalnego dopuszczenia do sterowania innymi agentami.
 
-## W toku / do wykonania w Fazie 0
+## Najbliższe pakiety
 
-- audyt konstrukcji wszystkich ról;
-- audyty krzyżowe kompetencji i ryzyka;
-- macierz nakładania odpowiedzialności;
-- poprawki, podziały albo połączenia ról, jeśli audyt je wykaże;
-- schematy wejść i wyjść agentów;
-- fixture oraz testy Context Gate, Golden Path, Failure Path i Handoff;
-- akceptacja właściciela dla planu bazowego i struktury ról;
-- zamknięcie Bramy G0.
+1. WP-0001–WP-0005 — przegląd kompletności utworzonych artefaktów A00.
+2. WP-0006 — wykonanie testów i audytu A00 przez A01 oraz A80.
+3. WP-0007 — decyzja właściciela o `pass_conditional` albo wymaganych poprawkach.
+4. WP-0010 — dopiero potem audyt ról kontrolnych.
+5. WP-0013 — raport Bramy G0.
 
-## Zablokowane do czasu G0
+## Zablokowane
 
-- `phase/01-knowledge-foundation`;
-- `phase/01t-technical-environment`;
-- wszystkie dalsze fazy i gałęzie wykonawcze.
+- aktywowanie pozostałych agentów;
+- Faza 1K i 1T;
+- skille wykonawcze dla badań, UX i PrestaShop;
+- produkcyjne workflow;
+- artykuły, makiety i kod modułu.
 
-## Nie rozpoczęto
+## Materiały właściciela
 
-- schematy danych wiedzy;
-- właściwe skille;
-- wykonywalne workflow;
-- badanie pilotażowe;
-- artykuły;
-- system wizualny;
-- środowisko PrestaShop 9;
-- kod modułu;
-- analityka produkcyjna;
-- wdrożenie.
+Instrukcje i przykłady można umieszczać w `source-materials/`. Raporty głębokich badań trafiają do `research/inbox/`. Każdy materiał zostanie zarejestrowany i sklasyfikowany przed wpływem na plan.
 
 ## Najbliższy krok
 
-Wykonać Etapy 0.4–0.8: audytować agentów w kolejności określonej w `docs/AGENT_AUDIT_PLAN.md`, wprowadzić wymagane poprawki, przetestować przekazania i przedstawić właścicielowi raport Bramy G0.
+Wykonać WP-0006: zamrozić wersję kontraktu A00, uruchomić siedem przypadków testowych, przeprowadzić audyt A01/A80 i przygotować właścicielowi raport z decyzją o dopuszczeniu.
