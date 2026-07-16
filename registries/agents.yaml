@@ -1,0 +1,165 @@
+version: "0.2"
+context_version: "0.2"
+agents:
+  - id: A00
+    name: "Kierownik Projektu"
+    path: "agents/A00-project-manager/AGENT.md"
+    status: planned
+    phases: "all"
+    receives_tasks_from: A00
+  - id: A01
+    name: "Audytor Kontekstu i Ładu"
+    path: "agents/A01-context-governance-auditor/AGENT.md"
+    status: planned
+    phases: "all"
+    receives_tasks_from: A00
+  - id: A10
+    name: "Kurator Przyjęcia Badań"
+    path: "agents/A10-research-intake-curator/AGENT.md"
+    status: planned
+    phases: "1-2"
+    receives_tasks_from: A00
+  - id: A11
+    name: "Architekt Taksonomii i Wiedzy"
+    path: "agents/A11-knowledge-taxonomy-architect/AGENT.md"
+    status: planned
+    phases: "1+"
+    receives_tasks_from: A00
+  - id: A20
+    name: "Badacz Chemii Wody"
+    path: "agents/A20-water-chemistry-researcher/AGENT.md"
+    status: planned
+    phases: "1-2,6,10"
+    receives_tasks_from: A00
+  - id: A21
+    name: "Badacz Ekologii i Techniki Stawowej"
+    path: "agents/A21-pond-ecology-technology-researcher/AGENT.md"
+    status: planned
+    phases: "1-2,6,10"
+    receives_tasks_from: A00
+  - id: A22
+    name: "Badacz Gatunków Ryb Słodkowodnych"
+    path: "agents/A22-freshwater-fish-species-researcher/AGENT.md"
+    status: planned
+    phases: "1-2,6,10"
+    receives_tasks_from: A00
+  - id: A23
+    name: "Badacz Zdrowia i Chorób Ryb"
+    path: "agents/A23-fish-health-researcher/AGENT.md"
+    status: planned
+    phases: "1-2,6,10"
+    receives_tasks_from: A00
+  - id: A24
+    name: "Badacz Prawa i Regulacji"
+    path: "agents/A24-regulatory-researcher/AGENT.md"
+    status: planned
+    phases: "1+,7,10"
+    receives_tasks_from: A00
+  - id: A30
+    name: "Planista Portfela Artykułów"
+    path: "agents/A30-article-portfolio-planner/AGENT.md"
+    status: planned
+    phases: "1-2,6"
+    receives_tasks_from: A00
+  - id: A31
+    name: "Redaktor Treści"
+    path: "agents/A31-content-editor/AGENT.md"
+    status: planned
+    phases: "2,6,10"
+    receives_tasks_from: A00
+  - id: A32
+    name: "Redaktor Prezentacji Treści"
+    path: "agents/A32-content-presentation-editor/AGENT.md"
+    status: planned
+    phases: "2-3,6"
+    receives_tasks_from: A00
+  - id: A40
+    name: "Audytor Źródeł i Dowodów"
+    path: "agents/A40-evidence-auditor/AGENT.md"
+    status: planned
+    phases: "2,6,10"
+    receives_tasks_from: A00
+  - id: A41
+    name: "Audytor Bezpieczeństwa i Zgodności"
+    path: "agents/A41-safety-compliance-reviewer/AGENT.md"
+    status: planned
+    phases: "2,6-10"
+    receives_tasks_from: A00
+  - id: A50
+    name: "Architekt Informacji i UX"
+    path: "agents/A50-information-ux-architect/AGENT.md"
+    status: planned
+    phases: "3,5,8,10"
+    receives_tasks_from: A00
+  - id: A51
+    name: "Projektant Makiet i Prototypów UI"
+    path: "agents/A51-ui-prototype-designer/AGENT.md"
+    status: planned
+    phases: "3,8,10"
+    receives_tasks_from: A00
+  - id: A60
+    name: "Projektant Zasobów Wizualnych"
+    path: "agents/A60-visual-asset-designer/AGENT.md"
+    status: planned
+    phases: "3,6,10"
+    receives_tasks_from: A00
+  - id: A61
+    name: "Audytor Praw i Poprawności Grafik"
+    path: "agents/A61-visual-rights-auditor/AGENT.md"
+    status: planned
+    phases: "3,6,8,10"
+    receives_tasks_from: A00
+  - id: A70
+    name: "Architekt Modułu PrestaShop"
+    path: "agents/A70-prestashop-module-architect/AGENT.md"
+    status: planned
+    phases: "4+"
+    receives_tasks_from: A00
+  - id: A71
+    name: "Programista Modułu PrestaShop"
+    path: "agents/A71-prestashop-implementer/AGENT.md"
+    status: planned
+    phases: "4-10"
+    receives_tasks_from: A00
+  - id: A72
+    name: "Integrator i Publikator Treści"
+    path: "agents/A72-content-import-publisher/AGENT.md"
+    status: planned
+    phases: "4-10"
+    receives_tasks_from: A00
+  - id: A80
+    name: "Audytor Techniczny"
+    path: "agents/A80-technical-qa/AGENT.md"
+    status: planned
+    phases: "4-10"
+    receives_tasks_from: A00
+  - id: A81
+    name: "Audytor Dostępności"
+    path: "agents/A81-accessibility-qa/AGENT.md"
+    status: planned
+    phases: "3-10"
+    receives_tasks_from: A00
+  - id: A82
+    name: "Audytor SEO i Wyszukiwarki"
+    path: "agents/A82-seo-search-qa/AGENT.md"
+    status: planned
+    phases: "5-10"
+    receives_tasks_from: A00
+  - id: A85
+    name: "Projektant Analityki"
+    path: "agents/A85-analytics-engineer/AGENT.md"
+    status: planned
+    phases: "7-10"
+    receives_tasks_from: A00
+  - id: A90
+    name: "Opiekun Aktualności i Korekt"
+    path: "agents/A90-content-maintenance-corrections/AGENT.md"
+    status: planned
+    phases: "10+"
+    receives_tasks_from: A00
+  - id: A95
+    name: "Kurator Przypadków Czytelników"
+    path: "agents/A95-reader-case-curator/AGENT.md"
+    status: planned
+    phases: "11"
+    receives_tasks_from: A00
